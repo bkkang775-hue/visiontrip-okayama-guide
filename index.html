@@ -21,13 +21,17 @@
   details > summary::after { content:"접기"; font-size:0.8rem; color:var(--muted); font-weight:normal; }
   details:not([open]) > summary::after { content:"펼치기"; }
   details > summary h2 { font-size:1.2rem; margin:0; color:inherit; }
-  .tiles { display:flex; flex-wrap:wrap; gap:6px; }
-  .tile { flex:0 0 auto; min-width:92px; border:1px solid var(--line); border-radius:8px; padding:6px 8px; background:var(--card); display:flex; flex-direction:column; gap:0; text-align:center; }
-  .tile .t-date { font-weight:700; font-size:0.85rem; }
-  .tile .t-label { font-size:0.75rem; color:var(--accent); font-weight:700; }
-  .tile .t-time { font-size:0.7rem; color:var(--muted); }
-  .tile.trip { background:var(--accent); color:#fff; border-color:var(--accent); }
-  .tile.trip .t-label, .tile.trip .t-time { color:#fff; }
+  .cal-m { width:100%; max-width:420px; border-collapse:collapse; margin:0 0 14px; font-size:0.9rem; }
+  .cal-m caption { text-align:left; font-weight:700; padding:0 0 4px; }
+  .cal-m th { font-weight:normal; color:var(--muted); padding:4px 0; text-align:center; background:none; border:none; }
+  .cal-m td { text-align:center; padding:8px 0; border:1px solid var(--line); background:var(--card); }
+  .cal-m td.blank { background:transparent; border-color:transparent; }
+  .cal-m td.meet { background:var(--accent); color:#fff; font-weight:700; }
+  .cal-m td.trip { background:#c9a227; color:#222; font-weight:700; }
+  .legend { font-size:0.85rem; color:var(--muted); margin:4px 0 0; }
+  .legend i { display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:middle; margin:0 4px 0 10px; }
+  .legend i.meet { background:var(--accent); }
+  .legend i.trip { background:#c9a227; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:12px 0; }
   table { width:100%; border-collapse:collapse; background:var(--card); font-size:0.92rem; }
   th, td { border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; }
@@ -64,13 +68,21 @@
 
   <details id="meeting" open>
     <summary><h2>준비모임</h2></summary>
-    <div class="tiles">
-      <div class="tile meet"><span class="t-date">10/31 (토)</span><span class="t-label">준비모임</span><span class="t-time">07:30~</span></div>
-      <div class="tile meet"><span class="t-date">11/5 (목)</span><span class="t-label">준비모임</span><span class="t-time">18:30~</span></div>
-      <div class="tile meet"><span class="t-date">11/7 (토)</span><span class="t-label">준비모임</span><span class="t-time">07:30~</span></div>
-      <div class="tile meet"><span class="t-date">11/12 (목)</span><span class="t-label">준비모임</span><span class="t-time">18:30~</span></div>
-      <div class="tile trip"><span class="t-date">11/13 – 16</span><span class="t-label">비전트립</span><span class="t-time">금 – 월</span></div>
-    </div>
+    <table class="cal-m">
+      <caption>2026년 10월</caption>
+      <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+      <tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="meet">31</td></tr>
+    </table>
+    <table class="cal-m">
+      <caption>2026년 11월</caption>
+      <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+      <tr><td>1</td><td>2</td><td>3</td><td>4</td><td class="meet">5</td><td>6</td><td class="meet">7</td></tr>
+      <tr><td>8</td><td>9</td><td>10</td><td>11</td><td class="meet">12</td><td class="trip">13</td><td class="trip">14</td></tr>
+      <tr><td class="trip">15</td><td class="trip">16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+      <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
+      <tr><td>29</td><td>30</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+    </table>
+    <p class="legend"><i class="meet"></i>준비모임<i class="trip"></i>비전트립 (11/13–16)</p>
     <p>준비모임 장소: 1516교회 헤이븐</p>
   </details>
 
