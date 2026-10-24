@@ -21,6 +21,17 @@
   details > summary::after { content:"접기"; font-size:0.8rem; color:var(--muted); font-weight:normal; }
   details:not([open]) > summary::after { content:"펼치기"; }
   details > summary h2 { font-size:1.2rem; margin:0; color:inherit; }
+  .cal-wrap { display:flex; flex-wrap:wrap; gap:16px; }
+  .cal { flex:1 1 300px; }
+  .cal h3 { font-size:1rem; margin:0 0 6px; text-align:center; }
+  .cal table { table-layout:fixed; font-size:0.85rem; }
+  .cal th, .cal td { text-align:center; padding:6px 2px; }
+  .cal th { color:var(--muted); font-weight:normal; }
+  .cal td.meet { background:var(--accent); color:#fff; font-weight:700; border-radius:6px; }
+  .cal td.blank { background:transparent; border-color:transparent; }
+  .cal td.sun { color:#c0392b; }
+  .cal td.meet.sun { color:#fff; }
+  .meet-list { margin-top:12px; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:12px 0; }
   table { width:100%; border-collapse:collapse; background:var(--card); font-size:0.92rem; }
   th, td { border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; }
@@ -52,6 +63,41 @@
       <tr><td>회비</td><td>1인 140만 원</td></tr>
       <tr><td>참가 인원</td><td>총 6명 (확정 3명, 일정 조율 중 3명)</td></tr>
     </table></div>
+  </details>
+
+  <details id="meeting" open>
+    <summary><h2>준비모임</h2></summary>
+    <div class="cal-wrap">
+      <div class="cal">
+        <h3>2026년 10월</h3>
+        <table>
+          <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+          <tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td>1</td><td>2</td><td>3</td></tr>
+          <tr><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td></tr>
+          <tr><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td></tr>
+          <tr><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td></tr>
+          <tr><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td class="meet">31</td></tr>
+        </table>
+      </div>
+      <div class="cal">
+        <h3>2026년 11월</h3>
+        <table>
+          <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+          <tr><td>1</td><td>2</td><td>3</td><td>4</td><td class="meet">5</td><td>6</td><td class="meet">7</td></tr>
+          <tr><td>8</td><td>9</td><td>10</td><td>11</td><td class="meet">12</td><td>13</td><td>14</td></tr>
+          <tr><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+          <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
+          <tr><td>29</td><td>30</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+        </table>
+      </div>
+    </div>
+    <ul class="meet-list">
+      <li>10/31(토) 07:30~</li>
+      <li>11/5(목) 18:30~</li>
+      <li>11/7(토) 07:30~</li>
+      <li>11/12(목) 18:30~</li>
+    </ul>
+    <p class="todo">장소는 추후 공지합니다. 강조 표시된 날이 준비모임 날짜입니다.</p>
   </details>
 
   <details id="schedule" open>
