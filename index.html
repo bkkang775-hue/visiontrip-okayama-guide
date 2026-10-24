@@ -28,6 +28,12 @@
   .cal-m td.blank { background:transparent; border-color:transparent; }
   .cal-m td.meet { background:var(--accent); color:#fff; font-weight:700; }
   .cal-m td .time { display:block; font-size:0.7rem; font-weight:normal; margin-top:2px; }
+  .spots { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin:12px 0; }
+  .spot { background:var(--card); border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .spot .photo { height:120px; background:var(--bg); display:flex; align-items:center; justify-content:center; color:var(--muted); font-size:0.85rem; }
+  .spot .body { padding:10px 12px; }
+  .spot h3 { margin:0 0 4px; font-size:1rem; }
+  .spot p { margin:0; font-size:0.9rem; }
   .cal-m td.trip { background:#c9a227; color:#222; font-weight:700; }
   .legend { font-size:0.85rem; color:var(--muted); margin:4px 0 0; }
   .legend i { display:inline-block; width:12px; height:12px; border-radius:3px; vertical-align:middle; margin:0 4px 0 10px; }
@@ -87,6 +93,42 @@
     </table>
     <p class="legend"><i class="meet"></i>준비모임<i class="trip"></i>비전트립 (11/13–16)</p>
     <p>준비모임 장소: 1516교회 헤이븐</p>
+  </details>
+
+  <details id="city" open>
+    <summary><h2>오카야마 소개</h2></summary>
+    <p>오카야마는 일본 서부 주고쿠 지방에 있는 도시로, 복숭아와 청포도(마스카트)가 유명합니다. 도심에는 오카야마 성과 일본 3대 정원 중 하나인 고라쿠엔이 있고, 근처 구라시키에는 옛 상가 거리가 남아 있습니다. 자세한 정보는 <a href="https://www.okayama-japan.jp/" target="_blank" rel="noopener">오카야마 관광 공식 사이트</a>에서 볼 수 있습니다.</p>
+    <p class="todo">아래 장소는 참고용입니다. 활동으로 확정되면 일정에 반영합니다.</p>
+    <div class="spots">
+      <div class="spot">
+        <div class="photo">사진 준비 중</div>
+        <div class="body">
+          <h3>고라쿠엔 (後楽園)</h3>
+          <p>일본 3대 정원 중 하나로, 계절마다 다른 풍경을 볼 수 있는 넓은 정원입니다.</p>
+        </div>
+      </div>
+      <div class="spot">
+        <div class="photo">사진 준비 중</div>
+        <div class="body">
+          <h3>오카야마 성 (烏城)</h3>
+          <p>까마귀를 닮은 검은색 외벽 때문에 '까마귀 성'이라고 불립니다. 성 주변 공원도 함께 둘러볼 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="spot">
+        <div class="photo">사진 준비 중</div>
+        <div class="body">
+          <h3>구라시키 미관지구 (倉敷美観地区)</h3>
+          <p>에도 시대 창고 건물이 남아 있는 옛 거리입니다. 운하를 따라 걷기 좋습니다.</p>
+        </div>
+      </div>
+      <div class="spot">
+        <div class="photo">사진 준비 중</div>
+        <div class="body">
+          <h3>모모타로 동상 (桃太郎像)</h3>
+          <p>오카야마역 앞에 있는 동화 속 모모타로 동상입니다. 오카야마의 상징으로 자주 쓰입니다.</p>
+        </div>
+      </div>
+    </div>
   </details>
 
   <details id="schedule" open>
