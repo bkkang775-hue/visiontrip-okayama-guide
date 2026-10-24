@@ -21,11 +21,11 @@
   details > summary::after { content:"접기"; font-size:0.8rem; color:var(--muted); font-weight:normal; }
   details:not([open]) > summary::after { content:"펼치기"; }
   details > summary h2 { font-size:1.2rem; margin:0; color:inherit; }
-  .tiles { display:flex; flex-wrap:wrap; gap:10px; }
-  .tile { flex:1 1 130px; border:1px solid var(--line); border-radius:10px; padding:12px 10px; background:var(--card); display:flex; flex-direction:column; gap:2px; text-align:center; }
-  .tile .t-date { font-weight:700; font-size:1rem; }
-  .tile .t-label { font-size:0.85rem; color:var(--accent); font-weight:700; }
-  .tile .t-time { font-size:0.8rem; color:var(--muted); }
+  .tiles { display:flex; flex-wrap:wrap; gap:6px; }
+  .tile { flex:0 0 auto; min-width:92px; border:1px solid var(--line); border-radius:8px; padding:6px 8px; background:var(--card); display:flex; flex-direction:column; gap:0; text-align:center; }
+  .tile .t-date { font-weight:700; font-size:0.85rem; }
+  .tile .t-label { font-size:0.75rem; color:var(--accent); font-weight:700; }
+  .tile .t-time { font-size:0.7rem; color:var(--muted); }
   .tile.trip { background:var(--accent); color:#fff; border-color:var(--accent); }
   .tile.trip .t-label, .tile.trip .t-time { color:#fff; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:12px 0; }
