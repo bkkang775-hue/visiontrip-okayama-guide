@@ -45,6 +45,13 @@
   .notice-box { border:1px solid var(--line); border-left:4px solid #c9a227; border-radius:8px; background:var(--card); padding:10px 14px; margin:10px 0; }
   .notice-box h3 { margin:0 0 6px; font-size:1rem; }
   .notice-box ul { margin:0; }
+  @media (max-width: 600px) {
+    main { padding:16px 12px 64px; }
+    table.budget { font-size:0.78rem; }
+    table.budget th, table.budget td { padding:5px 3px; }
+    table.budget th:nth-child(3), table.budget td:nth-child(3),
+    table.budget th:nth-child(4), table.budget td:nth-child(4) { display:none; }
+  }
   .to-top { position:fixed; right:16px; bottom:20px; background:var(--accent); color:#fff; padding:8px 14px; border-radius:20px; text-decoration:none; font-size:0.9rem; box-shadow:0 2px 6px rgba(0,0,0,0.2); }
   .to-top:hover { opacity:0.9; }
   .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:12px 0; }
@@ -226,7 +233,7 @@
   <details id="budget" open>
     <summary><h2>예산</h2></summary>
     <p class="todo">예상 금액과 지출 현황 기준입니다. 차액은 예상 금액에서 지출을 뺀 값이며, 음수는 예상보다 많이 쓴 금액입니다.</p>
-    <div class="wrap"><table>
+    <div class="wrap"><table class="budget">
       <tr><th>항목</th><th>예상(원)</th><th>단가(원)</th><th>수량</th><th>지출(원)</th><th>차액(원)</th></tr>
       <tr><td>항공료</td><td>3,200,000</td><td>466,500</td><td>8</td><td>3,732,000</td><td>-532,000</td></tr>
       <tr><td>숙박비</td><td>2,240,000</td><td>340,050</td><td>8</td><td>2,720,400</td><td>-480,400</td></tr>
