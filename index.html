@@ -64,7 +64,15 @@
   details.day > summary::-webkit-details-marker { display:none; }
   details.day > summary::after { content:"접기"; font-size:0.8rem; color:var(--muted); font-weight:normal; }
   details.day:not([open]) > summary::after { content:"펼치기"; }
-  table.sched th:first-child, table.sched td:first-child { width:1%; white-space:nowrap; }
+  table.sched { table-layout:fixed; }
+  table.sched th, table.sched td { overflow-wrap:anywhere; }
+  table.sched th:nth-child(1), table.sched td:nth-child(1) { width:24%; }
+  table.sched th:nth-child(2), table.sched td:nth-child(2) { width:26%; }
+  table.sched th:nth-child(3), table.sched td:nth-child(3) { width:50%; }
+  @media (max-width: 600px) {
+    table.sched { font-size:0.84rem; }
+    table.sched th, table.sched td { padding:6px 5px; }
+  }
   .wrap { overflow-x:auto; }
   ul { padding-left:20px; }
   li { margin:4px 0; }
