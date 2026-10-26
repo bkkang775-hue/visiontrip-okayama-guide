@@ -59,6 +59,8 @@
   th, td { border:1px solid var(--line); padding:7px 8px; text-align:left; vertical-align:top; }
   th { background:var(--bg); }
   td.date { font-weight:700; background:var(--bg); white-space:nowrap; }
+  #schedule tr:has(td.date) > td { border-top:3px solid var(--fg); }
+  #schedule tr:first-child > td { border-top:1px solid var(--line); }
   .wrap { overflow-x:auto; }
   ul { padding-left:20px; }
   li { margin:4px 0; }
