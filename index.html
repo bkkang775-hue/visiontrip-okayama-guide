@@ -166,6 +166,12 @@
   details.script { margin:8px 0; }
   details.script > summary { list-style:disclosure-closed; cursor:pointer; color:var(--accent); font-weight:700; margin:6px 0; }
   details.script[open] > summary { list-style:disclosure-open; }
+  .lyric-part { margin:14px 0 6px; font-weight:700; color:var(--accent); font-size:0.9rem; }
+  .lyric { padding:8px 10px; margin:6px 0; border-radius:10px; background:var(--surface-2); }
+  .lyric p { margin:0; }
+  .ly-ko { font-size:0.86rem; color:var(--muted); }
+  .ly-ja { font-size:0.95rem; }
+  .ly-pr { font-size:1.08rem; font-weight:700; color:var(--accent); letter-spacing:0.01em; }
   img.score { display:block; width:100%; max-width:100%; height:auto; margin:8px 0; border:1px solid var(--line); border-radius:8px; background:#fff; }
   details.script h3 { font-size:1rem; margin:14px 0 6px; color:var(--accent); }
   @media (prefers-reduced-motion: reduce) { * { transition:none !important; scroll-behavior:auto !important; } }
@@ -895,6 +901,20 @@
         <li>시작할 때나 중간에 나레이션 또는 인사말을 넣을 수 있습니다.</li>
         <li><strong>한국어 찬양 참고 영상</strong>: <a href="https://youtu.be/xkKvqxHUBsk?si=0pULwYdnwpxsZ_s-" target="_blank" rel="noopener">유튜브에서 보기</a></li>
         <li><strong>일본어 가사 악보 (C키)</strong>: 일본어 원문, 가나 독음, 한글 발음 포함
+          <details class="script" open>
+            <summary>가사 보기 (한국어 · 일본어 · 한글 발음)</summary>
+            <p class="lyric-part">1절</p>
+            <div class="lyric"><p class="ly-ko">주님 다시 오실 때까지 나는 이 길을 가리라</p><p class="ly-ja" lang="ja">主が来られる日まで この道を歩む</p><p class="ly-pr">슈가 코라레루 히마데 코노 미치오 아유무</p></div>
+            <div class="lyric"><p class="ly-ko">좁은 문 좁은 길 나의 십자가 지고</p><p class="ly-ja" lang="ja">せまき道を 十字架をせおい</p><p class="ly-pr">세마키 미치오 쥬지가오 세오이</p></div>
+            <div class="lyric"><p class="ly-ko">나의 가는 이 길 끝에서 나는 주님을 보리라</p><p class="ly-ja" lang="ja">その道のはてに立ち 主を見上げるとき</p><p class="ly-pr">소노 미치노 하테니 타치 슈오 미아게루 토키</p></div>
+            <div class="lyric"><p class="ly-ko">영광의 내 주님 나를 맞아주시리</p><p class="ly-ja" lang="ja">栄光の主よ 受け入れたまえ</p><p class="ly-pr">에이코오노 슈요우 우케이레타마에</p></div>
+            <p class="lyric-part">후렴</p>
+            <div class="lyric"><p class="ly-ko">주님 다시 오실 때까지 나는 일어나 달려가리라</p><p class="ly-ja" lang="ja">主が来られる日まで 立ち上がり走り行く</p><p class="ly-pr">슈가 코라레루 히마데 타치아가리 하시리유쿠</p></div>
+            <div class="lyric"><p class="ly-ko">주의 영광 온 땅 덮을 때 나는 일어나 노래하리</p><p class="ly-ja" lang="ja">主の栄光みちあふれ 立ち上がり賛美する</p><p class="ly-pr">슈노 에이코오 미치아후레 타치아가리 산비스루</p></div>
+            <div class="lyric"><p class="ly-ko">내 사모하는 주님 온 세상 구주시라</p><p class="ly-ja" lang="ja">メシアなるイエスよ われはまちのぞむ</p><p class="ly-pr">메시아나루 이에스요 와레와 마치노조무</p></div>
+            <div class="lyric"><p class="ly-ko">내 사모하는 주님 영광의 왕이시라</p><p class="ly-ja" lang="ja">栄光の王主よ われはしたがう</p><p class="ly-pr">에이코오노 오오슈요 와레와 시타가우</p></div>
+            <p class="todo">일본어는 보내 주신 영상 버전이며, 공식 번역으로 따로 확인한 문안은 아닙니다.</p>
+          </details>
           <details class="script">
             <summary>악보 바로 보기</summary>
             <img class="score" src="score/jusim-dasi-c-1.png" alt="주님 다시 오실 때까지 일본어 가사 악보 1쪽" loading="lazy">
