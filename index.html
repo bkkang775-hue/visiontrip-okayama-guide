@@ -166,6 +166,7 @@
   details.script { margin:8px 0; }
   details.script > summary { list-style:disclosure-closed; cursor:pointer; color:var(--accent); font-weight:700; margin:6px 0; }
   details.script[open] > summary { list-style:disclosure-open; }
+  img.score { display:block; width:100%; max-width:100%; height:auto; margin:8px 0; border:1px solid var(--line); border-radius:8px; background:#fff; }
   details.script h3 { font-size:1rem; margin:14px 0 6px; color:var(--accent); }
   @media (prefers-reduced-motion: reduce) { * { transition:none !important; scroll-behavior:auto !important; } }
   html { scroll-behavior:smooth; }
@@ -893,7 +894,14 @@
         <li>후렴은 리버사이드 교우들과 함께 부릅니다.</li>
         <li>시작할 때나 중간에 나레이션 또는 인사말을 넣을 수 있습니다.</li>
         <li><strong>한국어 찬양 참고 영상</strong>: <a href="https://youtu.be/xkKvqxHUBsk?si=0pULwYdnwpxsZ_s-" target="_blank" rel="noopener">유튜브에서 보기</a></li>
-        <li><strong>일본어 가사 악보 (C키)</strong>: <a href="jusim-dasi-japanese-score-c.pdf" target="_blank" rel="noopener">PDF 열기</a> · 2쪽 (일본어 원문, 가나 독음, 한글 발음 포함)</li>
+        <li><strong>일본어 가사 악보 (C키)</strong>: 일본어 원문, 가나 독음, 한글 발음 포함
+          <details class="script">
+            <summary>악보 바로 보기</summary>
+            <img class="score" src="score/jusim-dasi-c-1.png" alt="주님 다시 오실 때까지 일본어 가사 악보 1쪽" loading="lazy">
+            <img class="score" src="score/jusim-dasi-c-2.png" alt="주님 다시 오실 때까지 일본어 가사 악보 2쪽" loading="lazy">
+            <p class="todo">PDF 원본: <a href="jusim-dasi-japanese-score-c.pdf" target="_blank" rel="noopener">내려받기·인쇄용 PDF 열기</a></p>
+          </details>
+        </li>
       </ul>
     </div>
     <p class="todo">11/15(주일) 리버사이드교회 예배 특순은 스킷 드라마와 찬양 두 가지입니다 (10/31 모임 결정).</p>
