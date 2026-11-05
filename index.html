@@ -79,16 +79,24 @@
   .verse-en { color:var(--muted); font-size:0.88rem; font-style:italic; }
   .verse-ref { color:var(--accent); font-size:0.85rem; font-style:normal; font-weight:700; margin-left:4px; }
 
+  /* Section groups */
+  .group { margin:18px 0; padding:14px 12px 4px; border-radius:22px; background:var(--surface-2); scroll-margin-top:60px; }
+  .group-head { display:flex; align-items:baseline; gap:10px; padding:2px 4px 8px; }
+  .group-no { font-family:var(--font-display); font-size:0.9rem; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .group-title { margin:0; font-family:var(--font-display); font-size:1.45rem; color:var(--fg); }
+  .group .sub-links { padding:0 2px; }
+  .sub-links a { background:var(--surface); border:1px solid var(--line); }
+
   /* Sections */
-  main > details { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:2px 16px 14px; margin:14px 0; box-shadow:var(--shadow); scroll-margin-top:56px; }
-  main > details > summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:14px 0 10px; }
-  main > details:not([open]) > summary { padding-bottom:12px; }
-  main > details[open] > summary { border-bottom:1px solid var(--line); margin-bottom:12px; }
+  .group > details { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:2px 16px 14px; margin:14px 0; box-shadow:var(--shadow); scroll-margin-top:56px; }
+  .group > details > summary { list-style:none; cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:10px; padding:14px 0 10px; }
+  .group > details:not([open]) > summary { padding-bottom:12px; }
+  .group > details[open] > summary { border-bottom:1px solid var(--line); margin-bottom:12px; }
   details > summary::-webkit-details-marker { display:none; }
-  main > details > summary h2 { font-family:var(--font-display); font-size:1.2rem; margin:0; color:var(--fg); display:flex; align-items:center; gap:8px; }
-  main > details > summary h2::before { content:""; width:6px; height:18px; border-radius:3px; background:var(--accent); }
-  main > details > summary::after, details.day > summary::after { content:"접기"; flex:0 0 auto; font-size:0.75rem; color:var(--muted); background:var(--surface-2); padding:2px 10px; border-radius:999px; }
-  main > details:not([open]) > summary::after, details.day:not([open]) > summary::after { content:"펼치기"; color:var(--accent); background:var(--accent-soft); }
+  .group > details > summary h2 { font-family:var(--font-display); font-size:1.2rem; margin:0; color:var(--fg); display:flex; align-items:center; gap:8px; }
+  .group > details > summary h2::before { content:""; width:6px; height:18px; border-radius:3px; background:var(--accent); }
+  .group > details > summary::after, details.day > summary::after { content:"접기"; flex:0 0 auto; font-size:0.75rem; color:var(--muted); background:var(--surface-2); padding:2px 10px; border-radius:999px; }
+  .group > details:not([open]) > summary::after, details.day:not([open]) > summary::after { content:"펼치기"; color:var(--accent); background:var(--accent-soft); }
 
   /* Day groups inside schedule */
   details.day { margin:10px 0; }
@@ -156,7 +164,7 @@
   .to-top:hover { opacity:.92; }
 
   @media (max-width: 600px) {
-    main > details { padding:2px 12px 12px; border-radius:14px; }
+    .group > details { padding:2px 12px 12px; border-radius:14px; }
     .hero { padding:18px 16px 14px; border-radius:16px; }
     table.budget { font-size:0.78rem; }
     table.budget th, table.budget td { padding:5px 3px; }
@@ -203,7 +211,7 @@
     <div class="meta">기준일: 2026-11-02</div>
   </header>
   <nav class="nav">
-    <a href="#overview">개요</a><a href="#schedule">일정</a><a href="#special">특순</a><a href="#materials">자료실</a>
+    <a href="#group-overview">개요</a><a href="#group-schedule">일정</a><a href="#group-special">특순</a><a href="#group-materials">자료실</a>
   </nav>
 
   <div class="card verse">
@@ -211,789 +219,804 @@
     <p class="verse-en">“The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance.” <span class="verse-ref">시편 16:6</span></p>
   </div>
 
-  <details id="overview" open>
-    <summary><h2>트립 개요</h2></summary>
-    <div class="sub-links"><a href="#city">오카야마 소개</a><a href="#sights">관광·쇼핑</a><a href="#food">맛집</a></div>
-    <div class="wrap"><table>
-      <tr><th>항목</th><th>내용</th></tr>
-      <tr><td>목적</td><td>선교지 사역을 체험하며 교회와 자신의 삶에 적용할 점을 발견함</td></tr>
-      <tr><td>방문 교회</td><td>일본 오카야마 리버사이드교회 (담임목사 마키) · <a href="http://www.t-riverside.com/" target="_blank" rel="noopener">교회 홈페이지</a></td></tr>
-      <tr><td>교회 주소</td><td class="todo">주소 확인 필요 · <a href="https://www.google.co.jp/maps/dir/34.678138,133.89573//@34.678138,133.895735,18z/data=!4m4!4m3!1m1!4e1!1m0?hl=ko&amp;entry=ttu" target="_blank" rel="noopener">☆ 구글 맵에서 교회 위치 보기</a> (위치 확인 후 ☆ 버튼으로 저장)</td></tr>
-      <tr><td>기간</td><td>2026년 11월 13일(금) ~ 11월 16일(월), 3박 4일</td></tr>
-      <tr><td>프로그램</td><td>
-        <ol style="margin:0; padding-left:18px;">
-          <li>리버사이드교회 탐방</li>
-          <li>청소년 생활관 방문</li>
-          <li>크리스천 기업 탐방 (음식물 처리공장, 아구리가든)</li>
-          <li>주일예배 참석, 간증과 찬양</li>
-          <li>일본 성도들과의 교제</li>
-          <li>아침, 저녁 조별 나눔</li>
-        </ol>
-      </td></tr>
-      <tr><td>회비</td><td>1인 140만 원</td></tr>
-      <tr><td>참가 인원</td><td>총 9명</td></tr>
-    </table></div>
-  </details>
-
-  <details id="city">
-    <summary><h2>오카야마 소개</h2></summary>
-    <p>오카야마는 일본 서부 주고쿠 지방에 있는 도시로, 복숭아와 청포도(마스카트)가 유명합니다. 도심에는 오카야마 성과 일본 3대 정원 중 하나인 고라쿠엔이 있고, 근처 구라시키에는 옛 상가 거리가 남아 있습니다. 자세한 정보는 <a href="https://www.okayama-japan.jp/" target="_blank" rel="noopener">오카야마 관광 공식 사이트</a>에서 볼 수 있습니다.</p>
-    <p class="todo">아래 장소는 참고용입니다. 활동으로 확정되면 일정에 반영합니다.</p>
-    <div class="spots">
-      <div class="spot">
-        <div class="body">
-          <h3>고라쿠엔 (後楽園)</h3>
-          <p>일본 3대 정원 중 하나로, 계절마다 다른 풍경을 볼 수 있는 넓은 정원입니다.</p>
-          <p><a href="https://www.okayama-japan.jp/en/spot/10672" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <h3>오카야마 성 (烏城)</h3>
-          <p>까마귀를 닮은 검은색 외벽 때문에 '까마귀 성'이라고 불립니다. 성 주변 공원도 함께 둘러볼 수 있습니다.</p>
-          <p><a href="https://okayama-japan.jp/de/spot/776" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <h3>구라시키 미관지구 (倉敷美観地区)</h3>
-          <p>에도 시대 창고 건물이 남아 있는 옛 거리입니다. 운하를 따라 걷기 좋습니다.</p>
-          <p><a href="https://www.okayama-japan.jp/en/" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <h3>모모타로 동상 (桃太郎像)</h3>
-          <p>오카야마역 앞에 있는 동화 속 모모타로 동상입니다. 오카야마의 상징으로 자주 쓰입니다.</p>
-          <p><a href="https://www.okayama-japan.jp/en/" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
-        </div>
-      </div>
+  <section class="group" id="group-overview">
+    <div class="group-head">
+      <span class="group-no">01</span>
+      <h2 class="group-title">개요</h2>
     </div>
-  </details>
-
-  <details id="sights">
-    <summary><h2>관광과 쇼핑</h2></summary>
-    <p class="todo">아래 장소는 검색 결과 기준입니다. 지도에서 정확한 지점·입구·층수를 확인한 뒤 저장합니다.</p>
-    <div class="spots">
-      <div class="spot">
-        <div class="body">
-          <p class="meta">월요일 · 관광 1안</p>
-          <h3 id="korakuen">고라쿠엔 정문</h3>
-          <ul>
-            <li>11월 일반 운영: 08:00~17:00</li>
-            <li>일반 성인 500엔 (9명 모두 일반 성인이면 4,500엔)</li>
-            <li>전화: +81-86-272-1148 (행사·입구·택시 승하차 위치 확인)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">월요일 · 관광 1안 티타임</p>
-          <h3 id="sazanami">사자나미 찻집</h3>
-          <ul>
-            <li>정원 안 티타임. 겨울 09:00~16:30, 수요일 부정기 휴무</li>
-            <li>커피 500엔 · 말차 과자 세트 700엔 (정원 입장료 별도)</li>
-            <li>전화: +81-86-272-4147 (11/16 10:30, 9명·30분 이용 가능 여부 문의)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Sazanami+Chaya+Korakuen&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">월요일 · 관광 2안</p>
-          <h3 id="castle">오카야마성과 우조 카페</h3>
-          <ul>
-            <li>성 09:00~17:30, 일반 성인 500엔</li>
-            <li>카페 천수각 1층 09:00~17:30 (주문 마감 17시)</li>
-            <li>성 대표전화: +81-86-225-2096 (카페 직통번호 미확인. 성 대표에 연결 가능 여부 확인)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">주일 · 도보 코스</p>
-          <h3 id="nishigawa">니시가와 녹도공원</h3>
-          <ul>
-            <li>공원 전체가 아닌 일부 구간 왕복</li>
-            <li>입장 예약 없이 산책. 시작점·반환점·역 복귀 지점을 지도에서 따로 지정</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Nishigawa+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">쇼핑 · 월요일 구매 15분</p>
-          <h3 id="sunstation">산스테 오카야마</h3>
-          <ul>
-            <li>역 연결 식당·카페·지역 과자 쇼핑. 남관 2층 선물 매장 중심</li>
-            <li>매장별 영업시간이 달라 확인 필요</li>
-            <li>월요일 구매는 15분 배정이므로 품목을 미리 정함</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">금요일 · 토요일 예비 코스</p>
-          <h3 id="aeon-hokancho">이온몰과 호칸초 예비 코스</h3>
-          <ul>
-            <li>이온몰: 금요일 식사·커피·보완 구매. 매장별 층수 확인</li>
-            <li>호칸초: 토요일 일찍 복귀 시 산책 후보. <a href="https://www.houkancho.com/" target="_blank" rel="noopener">공식 안내</a></li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Hokancho+Shopping+Street+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-    </div>
-  </details>
-
-  <details id="food">
-    <summary><h2>맛집</h2></summary>
-    <p class="todo">참고용 정보입니다. 아래 요일 구성, 일정, 인원(9~12명 기준)은 이 트립의 확정 일정과 다를 수 있습니다. 참고 환율: 100엔 ≒ 940원 기준이며, 실제 환율에 따라 달라질 수 있습니다. 가격은 메뉴 기준 대략적인 금액입니다.</p>
-    <div class="spots">
-      <div class="spot">
-        <div class="body">
-          <p class="meta">금 · 점심</p>
-          <h3>Shokudo Yamato (식당 야마토)</h3>
-          <p>오카야마에서만 맛볼 수 있는 '데미카츠동'(데미그라스 소스 돈가스 덮밥)의 원조격 식당입니다. 현지인들이 줄 서서 먹는 곳입니다.</p>
-          <ul>
-            <li>추천: 데미카츠동 (중 930엔~), 중화소바 (880엔~)</li>
-            <li>가격: 930~1,300엔 (약 8,700~12,200원)</li>
-            <li>단체: 식당이 좁아 12명이 한 번에 들어가기 어렵습니다. 4명씩 3개 조로 나눠 입장하세요.</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Shokudo+Yamato+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">금 · 저녁</p>
-          <h3>Ebimeshiya Aoe (에비메시야 아오에)</h3>
-          <p>오카야마의 명물 '에비메시'(새우밥) 전문점입니다. 검은 볶음밥이지만 짜지 않고 고소하며, 카레·케첩·캐러멜 소스 풍미가 납니다. 해산물을 드시지 않아도 부담 없습니다.</p>
-          <ul>
-            <li>추천: 에비메시 단품 (900엔~), 에비메시 & 크림 고로케 세트 (1,280엔~)</li>
-            <li>예산: 1,500~2,500엔 (에비메시·양식 기준, 금·토 저녁 예비 후보)</li>
-            <li>전화·당일 영업·예약 조건: 미확인</li>
-            <li>이동: 오카야마역에서 택시로 10~15분. 단체 이동은 택시를 추천합니다.</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Ebimeshiya+Aoe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">토 · 점심</p>
-          <h3 id="azuma">Azuma Zushi (아즈마 스시)</h3>
-          <p>100년 전통의 가게로, 오카야마 향토 요리 '바라즈시'(해산물과 채소를 밥 위에 뿌린 스시)로 유명합니다. 오카야마역 2층 산스테(Sun Station Terrace) 안에 있어 찾기 쉽습니다.</p>
-          <ul>
-            <li>추천: 오카야마 바라즈시 (2,500엔~), 런치 니기리 세트 (1,500엔~)</li>
-            <li>비생선류 선호자는 익힌 새우·장어·계란 초밥 단품 주문이 가능합니다.</li>
-            <li>가격: 2,000~3,500엔 (약 18,800~32,900원)</li>
-            <li>위치: 산스테 2층, 11:00 개점</li>
-            <li>전화: +81-86-227-7337 (9명 예약 가능 여부·메뉴 사전 결정·12:15 퇴점 가능 여부 문의)</li>
-            <li>단체: 점심 피크 전인 11:30 방문을 추천합니다.</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Azuma+Zushi+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">토 · 저녁</p>
-          <h3>Teppan Ku-ya (철판구이 쿠야)</h3>
-          <p>오카야마의 고급 와규 '치야규(Chi-ya Beef)'를 맛볼 수 있는 철판구이 집입니다.</p>
-          <ul>
-            <li>추천: 계절 디너 코스 (치야규 스테이크 포함)</li>
-            <li>가격: 인당 6,000~8,500엔 (약 57,000~80,000원)</li>
-            <li>단체: 9~12명은 반드시 사전 전화 예약이 필요합니다.</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Teppan+Ku-ya+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">일 · 오후</p>
-          <h3>Cafe Moyau (카페 모야우)</h3>
-          <p>아사히가와 강변 뷰가 좋은 카페입니다.</p>
-          <ul>
-            <li>메뉴: 커피 (550엔~), 케이크 세트 (1,000엔~)</li>
-            <li>가격: 약 5,200~9,400원 (메뉴 기준)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+Moyau+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">일 · 저녁 (대안)</p>
-          <h3>Aji no Yayoi (아지노 야요이)</h3>
-          <p>편안하게 식사하고 싶을 때 추천하는 일본 가정식 식당입니다.</p>
-          <ul>
-            <li>추천: 정식(Teishoku) 세트 (850~1,100엔)</li>
-            <li>가격: 1,000엔 내외 (약 9,500원)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Aji+no+Yayoi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">월 · 점심</p>
-          <h3>Okonomimura (오코노미무라)</h3>
-          <p>'오코노미야키 마을' 건물입니다. 히로시마 스타일은 면이 들어갑니다. 건물 안에 여러 가게가 있어 팀원들이 흩어져서 드셔도 됩니다.</p>
-          <ul>
-            <li>추천: 고기 & 계란(Niku-tama) 소바 (810~900엔) + 치즈·파 토핑 추가</li>
-            <li>가격: 900~1,500엔 (약 8,500~14,000원)</li>
-            <li>단체: 사라시나(Sarashina) 같은 유명 가게는 좁습니다.</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Okonomimura+Hiroshima&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">토 · 점심 / 저녁 (1안)</p>
-          <h3 id="fukuzushi">Fukuzushi (후쿠즈시)</h3>
-          <p>자체 식사 1안입니다. 점심에 이용하면 저녁은 가츠규로 정해 중복을 줄입니다.</p>
-          <ul>
-            <li>가격: 점심 2,500~4,000엔, 저녁 3,000~5,000엔 (1인 편성 예산, 메뉴 견적 확인 필요)</li>
-            <li>위치: 역 서쪽 도보 약 7분</li>
-            <li>영업: 점심 11:30~14:00 (입점·주문 마감 13:30), 저녁 17:00~21:00 (마감 20:00). 월·일요일 저녁 휴무</li>
-            <li>전화: +81-86-252-2402 (날짜·인원·요리를 정해 사전 예약 권장)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Fukuzushi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">토 · 저녁 (2안)</p>
-          <h3 id="katsugyu">규카츠 교토 가츠규 산스테점 (Katsugyu)</h3>
-          <p>토요일 자체 저녁 후보입니다.</p>
-          <ul>
-            <li>가격: 2,000~3,500엔</li>
-            <li>위치: 산스테 남관 1층, 45석</li>
-            <li>영업시간: 11:00~22:00 (주문 마감 21:30)</li>
-            <li>전화: +81-86-201-2080 (9명 예약·분산 착석·제공 시간 문의)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">13일 점심 · 15일 점심·저녁 (1안)</p>
-          <h3 id="wako">와코 이온몰점 (Wako Aeon Mall)</h3>
-          <p>이온몰 7층 식당가입니다.</p>
-          <ul>
-            <li>가격: 1,500~2,500엔 (약 14,100~23,500원)</li>
-            <li>영업시간: 11:00~22:00</li>
-            <li>전화: +81-86-227-7818 (9명 이용·예약·분산 착석·퇴점 목표 문의)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Wako+Aeon+Mall&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">15일 · 카페</p>
-          <h3 id="karafuneya">가라후네야 CAFÉ</h3>
-          <p>주문 10분, 교제 30분, 계산 5분을 잡습니다.</p>
-          <ul>
-            <li>위치: 산스테 남관 1층</li>
-            <li>영업시간: 11:00~22:00 (라스트 오더 21:00)</li>
-            <li>전화: +81-86-201-2728 (주일 20:45 · 9명 45분 이용, 메뉴별 주문 마감 문의)</li>
-            <li>음료 700~1,000엔, 디저트 포함 1,200~1,800엔 (1인 기준)</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Karafuneya+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">13일 · 커피 (1층)</p>
-          <h3 id="starbucks">스타벅스 이온몰 오카야마 1층점</h3>
-          <p>5층점과 구분해서 찾습니다. 좌석 예약을 전제로 하지 않으며, 만석이면 테이크아웃합니다.</p>
-          <ul>
-            <li>영업시간: 10:00~21:00</li>
-            <li>음료 예산: 600~1,000엔</li>
-            <li>전화: +81-86-238-7621</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Starbucks+Aeon+Mall+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">16일 · 이른 저녁·간식 (1안)</p>
-          <h3 id="hayashiya">하야시야 제면소 다카마쓰공항점</h3>
-          <p>공항 1층. 소금 붓카케 우동·튀김·어묵류.</p>
-          <ul>
-            <li>영업: 08:00~20:00</li>
-            <li>예산: 1,000~1,800엔</li>
-            <li>전화: +81-70-5515-0884 (매장 상세 번호 우선. 공항 종합 연락표의 +81-87-879-0884와 다르므로 매장 번호로 문의)</li>
-            <li>9명 이용·주문 소요시간·품절 여부 확인</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Hayashiya+Seimen+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-      <div class="spot">
-        <div class="body">
-          <p class="meta">16일 · 이른 저녁·간식 (2안)</p>
-          <h3 id="sanuki">사누키 멘교 다카마쓰공항점</h3>
-          <p>공항 2층. 수속 후 보안검색 전에 이용하는 후보입니다. 우동·튀김우동·돈부리 세트.</p>
-          <ul>
-            <li>영업: 09:30~19:45</li>
-            <li>예산: 1,200~2,000엔</li>
-            <li>전화: +81-87-814-3412</li>
-            <li>최신 층별 지도와 실제 이용 동선은 현장에서 확인</li>
-          </ul>
-          <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Sanuki+Menkyo+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
-        </div>
-      </div>
-    </div>
-  </details>
-
-  <details id="meeting" open>
-    <summary><h2>준비모임</h2></summary>
-    <table class="cal-m">
-      <caption>2026년 10월</caption>
-      <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
-      <tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td>24</td></tr>
-      <tr><td class="notice">25<span class="time">회비</span></td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td class="meet">31<span class="time">07:30~</span></td></tr>
-    </table>
-    <table class="cal-m">
-      <caption>2026년 11월</caption>
-      <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
-      <tr><td>1</td><td class="today">2</td><td>3</td><td>4</td><td class="meet">5<span class="time">18:30~</span></td><td>6</td><td class="meet">7<span class="time">07:30~</span></td></tr>
-      <tr><td>8</td><td>9</td><td>10</td><td>11</td><td class="meet">12<span class="time">18:30~</span></td><td class="trip">13</td><td class="trip">14</td></tr>
-      <tr><td class="trip">15</td><td class="trip">16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
-      <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
-      <tr><td>29</td><td>30</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
-    </table>
-    <p class="legend"><i class="meet"></i>준비모임<i class="trip"></i>비전트립 (11/13–16)<i class="notice"></i>전달사항</p>
-    <details class="day" id="meeting-1024">
-      <summary>준비모임 1차</summary>
-      <div class="card meeting-body">
-        <p class="meeting-when"><strong>일시</strong>: 10/24(토) · <strong>장소</strong>: 1516교회 헤이븐</p>
-        <ul>
-          <li><strong>여권정보</strong>: 10/24(토)까지 입력. 공지사항 댓글 또는 이찬호 형제님께 개별 전달</li>
-          <li><strong>회비</strong>: 1인 140만 원, 10/25(일)까지 납입</li>
-        </ul>
-      </div>
-    </details>
-    <details class="day" id="meeting-1031" open>
-      <summary>준비모임 2차</summary>
-      <div class="card meeting-body">
-        <p class="meeting-when"><strong>일시</strong>: 10/31(토) · <strong>장소</strong>: 1516교회 헤이븐</p>
-        <ul>
-          <li><strong>특순</strong>: 11/15 리버사이드교회 예배에서 스킷 드라마 「사랑을 나눠요」와 찬양 「주님 다시 오실 때까지」 두 가지를 합니다. <a href="#special">특순 보기</a></li>
-          <li><strong>선물</strong>: 작년처럼 올리브영에서 인원수에 맞게 구성합니다. 성인 120명·어린이 30명 예상, 여분 추가. 대형 포장으로 화물 이동 후 첫날 자유시간에 개별 포장합니다. <a href="#gifts">선물 준비 보기</a></li>
-          <li><strong>선물 비용</strong>: 작년과 비슷하게 120만 원 선. 재정 집행 결정사항은 목요일 모임에서 회계 이민섭 형제님과 논의합니다.</li>
-          <li><strong>금요일(13일)</strong>: 생활관 기숙사생들과 저녁(라멘)을 함께 만들어 먹으며 교제. 참여 가능 기숙사생 62명, 주방은 17:30 이후 사용 가능(11/5 확인).</li>
-          <li><strong>토요일(14일)</strong>: 아구리가든 시찰 후 그곳 식당에서 점심 예정. 저녁 액티비티로 함께 온천욕 제안이 있으며 현지에서 유연하게 진행합니다.</li>
-          <li><strong>버스</strong>: 12~16인용 중형 버스 제공. 비용 지급은 다시 전달받기로 했고, 목요일 모임에서 정리합니다.</li>
-          <li><strong>향후 모임 및 현지 모임</strong>: 앞으로의 준비모임과 일본 현지 모임 모두 짧게라도 예배를 드린 뒤 모임을 갖습니다. 일본어 독음이 가능한 찬양 악보 준비 요청.</li>
-        </ul>
-        <p class="todo">다음 모임 11/5(목) 18:30: 스킷 드라마 역할 분담·준비, 선물 비용 집행, 버스 비용 정리.</p>
-      </div>
-    </details>
-  </details>
-
-  <details id="schedule" open>
-    <summary><h2>일정</h2></summary>
-    <div class="sub-links"><a href="#travel">교통과 숙소</a></div>
-    <p class="todo">"확인 필요"로 표시된 항목은 아직 확정되지 않았습니다. 날짜를 누르면 접거나 펼칠 수 있습니다.</p>
-
-    <details class="day" open data-date="2026-11-13">
-      <summary>13일 (금)</summary>
-      <div class="wrap"><table class="sched">
-        <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
-        <tr><td>06:00</td><td>제2터미널 집결</td><td>각자</td></tr>
-        <tr><td>06:00~<br>07:30</td><td>탑승수속 &amp; 아침식사</td><td></td></tr>
-        <tr><td>08:45~<br>10:30</td><td>인천공항 - 다카마쓰 이동</td><td>에어서울 RS0297</td></tr>
-        <tr><td>10:30~<br>11:00</td><td>입국 및 짐 찾기</td><td class="todo">교회버스 픽업 장소 확인 필요</td></tr>
-        <tr><td>11:00~<br>12:30</td><td>교회버스로 다카마쓰공항 <a href="https://www.google.com/maps/search/?api=1&amp;query=Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> → 오카야마 이동</td><td>약 1시간 30분 예상</td></tr>
-        <tr><td>12:30~<br>13:30</td><td>리버사이드교회 <a href="https://www.google.com/maps/search/?api=1&amp;query=34.678138,133.89573&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 도착예배</td><td class="todo">장소·시간 확인 필요</td></tr>
-        <tr><td>13:30~<br>14:00</td><td>호텔 이동 및 짐 보관</td><td class="todo">교회버스 · 체크인은 15:00 이후</td></tr>
-        <tr><td>14:00~<br>14:45</td><td>와코 이온몰점 <a href="https://www.google.com/maps/search/?api=1&amp;query=Wako+Aeon+Mall&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 점심 (<a href="#wako">와코 이온몰점 카드</a>, 7층)</td><td class="todo">1안 기준 · 확정 필요</td></tr>
-        <tr><td>14:45~<br>15:15</td><td>스타벅스 <a href="https://www.google.com/maps/search/?api=1&amp;query=Starbucks+Aeon+Mall+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (1층)</td><td class="todo">테이크아웃 가능 · 확정 필요</td></tr>
-        <tr><td>15:15~<br>16:05</td><td>호텔 복귀·체크인, 환복, 선물 점검</td><td class="todo">예약 대표자 객실 배정 안내 · 16:05 로비 집결 · 선물 개별 포장은 첫날 자유시간에 진행(10/31 모임 결정). 시간이 부족하면 2안 적용</td></tr>
-        <tr><td>16:30~<br>18:00</td><td>청소년 생활관 이동 및 방문</td><td>참여 가능 기숙사생 62명 · 주방은 17:30 이후 사용 가능</td></tr>
-        <tr><td>18:00~<br>19:00</td><td>생활관 저녁 교제 (라멘)</td><td>기숙사생 62명과 라멘을 함께 만들어 먹으며 교제(10/31 모임 논의). 주방은 17:30부터 사용 가능. 아래 식당은 예비안: 자체 해결 시 1안 <a href="#katsugyu">가츠규</a> (2,000~3,500엔), 2안 <a href="#azuma">아즈마 스시</a> (<a href="https://www.google.com/maps/search/?api=1&amp;query=Azuma+Zushi+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵</a>, 2,000~3,500엔). 이동 후 입장 시각 조정</td></tr>
-        <tr><td>19:00~<br>20:00</td><td>호텔 복귀</td><td></td></tr>
-        <tr><td>20:00~<br>21:00</td><td>나눔 / 조별 교제</td><td></td></tr>
-        <tr><td colspan="3"><strong>생활관 저녁 교제 (라멘)</strong>: 참여 가능 기숙사생 62명. 주방은 13일(금)과 14일(토) 모두 17:30 이후 사용 가능합니다.</td></tr>
-        <tr><td colspan="3"><strong>2안 (교회 선물 포장이 필요한 경우)</strong>: 13:30~14:15 교회 포장·보관 → 14:15~14:40 호텔 방면 이동·짐 보관 → 14:40~15:25 와코 점심 → 15:25~16:05 체크인·환복 → 16:05 집결. 교회 공간 사용 협의와 작업량 확인이 필요하며, 커피는 생략합니다.</td></tr>
+    <div class="sub-links"><a href="#overview">트립 개요</a><a href="#city">오카야마 소개</a><a href="#sights">관광과 쇼핑</a><a href="#food">맛집</a></div>
+    <details id="overview" open>
+      <summary><h2>트립 개요</h2></summary>
+      <div class="wrap"><table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>목적</td><td>선교지 사역을 체험하며 교회와 자신의 삶에 적용할 점을 발견함</td></tr>
+        <tr><td>방문 교회</td><td>일본 오카야마 리버사이드교회 (담임목사 마키) · <a href="http://www.t-riverside.com/" target="_blank" rel="noopener">교회 홈페이지</a></td></tr>
+        <tr><td>교회 주소</td><td class="todo">주소 확인 필요 · <a href="https://www.google.co.jp/maps/dir/34.678138,133.89573//@34.678138,133.895735,18z/data=!4m4!4m3!1m1!4e1!1m0?hl=ko&amp;entry=ttu" target="_blank" rel="noopener">☆ 구글 맵에서 교회 위치 보기</a> (위치 확인 후 ☆ 버튼으로 저장)</td></tr>
+        <tr><td>기간</td><td>2026년 11월 13일(금) ~ 11월 16일(월), 3박 4일</td></tr>
+        <tr><td>프로그램</td><td>
+          <ol style="margin:0; padding-left:18px;">
+            <li>리버사이드교회 탐방</li>
+            <li>청소년 생활관 방문</li>
+            <li>크리스천 기업 탐방 (음식물 처리공장, 아구리가든)</li>
+            <li>주일예배 참석, 간증과 찬양</li>
+            <li>일본 성도들과의 교제</li>
+            <li>아침, 저녁 조별 나눔</li>
+          </ol>
+        </td></tr>
+        <tr><td>회비</td><td>1인 140만 원</td></tr>
+        <tr><td>참가 인원</td><td>총 9명</td></tr>
       </table></div>
     </details>
-
-    <details class="day" open data-date="2026-11-14">
-      <summary>14일 (토)</summary>
-      <div class="wrap"><table class="sched">
-        <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
-        <tr><td>07:30~<br>08:30</td><td>호텔 조식</td><td>호텔 식당 · 조식 포함, 필요한 식사 취향 확인</td></tr>
-        <tr><td>08:30~<br>09:30</td><td>QT</td><td>호텔 식당 · 작년처럼 소그룹 테이블 진행 참고, 호텔 이용 허용 범위 확인</td></tr>
-        <tr><td>09:30~<br>10:00</td><td>정비와 기업 이동</td><td>교회 차량 집결 장소 공유</td></tr>
-        <tr><td>10:00~<br>12:00</td><td>기업탐방 (음식물 처리공장, 아구리가든 <a href="https://www.google.com/maps/search/?api=1&amp;query=Aguri+Garden+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 등)</td><td class="todo">올해 방문처·순서 확인</td></tr>
-        <tr><td>12:00~<br>13:00</td><td>점심식사</td><td class="todo">아구리가든 식당에서 점심 예정(10/31 모임). 예비안: 자체 식사 1안 <a href="#fukuzushi">후쿠즈시</a>, 2안 <a href="#azuma">아즈마 스시</a> (시내 복귀가 가능한 경우 적용)</td></tr>
-        <tr><td>13:00~<br>18:00</td><td>산업시찰</td><td class="todo">기존 시간 유지, 관광·쇼핑은 임의로 추가하지 않음</td></tr>
-        <tr><td>18:00~<br>19:00</td><td>저녁식사</td><td class="todo">자체 식사 1안 <a href="#fukuzushi">후쿠즈시</a>, 2안 <a href="#katsugyu">가츠규</a> (시찰 종료 장소와 준비 장소에 따라 조정)</td></tr>
-        <tr><td>19:00~<br>21:00</td><td>주일사역 준비</td><td class="todo">장소 확인 필요 · 외부 저녁 이동과 충돌 시 현지 인근 식사 우선 · 저녁 액티비티로 함께 온천욕 제안(현지에서 유연하게 진행)</td></tr>
-        <tr><td>21:00~<br>22:00</td><td>나눔 / 조별 교제</td><td></td></tr>
-        <tr><td colspan="3"><strong>식당 후보</strong>: 1안 후쿠즈시 <a href="https://www.google.com/maps/search/?api=1&amp;query=Fukuzushi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (점심 2,500~4,000엔, 저녁 3,000~5,000엔), 2안 아즈마 스시 <a href="https://www.google.com/maps/search/?api=1&amp;query=Azuma+Zushi+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (점심 2,000~3,500엔) · 가츠규 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (저녁 2,000~3,500엔). 후쿠즈시 <a href="https://www.google.com/maps/search/?api=1&amp;query=Fukuzushi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>를 점심에 이용하면 저녁은 가츠규 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>로 중복을 줄입니다. 현지 제공 식사가 확정되면 외부 식사 후보는 예비안으로 바꿉니다.<br><strong>관광·카페 예비안</strong>: 1안은 기업·아구리가든 <a href="https://www.google.com/maps/search/?api=1&amp;query=Aguri+Garden+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 안내 구역을 현지 프로그램 안에서 둘러보는 것입니다. 2안은 산업시찰이 일찍 끝나 역 서쪽으로 돌아오는 경우 호칸초 상점가 <a href="https://www.google.com/maps/search/?api=1&amp;query=Hokancho+Shopping+Street+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>를 20~30분 걷는 코스로, 이동을 제외하고 40분 이상 여유가 있을 때만 적용합니다. 카페는 현지 휴식시간이 1안이고, 역 주변 자유시간이 있을 때만 가라후네야 <a href="https://www.google.com/maps/search/?api=1&amp;query=Karafuneya+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>를 2안으로 씁니다. 쇼핑은 산스테 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>의 간식·기념품이 1안, 돈키호테 역앞점 <a href="https://www.google.com/maps/search/?api=1&amp;query=Donki+Okayama+Ekimae&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>은 개인 자유시간이 있을 때의 2안입니다.</td></tr>
-      </table></div>
+    <details id="city">
+      <summary><h2>오카야마 소개</h2></summary>
+      <p>오카야마는 일본 서부 주고쿠 지방에 있는 도시로, 복숭아와 청포도(마스카트)가 유명합니다. 도심에는 오카야마 성과 일본 3대 정원 중 하나인 고라쿠엔이 있고, 근처 구라시키에는 옛 상가 거리가 남아 있습니다. 자세한 정보는 <a href="https://www.okayama-japan.jp/" target="_blank" rel="noopener">오카야마 관광 공식 사이트</a>에서 볼 수 있습니다.</p>
+      <p class="todo">아래 장소는 참고용입니다. 활동으로 확정되면 일정에 반영합니다.</p>
+      <div class="spots">
+        <div class="spot">
+          <div class="body">
+            <h3>고라쿠엔 (後楽園)</h3>
+            <p>일본 3대 정원 중 하나로, 계절마다 다른 풍경을 볼 수 있는 넓은 정원입니다.</p>
+            <p><a href="https://www.okayama-japan.jp/en/spot/10672" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <h3>오카야마 성 (烏城)</h3>
+            <p>까마귀를 닮은 검은색 외벽 때문에 '까마귀 성'이라고 불립니다. 성 주변 공원도 함께 둘러볼 수 있습니다.</p>
+            <p><a href="https://okayama-japan.jp/de/spot/776" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <h3>구라시키 미관지구 (倉敷美観地区)</h3>
+            <p>에도 시대 창고 건물이 남아 있는 옛 거리입니다. 운하를 따라 걷기 좋습니다.</p>
+            <p><a href="https://www.okayama-japan.jp/en/" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <h3>모모타로 동상 (桃太郎像)</h3>
+            <p>오카야마역 앞에 있는 동화 속 모모타로 동상입니다. 오카야마의 상징으로 자주 쓰입니다.</p>
+            <p><a href="https://www.okayama-japan.jp/en/" target="_blank" rel="noopener">공식 관광 사이트 보기</a></p>
+          </div>
+        </div>
+      </div>
     </details>
-
-    <details class="day" open data-date="2026-11-15">
-      <summary>15일 (주일)</summary>
-      <div class="wrap"><table class="sched">
-        <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
-        <tr><td>07:30~<br>08:30</td><td>호텔 조식</td><td>호텔 식당 · 조식 포함</td></tr>
-        <tr><td>08:30~<br>09:00</td><td>QT</td><td>호텔 식당</td></tr>
-        <tr><td>09:00~<br>09:45</td><td>정비와 출발</td><td>교회 출발</td></tr>
-        <tr><td>09:45~<br>10:30</td><td>교회 이동과 예배 준비</td><td class="todo">현지 교회 안내에 따름</td></tr>
-        <tr><td>10:30~<br>12:00</td><td>주일예배</td><td>특순·헌금 준비</td></tr>
-        <tr><td>12:00~<br>13:00</td><td>점심과 교제</td><td class="todo">교회 제공 시 이용. 자체 식사 1안 <a href="#azuma">아즈마 스시</a>, 2안 <a href="#wako">와코</a>. 오후 복귀 동선 확인</td></tr>
-        <tr><td>13:00~<br>15:00</td><td>팀 모임</td><td class="todo">가이드북상 확인 필요</td></tr>
-        <tr><td>15:00~<br>18:00</td><td>오후예배</td><td>설교, 찬양</td></tr>
-        <tr><td>18:00~<br>19:20</td><td>이동과 저녁</td><td class="todo">1안 <a href="#wako">와코</a>, 2안 <a href="#katsugyu">가츠규</a>. 현지 저녁 제공 시 이동 축소</td></tr>
-        <tr><td>19:20~<br>19:40</td><td>니시가와 <a href="https://www.google.com/maps/search/?api=1&amp;query=Nishigawa+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 방면 이동</td><td>산책 시작·종료 위치를 구글맵에 따로 저장</td></tr>
-        <tr><td>19:40~<br>20:10</td><td>니시가와 <a href="https://www.google.com/maps/search/?api=1&amp;query=Nishigawa+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 산책과 사진 (땅밟기)</td><td>일부 구간 왕복. 지나치게 긴 코스는 제외</td></tr>
-        <tr><td>20:10~<br>20:25</td><td>기도와 짧은 나눔</td><td>다른 보행자의 통행을 막지 않는 곳</td></tr>
-        <tr><td>20:25~<br>20:45</td><td>산스테 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 방면 이동</td><td>카페 입장 전 인원 확인</td></tr>
-        <tr><td>20:45~<br>21:30</td><td><a href="#karafuneya">가라후네야 CAFÉ</a></td><td class="todo">주문 10분·교제 30분·계산 5분. 라스트 오더 21:00 (20:45 입장 시 주문 가능)</td></tr>
-        <tr><td>21:30~<br>22:00</td><td>호텔 복귀와 정비</td><td>22시 전체 모임에 맞춰 복귀</td></tr>
-        <tr><td>22:00~<br>23:00</td><td>전체 나눔</td><td></td></tr>
-        <tr><td colspan="3"><strong>2안과 변경 기준</strong>: 가벼운 비에는 산책을 줄이고 카페로 일찍 이동합니다. 강한 비에는 산책 대신 카페 휴식과 허용된 공간의 기도·나눔을 검토합니다. 카페에서 9명 한 테이블이 어려우면 4명씩 분산 착석을 문의하고, 입장 대기가 10분을 넘거나 주문 마감이면 테이크아웃 또는 호텔 복귀로 바꿉니다. 카페는 대화·휴식용이며 단체 기도 장소로 가정하지 않습니다. 호텔 단체 모임 공간은 확보된 것으로 전제하지 않습니다.<br><strong>식사·카페 예상 (1인 기준)</strong>: 음료 700~1,000엔, 디저트 포함 1,200~1,800엔, 저녁 와코 1,500~2,500엔, 가츠규 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 2,000~3,500엔. 앞선 날 이용한 식당과 중복되면 대안으로 교체합니다.<br>19시를 넘겨 외부 식사를 하면 땅밟기 앞부분을 조정하는 제안이므로, 인솔자와 먼저 협의합니다.</td></tr>
-      </table></div>
-    </details>
-
-    <details class="day" open data-date="2026-11-16">
-      <summary>16일 (월)</summary>
-      <div class="wrap"><table class="sched">
-        <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
-        <tr><td>07:30~<br>08:00</td><td>호텔 조식</td><td>호텔 식당 · 조식 30분</td></tr>
-        <tr><td>08:00~<br>08:30</td><td>QT</td><td>호텔 식당 · QT 30분</td></tr>
-        <tr><td>08:30~<br>09:10</td><td>체크아웃·짐 보관</td><td></td></tr>
-        <tr><td>09:10~<br>09:20</td><td>택시 탑승과 인원 배정</td><td></td></tr>
-        <tr><td>09:20~<br>09:50</td><td>고라쿠엔 <a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 정문 이동·입장 준비</td><td class="todo">2안: 오카야마성 <a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 이동·입장 준비</td></tr>
-        <tr><td>09:50~<br>10:30</td><td>고라쿠엔 <a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 정문 입장 후 연못·잔디·성 방향 경관 짧게 관람</td><td class="todo">상세 도보 경로와 택시 재탑승 지점은 현장 안내도로 확정. 2안: 오카야마성 <a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 내부 관람 40분 제한</td></tr>
-        <tr><td>10:30~<br>11:00</td><td>사자나미 찻집 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sazanami+Chaya+Korakuen&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 티타임 (11월 09:00~16:30)</td><td class="todo">커피 500엔·말차 과자 세트 700엔. 9명 30분 이용 가능 여부 먼저 문의. 2안: 우조 카페 <a href="https://www.google.com/maps/search/?api=1&amp;query=Uzo+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a></td></tr>
-        <tr><td>11:00~<br>11:30</td><td>출구 이동·택시로 역 복귀</td><td class="todo">2안: 택시로 이온몰 이동</td></tr>
-        <tr><td>11:30~<br>12:15</td><td>점심</td><td>1안 <a href="#azuma">아즈마 스시</a>, 2안 <a href="#wako">와코 이온몰점</a></td></tr>
-        <tr><td>12:15~<br>12:30</td><td>구매 시간</td><td class="todo">1안 산스테 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 지역 과자, 2안 이온몰 필요한 구매</td></tr>
-        <tr><td>12:30~<br>12:50</td><td>호텔 이동·짐 회수</td><td>교회버스</td></tr>
-        <tr><td>12:50~<br>13:00</td><td>공항 차량 탑승</td><td></td></tr>
-        <tr><td>13:00~<br>14:30</td><td>다카마쓰공항 <a href="https://www.google.com/maps/search/?api=1&amp;query=Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 이동 예정</td><td class="todo">실제 소요시간 확인 필요</td></tr>
-        <tr><td>14:30~<br>16:30</td><td>수속 후 이른 저녁과 출국</td><td class="todo">15:00~15:30 가능 시 공항 1안 하야시야 <a href="https://www.google.com/maps/search/?api=1&amp;query=Hayashiya+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>, 2안 사누키 멘교 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sanuki+Menkyo+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>. 수속·보안검색 우선</td></tr>
-        <tr><td>16:50~<br>18:35</td><td>다카마쓰 - 인천 이동</td><td>진에어 LJ300</td></tr>
-        <tr><td colspan="3"><strong>월요일 관광 선택 기준</strong>: 1안은 고라쿠엔 <a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>과 사자나미 찻집 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sazanami+Chaya+Korakuen&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>, 2안은 오카야마성 <a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>과 우조 카페 <a href="https://www.google.com/maps/search/?api=1&amp;query=Uzo+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 중 하나를 고릅니다. 13시 출발과 14시 30분 공항 도착은 가이드북 배치이며, 실제 차량 이동시간은 아직 정해지지 않았습니다. 기사 확인 후 더 이른 출발이 필요하면 관광·카페·쇼핑을 줄입니다.<br><strong>출발시간을 지키는 변경 순서</strong>: 기념품 쇼핑 생략 → 카페 축소·생략 → 관광 단축. 점심 식당이 45분 내 이용을 확인해 주지 않으면 대체 식사로 바꿉니다. 강한 비나 공항 조기 출발이면 관광을 생략하고 역·이온몰의 이른 식사와 구매만 진행합니다.<br>후쿠다 찻집은 11시 개점이라 이번 오전 코스에서 제외했습니다.</td></tr>
-      </table></div>
-    </details>
-    <details class="day meal-choice">
-      <summary>식사 선택표</summary>
-      <p class="todo">모든 점심·저녁에 실제 식당 1안과 2안을 지정했습니다. 현지 제공 식사가 있으면 해당 끼니의 외부 식당은 예비안으로 전환합니다. 미확인 이동을 가능하다고 가정해 예약하지 않습니다. 예산은 1인 기준 편성액이며 확정 메뉴 가격이 아닙니다.</p>
-
-      <h3>금요일 점심 (14:00~14:45)</h3>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 점심·커피·호텔 동선 연결.</td></tr>
-        <tr><td>2안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 소고기 규카츠 정식</td><td>2,000~3,500엔. 역 남관 1층. 선택 시 커피도 역 주변 또는 테이크아웃으로 변경.</td></tr>
-      </table></div>
-
-      <h3>금요일 저녁 (18:00~19:00)</h3>
-      <p class="todo"><strong>10/31 모임</strong>: 생활관에서 기숙사생들과 라멘 저녁 예정이라 아래 식당은 예비안입니다.</p>
-      <p class="todo">생활관 방문 종료가 18시이므로 외부 식당 이동시간은 추가 확인 대상입니다. 19시 식사 종료가 불가능하면 운영팀과 저녁·호텔 복귀 구간을 함께 조정합니다. 제공 식사 여부 확인 전 외부 예약은 보류합니다.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 규카츠 정식</td><td>2,000~3,500엔. 점심에 이용했다면 저녁은 2안 선택.</td></tr>
-        <tr><td>2안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시 또는 초밥</td><td>2,000~3,500엔. 회 비선호·알레르기 대체 메뉴 문의.</td></tr>
-      </table></div>
-
-      <h3>토요일 점심 (12:00~13:00)</h3>
-      <p class="todo"><strong>10/31 모임</strong>: 아구리가든 식당에서 점심 예정이라 아래 식당은 예비안입니다.</p>
-      <p class="todo">기업탐방 장소에서 오카야마역 방면 복귀가 가능할 때의 실명 대안입니다. 현지 식사 포함 시 이용하지 않습니다. 방문지 주소가 확정되면 왕복 이동과 13시 산업시찰 복귀 가능 여부를 점검합니다.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td><a href="#fukuzushi">후쿠즈시</a> / 향토 바라즈시·치라시 계열</td><td>2,500~4,000엔. 역 서쪽 호칸초. 11:30 개점, 점심 입점 13:30까지.</td></tr>
-        <tr><td>2안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시 또는 초밥</td><td>2,000~3,500엔. 역 안 접근성 중심.</td></tr>
-      </table></div>
-
-      <h3>토요일 저녁 (18:00~19:00)</h3>
-      <p class="todo">18시 산업시찰 종료와 19시 사역 준비 사이에 식사·이동이 모두 가능한지 확인해야 합니다. 불가능하면 실명 후보를 그대로 강행하지 않고 방문지 인근 식당으로 재선정합니다. 후쿠즈시 점심·저녁을 모두 이용하는 계획은 아닙니다.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td><a href="#fukuzushi">후쿠즈시</a> / 초밥·향토요리 사전 주문</td><td>3,000~5,000엔. 9명 예약과 짧은 제공시간을 문의.</td></tr>
-        <tr><td>2안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 규카츠 정식</td><td>2,000~3,500엔. 예산·역 복귀 동선 대안.</td></tr>
-      </table></div>
-
-      <h3>주일 점심 (12:00~13:00)</h3>
-      <p class="todo">작년처럼 교회 교제 식사가 제공되면 그 식사를 우선합니다. 외부 식사일 때는 13시 팀 모임 복귀 가능 여부 확인이 필수이며, 두 식당이 교회 인근이라고 단정하지 않습니다.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시·초밥</td><td>2,000~3,500엔. 교회 식사 미제공 시 자체 식사 후보.</td></tr>
-        <tr><td>2안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 생선 비선호 대안.</td></tr>
-      </table></div>
-
-      <h3>주일 저녁 (18:00~19:20 제안)</h3>
-      <p class="todo">18시 교회 출발 후 이동까지 포함한 시간 제안입니다. 제공 저녁이 있으면 이용합니다. 외부 식사가 지연되면 카페 또는 산책을 줄이고 22시 호텔 모임은 유지합니다.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 식사 후 니시가와 산책 연결.</td></tr>
-        <tr><td>2안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 규카츠 정식</td><td>2,000~3,500엔. 역에서 카페·호텔 복귀 연결.</td></tr>
-      </table></div>
-
-      <h3>월요일 점심 (11:30~12:15)</h3>
-      <p class="todo">45분 내 식사·계산 가능 여부를 사전에 문의합니다. 대기가 10분을 넘으면 현장에서 다른 맛집을 찾지 않고, 선택한 대안이나 사전 확보한 간단한 식사로 바꿉니다.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시·초밥</td><td>2,000~3,500엔. 고라쿠엔 코스와 연결.</td></tr>
-        <tr><td>2안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 성 코스·생선 비선호 대안.</td></tr>
-      </table></div>
-
-      <h3>월요일 저녁 대체용 공항 이른 식사</h3>
-      <p class="todo">16:50 출발·18:35 인천 도착이라 일본에서 통상적인 저녁 식사는 어렵습니다. 아래 두 곳은 15:00~15:30 전후의 이른 저녁 또는 간식 후보입니다. 11:30 점심과 가까우므로 팀 선택사항이며, 항공 수속 완료와 보안검색·탑승 여유가 확인될 때만 이용합니다. 기내식 제공은 가정하지 않습니다. 귀국 후 저녁은 팀 해산·귀가 동선에 맞춰 따로 정합니다.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
-        <tr><td>1안</td><td>하야시야 제면소 다카마쓰공항점 / 소금 붓카케 우동·튀김</td><td>1,000~1,800엔. 공항 1층, 08:00~20:00.</td></tr>
-        <tr><td>2안</td><td>사누키 멘교 다카마쓰공항점 / 우동·돈부리 세트</td><td>1,200~2,000엔. 공항 2층, 09:30~19:45.</td></tr>
-      </table></div>
-      <p class="todo"><strong>공항 식사 운영 기준</strong>: 공항 도착 지연·수속 대기·보안검색 혼잡 시 식사부터 생략합니다. 15:00~15:30 식사는 항공사의 절차와 탑승시간보다 우선하지 않습니다. 국제선 출국심사 이후 해당 매장에 다시 갈 수 있다고 가정하지 않습니다.</p>
-    </details>
-  </details>
-
-  <details id="travel" open>
-    <summary><h2>교통과 숙소</h2></summary>
-    <div class="card">
-      <p><strong>항공편 (인천 - 다카마쓰)</strong>: 가는 편은 에어서울 RS0297(인천공항 T2 → 다카마쓰공항 T1), 오는 편은 진에어 LJ300(다카마쓰공항 T1 → 인천공항 T2)입니다. 위탁수화물 각 15kg.</p>
-      <div class="wrap"><table>
-        <tr><th>구분</th><th>날짜</th><th>출발</th><th>도착</th><th>소요</th></tr>
-        <tr><td>출발 (인천 - 다카마쓰)</td><td>11/13(금)</td><td>08:45</td><td>10:30</td><td>105분</td></tr>
-        <tr><td>리턴 (다카마쓰 - 인천)</td><td>11/16(월)</td><td>16:50</td><td>18:35</td><td>105분</td></tr>
-      </table></div>
-      <ul>
-        <li><strong>현지 이동</strong>: 리버사이드교회에서 12~16인용 중형 버스를 제공합니다(10/31 모임 전달). 비용 지급은 다시 전달받기로 했고 11/5 모임에서 정리합니다. 교회 차량으로 이동합니다. 가는 날 다카마쓰공항에서 픽업하고, 오는 날 숙소에서 공항까지 이동합니다. 세부 시간은 확인 필요. 작년에는 교회가 버스, 운전자, 인솔자를 4일간 준비해 주셨고 비용은 약 20.3만 엔(약 185만 원)이었습니다.</li>
-        <li><strong>숙소</strong>: <a href="https://www3.apahotel.com/hotel/chushikoku/okayama/okayamaekimae" target="_blank" rel="noopener">아파호텔 오카야마에키마에 (APA HOTEL OKAYAMA-EKIMAE)</a> 공식 홈페이지. 교회에서 버스로 15분. 예약 완료: 11/13(금) ~ 11/16(월), 조식 포함.</li>
-        <li>주소: 1 Chome-3-12 Shimoishii, Kita Ward, Okayama</li>
-        <li>전화: +81 86-236-3111</li>
-      </ul>
-    </div>
-  </details>
-
-  <details id="budget" open>
-    <summary><h2>예산</h2></summary>
-    <p class="todo">예상 금액과 지출 현황 기준입니다. 차액은 예상 금액에서 지출을 뺀 값이며, 음수는 예상보다 많이 쓴 금액입니다.</p>
-    <div class="wrap"><table class="budget">
-      <tr><th>항목</th><th>예상(원)</th><th>단가(원)</th><th>수량</th><th>지출(원)</th><th>차액(원)</th></tr>
-      <tr><td>항공료</td><td>3,600,000</td><td>466,500</td><td>9</td><td>4,198,500</td><td>-598,500</td></tr>
-      <tr><td>숙박비</td><td>2,520,000</td><td>340,050</td><td>9</td><td>3,060,450</td><td>-540,450</td></tr>
-      <tr><td>여행자 보험</td><td>36,000</td><td>7,820</td><td>9</td><td>70,380</td><td>-34,380</td></tr>
-      <tr><td>사례비 (버스)</td><td>1,300,000</td><td></td><td></td><td>0</td><td>1,300,000</td></tr>
-      <tr><td>주유비</td><td>600,000</td><td></td><td></td><td>0</td><td>600,000</td></tr>
-      <tr><td>헌금</td><td>600,000</td><td></td><td></td><td>0</td><td>600,000</td></tr>
-      <tr><td>선물</td><td>1,200,000</td><td></td><td></td><td>0</td><td>1,200,000</td></tr>
-      <tr><td>식대</td><td>1,800,000</td><td></td><td></td><td>0</td><td>1,800,000</td></tr>
-      <tr><td>간식</td><td>270,000</td><td></td><td></td><td>0</td><td>270,000</td></tr>
-      <tr><td>예비비</td><td>674,000</td><td></td><td></td><td>0</td><td>674,000</td></tr>
-      <tr><td><strong>합계</strong></td><td><strong>12,600,000</strong></td><td></td><td></td><td><strong>7,329,330</strong></td><td><strong>5,270,670</strong></td></tr>
-      <tr><td><strong>회비 수입</strong></td><td colspan="5"><strong>12,600,000</strong> (1인 1,400,000 × 9인)</td></tr>
-      <tr><td><strong>잔액</strong></td><td colspan="5"><strong>5,270,670</strong> (회비 수입 − 지출 합계)</td></tr>
-    </table></div>
-    <p class="todo">9명 기준입니다. 항공료·숙박비·여행자 보험은 같은 단가로 9명분을 우선 적어 두었고, 실제 금액이 바뀌면 수정합니다. 예상 금액은 인원에 비례하는 항목(항공·숙박·보험·식대·간식)을 9명 기준으로 늘리고, 남는 금액은 예비비에 넣었습니다.</p>
-  </details>
-
-  <details id="special" open>
-    <summary><h2>특순</h2></summary>
-    <div class="sub-links"><a href="#japanese-worship">일본어 찬양</a></div>
-    <div class="card">
-      <p><strong>무언극: 사랑을 나눠요</strong> (2025 여름 오이타 아웃리치 공연)</p>
-      <ul>
-        <li>
-          <strong>대본</strong>
-          <details class="script">
-            <summary>대본 펼쳐 보기</summary>
-            <h3>캐스팅</h3>
-            <ol>
-              <li>예수님 (가운, 가발) - 신범</li>
-              <li>주인공1 (하트 갯수) - 현우형</li>
-              <li>주인공2 - 시온님</li>
-              <li>노인 (지팡이) - 지호</li>
-              <li>난폭한 사람 (태권도복) - 성경</li>
-              <li>우는 사람 (우는 사람 얼굴 표정 스티커) - 지원님</li>
-              <li>떼쓰는 어린이 (모자 및 망토) - 은환</li>
-              <li>싸우는 친구들 (귀여운 의상) - 하은(한희), 혜린</li>
-              <li>아픈 사람 (깁스) - 유롭</li>
-            </ol>
-            <h3>소품</h3>
+    <details id="sights">
+      <summary><h2>관광과 쇼핑</h2></summary>
+      <p class="todo">아래 장소는 검색 결과 기준입니다. 지도에서 정확한 지점·입구·층수를 확인한 뒤 저장합니다.</p>
+      <div class="spots">
+        <div class="spot">
+          <div class="body">
+            <p class="meta">월요일 · 관광 1안</p>
+            <h3 id="korakuen">고라쿠엔 정문</h3>
             <ul>
-              <li>신범: 가운, 가발, 하트 튜브 및 하트 6개</li>
-              <li>현우형, 시온: 없음</li>
-              <li>지호: 지팡이나 보드(부술 것), 몸빼바지, 가발</li>
-              <li>성경: 태권도복</li>
-              <li>지원: 눈물 종이 (붙일 것)</li>
-              <li>은환: 어린이 모자, 망토</li>
-              <li>하은, 혜린: 공룡 에어슈트 2개</li>
-              <li>유롭: 손 깁스</li>
+              <li>11월 일반 운영: 08:00~17:00</li>
+              <li>일반 성인 500엔 (9명 모두 일반 성인이면 4,500엔)</li>
+              <li>전화: +81-86-272-1148 (행사·입구·택시 승하차 위치 확인)</li>
             </ul>
-            <p class="todo">준비 필요: 가운, 가발 2개, 하트 튜브, 하트 7개, 몸빼바지, 태권도복, 눈물 종이, 모자, 망토, 에어슈트 2개, 손 깁스</p>
-            <h3>진행 순서</h3>
-            <p>음원 무한 반복 (약 10분 분량으로 조절 예정)</p>
-            <div class="wrap"><table>
-              <tr><th>시간</th><th>내용</th></tr>
-              <tr><td>0:05</td><td>신범 입장, 중앙 도달 후 현우, 시온 부름</td></tr>
-              <tr><td>0:10</td><td>신범 착석 후 두 주인공과 인사</td></tr>
-              <tr><td>0:20</td><td>보드 중 큰 하트(6)를 꺼내 표현하고 현우에게 전달 → 받은 현우가 신나서 표현</td></tr>
-              <tr><td>0:32</td><td>작은 하트(1)를 꺼내 시온에게 전달 (현우의 작은 하트를 보며 내 것이 훨씬 크다고 자랑)</td></tr>
-              <tr><td>0:40</td><td>시온 퇴장</td></tr>
-              <tr><td>0:45</td><td>지호가 지팡이를 짚으며 등장</td></tr>
-              <tr><td>0:55</td><td>지호가 현우에게 하트 달라고 요구, 현우 거절 (뒤에서 신범이 하트를 주라고 표현)</td></tr>
-              <tr><td>1:00</td><td>지호 퇴장, 신범이 현우를 부름</td></tr>
-              <tr><td>1:05</td><td>신범이 하트(6) 회수</td></tr>
-              <tr><td>1:15</td><td>더 작은 하트(5)를 관객에게 보여준 후 현우에게 전달</td></tr>
-              <tr><td>1:20</td><td>성경 등장, 중앙 이동 후 현우에게 하트 요구, 현우 거절 (앉은 신범이 하트를 표현)</td></tr>
-              <tr><td>1:35</td><td>성경 퇴장, 신범이 현우를 부름</td></tr>
-              <tr><td>1:40</td><td>신범이 하트(5) 회수 후 더 작은 하트를 보여준 뒤 현우에게 전달</td></tr>
-              <tr><td>1:50</td><td>지원 등장, 통곡하며 매달려 하트 달라고 요구, 현우 거절</td></tr>
-              <tr><td>2:10</td><td>지원 퇴장, 신범이 현우를 부름 (현우는 하트 주기 싫어하는 것을 표현하며 끌려가 줌)</td></tr>
-              <tr><td>2:25</td><td>현우가 관객을 향해 작아진 하트(4)를 보여주고, 괜찮아져서 다시 춤</td></tr>
-              <tr><td>2:30</td><td>은환 등장, 중앙 도달 후 현우에게 하트 요구</td></tr>
-              <tr><td>2:50</td><td>은환 퇴장, 신범이 골머리 아픈 표현</td></tr>
-              <tr><td>2:55</td><td>신범이 현우를 부름 (주기 싫어하는 현우와 부르는 신범)</td></tr>
-              <tr><td>3:10</td><td>신범이 하트 회수 후 더 작은 하트(3)로 전달 (현우가 무대 앞에서 작아진 하트를 보임)</td></tr>
-              <tr><td>3:15</td><td>하은, 혜린 등장 (싸우고 밀치다 현우에게 하트 달라고 표현, 현우 거절)</td></tr>
-              <tr><td>3:40</td><td>하은, 혜린 퇴장</td></tr>
-              <tr><td>3:45</td><td>신범이 현우를 부름 (주기 싫어하는 현우와 부르는 신범)</td></tr>
-              <tr><td>3:55</td><td>작은 하트(2) 전달</td></tr>
-              <tr><td>4:00</td><td>유롭, 깁스 상태로 등장 후 중앙 이동, 현우에게 하트 요구</td></tr>
-              <tr><td>4:15</td><td>거절당한 유롭 퇴장, 슬픈 신범이 다시 현우를 부름</td></tr>
-              <tr><td>4:25</td><td>신범이 하트 회수 후 손가락으로 하트를 만들어 현우에게 전달 → 현우 하트가 사라져 엉엉 울다 퇴장</td></tr>
-              <tr><td>4:35</td><td>시온 등장, 무대를 이동하며 하트를 보여주며 표현</td></tr>
-              <tr><td>4:40</td><td>지호 등장, 중앙 이동 후 시온에게 하트(1) 요구</td></tr>
-              <tr><td>4:50</td><td>시온이 하트 전달 → 지호가 받고 일어서서 지팡이를 부수고 하트를 들고 퇴장</td></tr>
-              <tr><td>5:00</td><td>지호 퇴장 후 신범이 시온을 불러 더 큰 하트(2) 전달</td></tr>
-              <tr><td>5:10</td><td>성경 등장, 폭력적으로 중앙 이동, 시온에게 하트(2) 요구</td></tr>
-              <tr><td>5:15</td><td>시온이 성경을 안아주며 하트(2)를 성경에게 전달</td></tr>
-              <tr><td>5:20</td><td>하트를 받은 성경이 시온과 손뼉 치다(변경 有) 퇴장</td></tr>
-              <tr><td>5:25</td><td>신범이 시온을 불러 손뼉 등을 칭찬하며 새로운 하트(3) 줌</td></tr>
-              <tr><td>5:35</td><td>지원 등장, 눈물을 표현하며 중앙 이동 후 시온에게 하트(3) 요구</td></tr>
-              <tr><td>5:50</td><td>지원이 시온에게 하트(3)를 받고 펄쩍 뛰며 눈물을 떼고 퇴장</td></tr>
-              <tr><td>5:55</td><td>신범이 시온을 불러 칭찬하며 새로운 하트(4) 줌 → 더 커진 하트를 받고 신난 시온 표현</td></tr>
-              <tr><td>6:05</td><td>은환 등장, 중앙 이동 후 시온에게 하트(4) 요구</td></tr>
-              <tr><td>6:15</td><td>은환을 발견한 시온이 하트(4) 전달, 함께 타이밍 맞춰 뛰기 후 은환 퇴장. 이후 신범이 시온을 불러 칭찬하고 더 큰 하트(5) 전달, 받고 신난 시온</td></tr>
-              <tr><td>6:35</td><td>하은, 혜린 등장, 중앙 이동해 서로 다투다 시온을 발견하고 하트(5) 요구</td></tr>
-              <tr><td>6:50</td><td>시온이 하은, 혜린을 발견하고 둘 사이에 하트를 주며 셋이 화해함을 표현</td></tr>
-              <tr><td>7:00</td><td>하은, 혜린 퇴장, 신범이 시온을 불러 칭찬한 뒤 더 큰 하트(6) 전달</td></tr>
-              <tr><td>7:15</td><td>유롭 등장, 중앙 이동 후 시온에게 하트(6) 요구</td></tr>
-              <tr><td>7:25</td><td>하트를 받은 유롭이 기브스를 풀어헤치며 하트를 머리 위로 흔들고 퇴장</td></tr>
-              <tr><td>7:30</td><td>신범이 시온을 불러 칭찬하며 더 큰 하트를 꺼내 표현한 뒤 시온에게 전달</td></tr>
-              <tr><td>7:45</td><td>현우가 울면서 등장, 중앙 이동해 큰 하트를 든 시온을 보며 하트 달라고 요구</td></tr>
-              <tr><td>7:55</td><td>하트를 전달해 주는 시온을 보며 신범이 시온과 현우를 부름. 신범 양옆에서 시온과 현우가 하트 튜브를 전달받음</td></tr>
-              <tr><td>8:10</td><td>둘이 하트를 들려 하나 이리저리 흔들리다 다른 친구들을 부름</td></tr>
-              <tr><td>8:15</td><td>전부 나와서 하트 튜브를 보이며 좌로 우로 흔들림</td></tr>
-              <tr><td>8:30</td><td>중앙으로 이동 후 모두 멈춰 서서 신범을 부름</td></tr>
-              <tr><td>마무리</td><td>신범이 나와서 함께 "하나 둘 셋"을 외친 후 하트를 번쩍 들며 마무리</td></tr>
-            </table></div>
-          </details>
-        </li>
-        <li><strong>참고 영상</strong>: <a href="https://youtu.be/L9w_wRXBebA?si=qs2r3RnMbtcXy5qf" target="_blank" rel="noopener">유튜브 참고 영상 보기</a></li>
-        <li><strong>준비</strong>: 소품은 하트를 제외하고 기존 것이 있습니다. 역할 분담과 준비는 11/5(목) 모임에서 정합니다.</li>
-      </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">월요일 · 관광 1안 티타임</p>
+            <h3 id="sazanami">사자나미 찻집</h3>
+            <ul>
+              <li>정원 안 티타임. 겨울 09:00~16:30, 수요일 부정기 휴무</li>
+              <li>커피 500엔 · 말차 과자 세트 700엔 (정원 입장료 별도)</li>
+              <li>전화: +81-86-272-4147 (11/16 10:30, 9명·30분 이용 가능 여부 문의)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Sazanami+Chaya+Korakuen&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">월요일 · 관광 2안</p>
+            <h3 id="castle">오카야마성과 우조 카페</h3>
+            <ul>
+              <li>성 09:00~17:30, 일반 성인 500엔</li>
+              <li>카페 천수각 1층 09:00~17:30 (주문 마감 17시)</li>
+              <li>성 대표전화: +81-86-225-2096 (카페 직통번호 미확인. 성 대표에 연결 가능 여부 확인)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">주일 · 도보 코스</p>
+            <h3 id="nishigawa">니시가와 녹도공원</h3>
+            <ul>
+              <li>공원 전체가 아닌 일부 구간 왕복</li>
+              <li>입장 예약 없이 산책. 시작점·반환점·역 복귀 지점을 지도에서 따로 지정</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Nishigawa+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">쇼핑 · 월요일 구매 15분</p>
+            <h3 id="sunstation">산스테 오카야마</h3>
+            <ul>
+              <li>역 연결 식당·카페·지역 과자 쇼핑. 남관 2층 선물 매장 중심</li>
+              <li>매장별 영업시간이 달라 확인 필요</li>
+              <li>월요일 구매는 15분 배정이므로 품목을 미리 정함</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">금요일 · 토요일 예비 코스</p>
+            <h3 id="aeon-hokancho">이온몰과 호칸초 예비 코스</h3>
+            <ul>
+              <li>이온몰: 금요일 식사·커피·보완 구매. 매장별 층수 확인</li>
+              <li>호칸초: 토요일 일찍 복귀 시 산책 후보. <a href="https://www.houkancho.com/" target="_blank" rel="noopener">공식 안내</a></li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Hokancho+Shopping+Street+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+      </div>
+    </details>
+    <details id="food">
+      <summary><h2>맛집</h2></summary>
+      <p class="todo">참고용 정보입니다. 아래 요일 구성, 일정, 인원(9~12명 기준)은 이 트립의 확정 일정과 다를 수 있습니다. 참고 환율: 100엔 ≒ 940원 기준이며, 실제 환율에 따라 달라질 수 있습니다. 가격은 메뉴 기준 대략적인 금액입니다.</p>
+      <div class="spots">
+        <div class="spot">
+          <div class="body">
+            <p class="meta">금 · 점심</p>
+            <h3>Shokudo Yamato (식당 야마토)</h3>
+            <p>오카야마에서만 맛볼 수 있는 '데미카츠동'(데미그라스 소스 돈가스 덮밥)의 원조격 식당입니다. 현지인들이 줄 서서 먹는 곳입니다.</p>
+            <ul>
+              <li>추천: 데미카츠동 (중 930엔~), 중화소바 (880엔~)</li>
+              <li>가격: 930~1,300엔 (약 8,700~12,200원)</li>
+              <li>단체: 식당이 좁아 12명이 한 번에 들어가기 어렵습니다. 4명씩 3개 조로 나눠 입장하세요.</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Shokudo+Yamato+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">금 · 저녁</p>
+            <h3>Ebimeshiya Aoe (에비메시야 아오에)</h3>
+            <p>오카야마의 명물 '에비메시'(새우밥) 전문점입니다. 검은 볶음밥이지만 짜지 않고 고소하며, 카레·케첩·캐러멜 소스 풍미가 납니다. 해산물을 드시지 않아도 부담 없습니다.</p>
+            <ul>
+              <li>추천: 에비메시 단품 (900엔~), 에비메시 & 크림 고로케 세트 (1,280엔~)</li>
+              <li>예산: 1,500~2,500엔 (에비메시·양식 기준, 금·토 저녁 예비 후보)</li>
+              <li>전화·당일 영업·예약 조건: 미확인</li>
+              <li>이동: 오카야마역에서 택시로 10~15분. 단체 이동은 택시를 추천합니다.</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Ebimeshiya+Aoe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">토 · 점심</p>
+            <h3 id="azuma">Azuma Zushi (아즈마 스시)</h3>
+            <p>100년 전통의 가게로, 오카야마 향토 요리 '바라즈시'(해산물과 채소를 밥 위에 뿌린 스시)로 유명합니다. 오카야마역 2층 산스테(Sun Station Terrace) 안에 있어 찾기 쉽습니다.</p>
+            <ul>
+              <li>추천: 오카야마 바라즈시 (2,500엔~), 런치 니기리 세트 (1,500엔~)</li>
+              <li>비생선류 선호자는 익힌 새우·장어·계란 초밥 단품 주문이 가능합니다.</li>
+              <li>가격: 2,000~3,500엔 (약 18,800~32,900원)</li>
+              <li>위치: 산스테 2층, 11:00 개점</li>
+              <li>전화: +81-86-227-7337 (9명 예약 가능 여부·메뉴 사전 결정·12:15 퇴점 가능 여부 문의)</li>
+              <li>단체: 점심 피크 전인 11:30 방문을 추천합니다.</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Azuma+Zushi+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">토 · 저녁</p>
+            <h3>Teppan Ku-ya (철판구이 쿠야)</h3>
+            <p>오카야마의 고급 와규 '치야규(Chi-ya Beef)'를 맛볼 수 있는 철판구이 집입니다.</p>
+            <ul>
+              <li>추천: 계절 디너 코스 (치야규 스테이크 포함)</li>
+              <li>가격: 인당 6,000~8,500엔 (약 57,000~80,000원)</li>
+              <li>단체: 9~12명은 반드시 사전 전화 예약이 필요합니다.</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Teppan+Ku-ya+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">일 · 오후</p>
+            <h3>Cafe Moyau (카페 모야우)</h3>
+            <p>아사히가와 강변 뷰가 좋은 카페입니다.</p>
+            <ul>
+              <li>메뉴: 커피 (550엔~), 케이크 세트 (1,000엔~)</li>
+              <li>가격: 약 5,200~9,400원 (메뉴 기준)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+Moyau+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">일 · 저녁 (대안)</p>
+            <h3>Aji no Yayoi (아지노 야요이)</h3>
+            <p>편안하게 식사하고 싶을 때 추천하는 일본 가정식 식당입니다.</p>
+            <ul>
+              <li>추천: 정식(Teishoku) 세트 (850~1,100엔)</li>
+              <li>가격: 1,000엔 내외 (약 9,500원)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Aji+no+Yayoi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">월 · 점심</p>
+            <h3>Okonomimura (오코노미무라)</h3>
+            <p>'오코노미야키 마을' 건물입니다. 히로시마 스타일은 면이 들어갑니다. 건물 안에 여러 가게가 있어 팀원들이 흩어져서 드셔도 됩니다.</p>
+            <ul>
+              <li>추천: 고기 & 계란(Niku-tama) 소바 (810~900엔) + 치즈·파 토핑 추가</li>
+              <li>가격: 900~1,500엔 (약 8,500~14,000원)</li>
+              <li>단체: 사라시나(Sarashina) 같은 유명 가게는 좁습니다.</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Okonomimura+Hiroshima&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">토 · 점심 / 저녁 (1안)</p>
+            <h3 id="fukuzushi">Fukuzushi (후쿠즈시)</h3>
+            <p>자체 식사 1안입니다. 점심에 이용하면 저녁은 가츠규로 정해 중복을 줄입니다.</p>
+            <ul>
+              <li>가격: 점심 2,500~4,000엔, 저녁 3,000~5,000엔 (1인 편성 예산, 메뉴 견적 확인 필요)</li>
+              <li>위치: 역 서쪽 도보 약 7분</li>
+              <li>영업: 점심 11:30~14:00 (입점·주문 마감 13:30), 저녁 17:00~21:00 (마감 20:00). 월·일요일 저녁 휴무</li>
+              <li>전화: +81-86-252-2402 (날짜·인원·요리를 정해 사전 예약 권장)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Fukuzushi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">토 · 저녁 (2안)</p>
+            <h3 id="katsugyu">규카츠 교토 가츠규 산스테점 (Katsugyu)</h3>
+            <p>토요일 자체 저녁 후보입니다.</p>
+            <ul>
+              <li>가격: 2,000~3,500엔</li>
+              <li>위치: 산스테 남관 1층, 45석</li>
+              <li>영업시간: 11:00~22:00 (주문 마감 21:30)</li>
+              <li>전화: +81-86-201-2080 (9명 예약·분산 착석·제공 시간 문의)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">13일 점심 · 15일 점심·저녁 (1안)</p>
+            <h3 id="wako">와코 이온몰점 (Wako Aeon Mall)</h3>
+            <p>이온몰 7층 식당가입니다.</p>
+            <ul>
+              <li>가격: 1,500~2,500엔 (약 14,100~23,500원)</li>
+              <li>영업시간: 11:00~22:00</li>
+              <li>전화: +81-86-227-7818 (9명 이용·예약·분산 착석·퇴점 목표 문의)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Wako+Aeon+Mall&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">15일 · 카페</p>
+            <h3 id="karafuneya">가라후네야 CAFÉ</h3>
+            <p>주문 10분, 교제 30분, 계산 5분을 잡습니다.</p>
+            <ul>
+              <li>위치: 산스테 남관 1층</li>
+              <li>영업시간: 11:00~22:00 (라스트 오더 21:00)</li>
+              <li>전화: +81-86-201-2728 (주일 20:45 · 9명 45분 이용, 메뉴별 주문 마감 문의)</li>
+              <li>음료 700~1,000엔, 디저트 포함 1,200~1,800엔 (1인 기준)</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Karafuneya+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">13일 · 커피 (1층)</p>
+            <h3 id="starbucks">스타벅스 이온몰 오카야마 1층점</h3>
+            <p>5층점과 구분해서 찾습니다. 좌석 예약을 전제로 하지 않으며, 만석이면 테이크아웃합니다.</p>
+            <ul>
+              <li>영업시간: 10:00~21:00</li>
+              <li>음료 예산: 600~1,000엔</li>
+              <li>전화: +81-86-238-7621</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Starbucks+Aeon+Mall+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">16일 · 이른 저녁·간식 (1안)</p>
+            <h3 id="hayashiya">하야시야 제면소 다카마쓰공항점</h3>
+            <p>공항 1층. 소금 붓카케 우동·튀김·어묵류.</p>
+            <ul>
+              <li>영업: 08:00~20:00</li>
+              <li>예산: 1,000~1,800엔</li>
+              <li>전화: +81-70-5515-0884 (매장 상세 번호 우선. 공항 종합 연락표의 +81-87-879-0884와 다르므로 매장 번호로 문의)</li>
+              <li>9명 이용·주문 소요시간·품절 여부 확인</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Hayashiya+Seimen+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+        <div class="spot">
+          <div class="body">
+            <p class="meta">16일 · 이른 저녁·간식 (2안)</p>
+            <h3 id="sanuki">사누키 멘교 다카마쓰공항점</h3>
+            <p>공항 2층. 수속 후 보안검색 전에 이용하는 후보입니다. 우동·튀김우동·돈부리 세트.</p>
+            <ul>
+              <li>영업: 09:30~19:45</li>
+              <li>예산: 1,200~2,000엔</li>
+              <li>전화: +81-87-814-3412</li>
+              <li>최신 층별 지도와 실제 이용 동선은 현장에서 확인</li>
+            </ul>
+            <p><a href="https://www.google.com/maps/search/?api=1&amp;query=Sanuki+Menkyo+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵에서 위치 보기</a></p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </section>
+
+  <section class="group" id="group-schedule">
+    <div class="group-head">
+      <span class="group-no">02</span>
+      <h2 class="group-title">일정</h2>
     </div>
-    <div class="card">
-      <p><strong>찬양: 주님 다시 오실 때까지</strong></p>
-      <ul>
-        <li>1절은 한국팀이 한국어로, 2절은 일본어로 부릅니다.</li>
-        <li>후렴은 리버사이드 교우들과 함께 부릅니다.</li>
-        <li>시작할 때나 중간에 나레이션 또는 인사말을 넣을 수 있습니다.</li>
-        <li><strong>한국어 찬양 참고 영상</strong>: <a href="https://youtu.be/xkKvqxHUBsk?si=0pULwYdnwpxsZ_s-" target="_blank" rel="noopener">유튜브에서 보기</a></li>
-        <li><strong>일본어 찬양 참고 영상</strong>: <a href="https://youtu.be/BIUoSz0oKvU?si=HxAUs6hKyCu_KDwf" target="_blank" rel="noopener">유튜브에서 보기</a></li>
-        <li><strong>일본어 가사 악보 (C키)</strong>: 일본어 원문, 가나 독음, 한글 발음 포함
-          <details class="script" open>
-            <summary>가사 보기 (한국어 · 일본어 · 한글 발음)</summary>
-            <p class="lyric-part">1절</p>
-            <div class="lyric"><p class="ly-ko">주님 다시 오실 때까지 나는 이 길을 가리라</p><p class="ly-ja" lang="ja">主が来られる日まで この道を歩む</p><p class="ly-pr">슈가 코라레루 히마데 코노 미치오 아유무</p></div>
-            <div class="lyric"><p class="ly-ko">좁은 문 좁은 길 나의 십자가 지고</p><p class="ly-ja" lang="ja">せまき道を 十字架をせおい</p><p class="ly-pr">세마키 미치오 쥬지가오 세오이</p></div>
-            <div class="lyric"><p class="ly-ko">나의 가는 이 길 끝에서 나는 주님을 보리라</p><p class="ly-ja" lang="ja">その道のはてに立ち 主を見上げるとき</p><p class="ly-pr">소노 미치노 하테니 타치 슈오 미아게루 토키</p></div>
-            <div class="lyric"><p class="ly-ko">영광의 내 주님 나를 맞아주시리</p><p class="ly-ja" lang="ja">栄光の主よ 受け入れたまえ</p><p class="ly-pr">에이코오노 슈요우 우케이레타마에</p></div>
-            <p class="lyric-part">후렴</p>
-            <div class="lyric"><p class="ly-ko">주님 다시 오실 때까지 나는 일어나 달려가리라</p><p class="ly-ja" lang="ja">主が来られる日まで 立ち上がり走り行く</p><p class="ly-pr">슈가 코라레루 히마데 타치아가리 하시리유쿠</p></div>
-            <div class="lyric"><p class="ly-ko">주의 영광 온 땅 덮을 때 나는 일어나 노래하리</p><p class="ly-ja" lang="ja">主の栄光みちあふれ 立ち上がり賛美する</p><p class="ly-pr">슈노 에이코오 미치아후레 타치아가리 산비스루</p></div>
-            <div class="lyric"><p class="ly-ko">내 사모하는 주님 온 세상 구주시라</p><p class="ly-ja" lang="ja">メシアなるイエスよ われはまちのぞむ</p><p class="ly-pr">메시아나루 이에스요 와레와 마치노조무</p></div>
-            <div class="lyric"><p class="ly-ko">내 사모하는 주님 영광의 왕이시라</p><p class="ly-ja" lang="ja">栄光の王主よ われはしたがう</p><p class="ly-pr">에이코오노 오오슈요 와레와 시타가우</p></div>
-            <p class="todo">일본어는 보내 주신 영상 버전이며, 공식 번역으로 따로 확인한 문안은 아닙니다.</p>
-          </details>
-          <details class="script">
-            <summary>악보 바로 보기</summary>
-            <div class="score-zoom" role="group" aria-label="악보 크기">
-              <button type="button" data-zoom="100" aria-pressed="true">기본</button>
-              <button type="button" data-zoom="160">크게</button>
-              <button type="button" data-zoom="230">아주 크게</button>
-            </div>
-            <p class="todo">크게 보기를 누르면 옆으로 밀어서 볼 수 있습니다. 악보 줄을 누르면 새 창에서 확대해 볼 수 있습니다.</p>
-            <div class="score-wrap" data-zoom="100">
+    <div class="sub-links"><a href="#meeting">준비모임</a><a href="#schedule">일정</a><a href="#travel">교통과 숙소</a><a href="#budget">예산</a></div>
+    <details id="meeting" open>
+      <summary><h2>준비모임</h2></summary>
+      <table class="cal-m">
+        <caption>2026년 10월</caption>
+        <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+        <tr><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td>24</td></tr>
+        <tr><td class="notice">25<span class="time">회비</span></td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td class="meet">31<span class="time">07:30~</span></td></tr>
+      </table>
+      <table class="cal-m">
+        <caption>2026년 11월</caption>
+        <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+        <tr><td>1</td><td class="today">2</td><td>3</td><td>4</td><td class="meet">5<span class="time">18:30~</span></td><td>6</td><td class="meet">7<span class="time">07:30~</span></td></tr>
+        <tr><td>8</td><td>9</td><td>10</td><td>11</td><td class="meet">12<span class="time">18:30~</span></td><td class="trip">13</td><td class="trip">14</td></tr>
+        <tr><td class="trip">15</td><td class="trip">16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td></tr>
+        <tr><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td></tr>
+        <tr><td>29</td><td>30</td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td><td class="blank"></td></tr>
+      </table>
+      <p class="legend"><i class="meet"></i>준비모임<i class="trip"></i>비전트립 (11/13–16)<i class="notice"></i>전달사항</p>
+      <details class="day" id="meeting-1024">
+        <summary>준비모임 1차</summary>
+        <div class="card meeting-body">
+          <p class="meeting-when"><strong>일시</strong>: 10/24(토) · <strong>장소</strong>: 1516교회 헤이븐</p>
+          <ul>
+            <li><strong>여권정보</strong>: 10/24(토)까지 입력. 공지사항 댓글 또는 이찬호 형제님께 개별 전달</li>
+            <li><strong>회비</strong>: 1인 140만 원, 10/25(일)까지 납입</li>
+          </ul>
+        </div>
+      </details>
+      <details class="day" id="meeting-1031" open>
+        <summary>준비모임 2차</summary>
+        <div class="card meeting-body">
+          <p class="meeting-when"><strong>일시</strong>: 10/31(토) · <strong>장소</strong>: 1516교회 헤이븐</p>
+          <ul>
+            <li><strong>특순</strong>: 11/15 리버사이드교회 예배에서 스킷 드라마 「사랑을 나눠요」와 찬양 「주님 다시 오실 때까지」 두 가지를 합니다. <a href="#special">특순 보기</a></li>
+            <li><strong>선물</strong>: 작년처럼 올리브영에서 인원수에 맞게 구성합니다. 성인 120명·어린이 30명 예상, 여분 추가. 대형 포장으로 화물 이동 후 첫날 자유시간에 개별 포장합니다. <a href="#gifts">선물 준비 보기</a></li>
+            <li><strong>선물 비용</strong>: 작년과 비슷하게 120만 원 선. 재정 집행 결정사항은 목요일 모임에서 회계 이민섭 형제님과 논의합니다.</li>
+            <li><strong>금요일(13일)</strong>: 생활관 기숙사생들과 저녁(라멘)을 함께 만들어 먹으며 교제. 참여 가능 기숙사생 62명, 주방은 17:30 이후 사용 가능(11/5 확인).</li>
+            <li><strong>토요일(14일)</strong>: 아구리가든 시찰 후 그곳 식당에서 점심 예정. 저녁 액티비티로 함께 온천욕 제안이 있으며 현지에서 유연하게 진행합니다.</li>
+            <li><strong>버스</strong>: 12~16인용 중형 버스 제공. 비용 지급은 다시 전달받기로 했고, 목요일 모임에서 정리합니다.</li>
+            <li><strong>향후 모임 및 현지 모임</strong>: 앞으로의 준비모임과 일본 현지 모임 모두 짧게라도 예배를 드린 뒤 모임을 갖습니다. 일본어 독음이 가능한 찬양 악보 준비 요청.</li>
+          </ul>
+          <p class="todo">다음 모임 11/5(목) 18:30: 스킷 드라마 역할 분담·준비, 선물 비용 집행, 버스 비용 정리.</p>
+        </div>
+      </details>
+    </details>
+    <details id="schedule" open>
+      <summary><h2>일정</h2></summary>
+      <p class="todo">"확인 필요"로 표시된 항목은 아직 확정되지 않았습니다. 날짜를 누르면 접거나 펼칠 수 있습니다.</p>
+
+      <details class="day" open data-date="2026-11-13">
+        <summary>13일 (금)</summary>
+        <div class="wrap"><table class="sched">
+          <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
+          <tr><td>06:00</td><td>제2터미널 집결</td><td>각자</td></tr>
+          <tr><td>06:00~<br>07:30</td><td>탑승수속 &amp; 아침식사</td><td></td></tr>
+          <tr><td>08:45~<br>10:30</td><td>인천공항 - 다카마쓰 이동</td><td>에어서울 RS0297</td></tr>
+          <tr><td>10:30~<br>11:00</td><td>입국 및 짐 찾기</td><td class="todo">교회버스 픽업 장소 확인 필요</td></tr>
+          <tr><td>11:00~<br>12:30</td><td>교회버스로 다카마쓰공항 <a href="https://www.google.com/maps/search/?api=1&amp;query=Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> → 오카야마 이동</td><td>약 1시간 30분 예상</td></tr>
+          <tr><td>12:30~<br>13:30</td><td>리버사이드교회 <a href="https://www.google.com/maps/search/?api=1&amp;query=34.678138,133.89573&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 도착예배</td><td class="todo">장소·시간 확인 필요</td></tr>
+          <tr><td>13:30~<br>14:00</td><td>호텔 이동 및 짐 보관</td><td class="todo">교회버스 · 체크인은 15:00 이후</td></tr>
+          <tr><td>14:00~<br>14:45</td><td>와코 이온몰점 <a href="https://www.google.com/maps/search/?api=1&amp;query=Wako+Aeon+Mall&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 점심 (<a href="#wako">와코 이온몰점 카드</a>, 7층)</td><td class="todo">1안 기준 · 확정 필요</td></tr>
+          <tr><td>14:45~<br>15:15</td><td>스타벅스 <a href="https://www.google.com/maps/search/?api=1&amp;query=Starbucks+Aeon+Mall+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (1층)</td><td class="todo">테이크아웃 가능 · 확정 필요</td></tr>
+          <tr><td>15:15~<br>16:05</td><td>호텔 복귀·체크인, 환복, 선물 점검</td><td class="todo">예약 대표자 객실 배정 안내 · 16:05 로비 집결 · 선물 개별 포장은 첫날 자유시간에 진행(10/31 모임 결정). 시간이 부족하면 2안 적용</td></tr>
+          <tr><td>16:30~<br>18:00</td><td>청소년 생활관 이동 및 방문</td><td>참여 가능 기숙사생 62명 · 주방은 17:30 이후 사용 가능</td></tr>
+          <tr><td>18:00~<br>19:00</td><td>생활관 저녁 교제 (라멘)</td><td>기숙사생 62명과 라멘을 함께 만들어 먹으며 교제(10/31 모임 논의). 주방은 17:30부터 사용 가능. 아래 식당은 예비안: 자체 해결 시 1안 <a href="#katsugyu">가츠규</a> (2,000~3,500엔), 2안 <a href="#azuma">아즈마 스시</a> (<a href="https://www.google.com/maps/search/?api=1&amp;query=Azuma+Zushi+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 구글 맵</a>, 2,000~3,500엔). 이동 후 입장 시각 조정</td></tr>
+          <tr><td>19:00~<br>20:00</td><td>호텔 복귀</td><td></td></tr>
+          <tr><td>20:00~<br>21:00</td><td>나눔 / 조별 교제</td><td></td></tr>
+          <tr><td colspan="3"><strong>생활관 저녁 교제 (라멘)</strong>: 참여 가능 기숙사생 62명. 주방은 13일(금)과 14일(토) 모두 17:30 이후 사용 가능합니다.</td></tr>
+          <tr><td colspan="3"><strong>2안 (교회 선물 포장이 필요한 경우)</strong>: 13:30~14:15 교회 포장·보관 → 14:15~14:40 호텔 방면 이동·짐 보관 → 14:40~15:25 와코 점심 → 15:25~16:05 체크인·환복 → 16:05 집결. 교회 공간 사용 협의와 작업량 확인이 필요하며, 커피는 생략합니다.</td></tr>
+        </table></div>
+      </details>
+
+      <details class="day" open data-date="2026-11-14">
+        <summary>14일 (토)</summary>
+        <div class="wrap"><table class="sched">
+          <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
+          <tr><td>07:30~<br>08:30</td><td>호텔 조식</td><td>호텔 식당 · 조식 포함, 필요한 식사 취향 확인</td></tr>
+          <tr><td>08:30~<br>09:30</td><td>QT</td><td>호텔 식당 · 작년처럼 소그룹 테이블 진행 참고, 호텔 이용 허용 범위 확인</td></tr>
+          <tr><td>09:30~<br>10:00</td><td>정비와 기업 이동</td><td>교회 차량 집결 장소 공유</td></tr>
+          <tr><td>10:00~<br>12:00</td><td>기업탐방 (음식물 처리공장, 아구리가든 <a href="https://www.google.com/maps/search/?api=1&amp;query=Aguri+Garden+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 등)</td><td class="todo">올해 방문처·순서 확인</td></tr>
+          <tr><td>12:00~<br>13:00</td><td>점심식사</td><td class="todo">아구리가든 식당에서 점심 예정(10/31 모임). 예비안: 자체 식사 1안 <a href="#fukuzushi">후쿠즈시</a>, 2안 <a href="#azuma">아즈마 스시</a> (시내 복귀가 가능한 경우 적용)</td></tr>
+          <tr><td>13:00~<br>18:00</td><td>산업시찰</td><td class="todo">기존 시간 유지, 관광·쇼핑은 임의로 추가하지 않음</td></tr>
+          <tr><td>18:00~<br>19:00</td><td>저녁식사</td><td class="todo">자체 식사 1안 <a href="#fukuzushi">후쿠즈시</a>, 2안 <a href="#katsugyu">가츠규</a> (시찰 종료 장소와 준비 장소에 따라 조정)</td></tr>
+          <tr><td>19:00~<br>21:00</td><td>주일사역 준비</td><td class="todo">장소 확인 필요 · 외부 저녁 이동과 충돌 시 현지 인근 식사 우선 · 저녁 액티비티로 함께 온천욕 제안(현지에서 유연하게 진행)</td></tr>
+          <tr><td>21:00~<br>22:00</td><td>나눔 / 조별 교제</td><td></td></tr>
+          <tr><td colspan="3"><strong>식당 후보</strong>: 1안 후쿠즈시 <a href="https://www.google.com/maps/search/?api=1&amp;query=Fukuzushi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (점심 2,500~4,000엔, 저녁 3,000~5,000엔), 2안 아즈마 스시 <a href="https://www.google.com/maps/search/?api=1&amp;query=Azuma+Zushi+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (점심 2,000~3,500엔) · 가츠규 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> (저녁 2,000~3,500엔). 후쿠즈시 <a href="https://www.google.com/maps/search/?api=1&amp;query=Fukuzushi+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>를 점심에 이용하면 저녁은 가츠규 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>로 중복을 줄입니다. 현지 제공 식사가 확정되면 외부 식사 후보는 예비안으로 바꿉니다.<br><strong>관광·카페 예비안</strong>: 1안은 기업·아구리가든 <a href="https://www.google.com/maps/search/?api=1&amp;query=Aguri+Garden+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 안내 구역을 현지 프로그램 안에서 둘러보는 것입니다. 2안은 산업시찰이 일찍 끝나 역 서쪽으로 돌아오는 경우 호칸초 상점가 <a href="https://www.google.com/maps/search/?api=1&amp;query=Hokancho+Shopping+Street+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>를 20~30분 걷는 코스로, 이동을 제외하고 40분 이상 여유가 있을 때만 적용합니다. 카페는 현지 휴식시간이 1안이고, 역 주변 자유시간이 있을 때만 가라후네야 <a href="https://www.google.com/maps/search/?api=1&amp;query=Karafuneya+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>를 2안으로 씁니다. 쇼핑은 산스테 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>의 간식·기념품이 1안, 돈키호테 역앞점 <a href="https://www.google.com/maps/search/?api=1&amp;query=Donki+Okayama+Ekimae&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>은 개인 자유시간이 있을 때의 2안입니다.</td></tr>
+        </table></div>
+      </details>
+
+      <details class="day" open data-date="2026-11-15">
+        <summary>15일 (주일)</summary>
+        <div class="wrap"><table class="sched">
+          <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
+          <tr><td>07:30~<br>08:30</td><td>호텔 조식</td><td>호텔 식당 · 조식 포함</td></tr>
+          <tr><td>08:30~<br>09:00</td><td>QT</td><td>호텔 식당</td></tr>
+          <tr><td>09:00~<br>09:45</td><td>정비와 출발</td><td>교회 출발</td></tr>
+          <tr><td>09:45~<br>10:30</td><td>교회 이동과 예배 준비</td><td class="todo">현지 교회 안내에 따름</td></tr>
+          <tr><td>10:30~<br>12:00</td><td>주일예배</td><td>특순·헌금 준비</td></tr>
+          <tr><td>12:00~<br>13:00</td><td>점심과 교제</td><td class="todo">교회 제공 시 이용. 자체 식사 1안 <a href="#azuma">아즈마 스시</a>, 2안 <a href="#wako">와코</a>. 오후 복귀 동선 확인</td></tr>
+          <tr><td>13:00~<br>15:00</td><td>팀 모임</td><td class="todo">가이드북상 확인 필요</td></tr>
+          <tr><td>15:00~<br>18:00</td><td>오후예배</td><td>설교, 찬양</td></tr>
+          <tr><td>18:00~<br>19:20</td><td>이동과 저녁</td><td class="todo">1안 <a href="#wako">와코</a>, 2안 <a href="#katsugyu">가츠규</a>. 현지 저녁 제공 시 이동 축소</td></tr>
+          <tr><td>19:20~<br>19:40</td><td>니시가와 <a href="https://www.google.com/maps/search/?api=1&amp;query=Nishigawa+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 방면 이동</td><td>산책 시작·종료 위치를 구글맵에 따로 저장</td></tr>
+          <tr><td>19:40~<br>20:10</td><td>니시가와 <a href="https://www.google.com/maps/search/?api=1&amp;query=Nishigawa+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 산책과 사진 (땅밟기)</td><td>일부 구간 왕복. 지나치게 긴 코스는 제외</td></tr>
+          <tr><td>20:10~<br>20:25</td><td>기도와 짧은 나눔</td><td>다른 보행자의 통행을 막지 않는 곳</td></tr>
+          <tr><td>20:25~<br>20:45</td><td>산스테 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 방면 이동</td><td>카페 입장 전 인원 확인</td></tr>
+          <tr><td>20:45~<br>21:30</td><td><a href="#karafuneya">가라후네야 CAFÉ</a></td><td class="todo">주문 10분·교제 30분·계산 5분. 라스트 오더 21:00 (20:45 입장 시 주문 가능)</td></tr>
+          <tr><td>21:30~<br>22:00</td><td>호텔 복귀와 정비</td><td>22시 전체 모임에 맞춰 복귀</td></tr>
+          <tr><td>22:00~<br>23:00</td><td>전체 나눔</td><td></td></tr>
+          <tr><td colspan="3"><strong>2안과 변경 기준</strong>: 가벼운 비에는 산책을 줄이고 카페로 일찍 이동합니다. 강한 비에는 산책 대신 카페 휴식과 허용된 공간의 기도·나눔을 검토합니다. 카페에서 9명 한 테이블이 어려우면 4명씩 분산 착석을 문의하고, 입장 대기가 10분을 넘거나 주문 마감이면 테이크아웃 또는 호텔 복귀로 바꿉니다. 카페는 대화·휴식용이며 단체 기도 장소로 가정하지 않습니다. 호텔 단체 모임 공간은 확보된 것으로 전제하지 않습니다.<br><strong>식사·카페 예상 (1인 기준)</strong>: 음료 700~1,000엔, 디저트 포함 1,200~1,800엔, 저녁 와코 1,500~2,500엔, 가츠규 <a href="https://www.google.com/maps/search/?api=1&amp;query=Katsugyu+Sun+Station+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 2,000~3,500엔. 앞선 날 이용한 식당과 중복되면 대안으로 교체합니다.<br>19시를 넘겨 외부 식사를 하면 땅밟기 앞부분을 조정하는 제안이므로, 인솔자와 먼저 협의합니다.</td></tr>
+        </table></div>
+      </details>
+
+      <details class="day" open data-date="2026-11-16">
+        <summary>16일 (월)</summary>
+        <div class="wrap"><table class="sched">
+          <tr><th>시간</th><th>프로그램</th><th>장소 / 비고</th></tr>
+          <tr><td>07:30~<br>08:00</td><td>호텔 조식</td><td>호텔 식당 · 조식 30분</td></tr>
+          <tr><td>08:00~<br>08:30</td><td>QT</td><td>호텔 식당 · QT 30분</td></tr>
+          <tr><td>08:30~<br>09:10</td><td>체크아웃·짐 보관</td><td></td></tr>
+          <tr><td>09:10~<br>09:20</td><td>택시 탑승과 인원 배정</td><td></td></tr>
+          <tr><td>09:20~<br>09:50</td><td>고라쿠엔 <a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 정문 이동·입장 준비</td><td class="todo">2안: 오카야마성 <a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 이동·입장 준비</td></tr>
+          <tr><td>09:50~<br>10:30</td><td>고라쿠엔 <a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 정문 입장 후 연못·잔디·성 방향 경관 짧게 관람</td><td class="todo">상세 도보 경로와 택시 재탑승 지점은 현장 안내도로 확정. 2안: 오카야마성 <a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 내부 관람 40분 제한</td></tr>
+          <tr><td>10:30~<br>11:00</td><td>사자나미 찻집 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sazanami+Chaya+Korakuen&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 티타임 (11월 09:00~16:30)</td><td class="todo">커피 500엔·말차 과자 세트 700엔. 9명 30분 이용 가능 여부 먼저 문의. 2안: 우조 카페 <a href="https://www.google.com/maps/search/?api=1&amp;query=Uzo+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a></td></tr>
+          <tr><td>11:00~<br>11:30</td><td>출구 이동·택시로 역 복귀</td><td class="todo">2안: 택시로 이온몰 이동</td></tr>
+          <tr><td>11:30~<br>12:15</td><td>점심</td><td>1안 <a href="#azuma">아즈마 스시</a>, 2안 <a href="#wako">와코 이온몰점</a></td></tr>
+          <tr><td>12:15~<br>12:30</td><td>구매 시간</td><td class="todo">1안 산스테 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sun+Station+Terrace+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 지역 과자, 2안 이온몰 필요한 구매</td></tr>
+          <tr><td>12:30~<br>12:50</td><td>호텔 이동·짐 회수</td><td>교회버스</td></tr>
+          <tr><td>12:50~<br>13:00</td><td>공항 차량 탑승</td><td></td></tr>
+          <tr><td>13:00~<br>14:30</td><td>다카마쓰공항 <a href="https://www.google.com/maps/search/?api=1&amp;query=Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 이동 예정</td><td class="todo">실제 소요시간 확인 필요</td></tr>
+          <tr><td>14:30~<br>16:30</td><td>수속 후 이른 저녁과 출국</td><td class="todo">15:00~15:30 가능 시 공항 1안 하야시야 <a href="https://www.google.com/maps/search/?api=1&amp;query=Hayashiya+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>, 2안 사누키 멘교 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sanuki+Menkyo+Takamatsu+Airport&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>. 수속·보안검색 우선</td></tr>
+          <tr><td>16:50~<br>18:35</td><td>다카마쓰 - 인천 이동</td><td>진에어 LJ300</td></tr>
+          <tr><td colspan="3"><strong>월요일 관광 선택 기준</strong>: 1안은 고라쿠엔 <a href="https://www.google.com/maps/search/?api=1&amp;query=Korakuen+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>과 사자나미 찻집 <a href="https://www.google.com/maps/search/?api=1&amp;query=Sazanami+Chaya+Korakuen&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>, 2안은 오카야마성 <a href="https://www.google.com/maps/search/?api=1&amp;query=Okayama+Castle&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a>과 우조 카페 <a href="https://www.google.com/maps/search/?api=1&amp;query=Uzo+Cafe+Okayama&amp;hl=ko" target="_blank" rel="noopener">☆ 지도</a> 중 하나를 고릅니다. 13시 출발과 14시 30분 공항 도착은 가이드북 배치이며, 실제 차량 이동시간은 아직 정해지지 않았습니다. 기사 확인 후 더 이른 출발이 필요하면 관광·카페·쇼핑을 줄입니다.<br><strong>출발시간을 지키는 변경 순서</strong>: 기념품 쇼핑 생략 → 카페 축소·생략 → 관광 단축. 점심 식당이 45분 내 이용을 확인해 주지 않으면 대체 식사로 바꿉니다. 강한 비나 공항 조기 출발이면 관광을 생략하고 역·이온몰의 이른 식사와 구매만 진행합니다.<br>후쿠다 찻집은 11시 개점이라 이번 오전 코스에서 제외했습니다.</td></tr>
+        </table></div>
+      </details>
+      <details class="day meal-choice">
+        <summary>식사 선택표</summary>
+        <p class="todo">모든 점심·저녁에 실제 식당 1안과 2안을 지정했습니다. 현지 제공 식사가 있으면 해당 끼니의 외부 식당은 예비안으로 전환합니다. 미확인 이동을 가능하다고 가정해 예약하지 않습니다. 예산은 1인 기준 편성액이며 확정 메뉴 가격이 아닙니다.</p>
+
+        <h3>금요일 점심 (14:00~14:45)</h3>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 점심·커피·호텔 동선 연결.</td></tr>
+          <tr><td>2안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 소고기 규카츠 정식</td><td>2,000~3,500엔. 역 남관 1층. 선택 시 커피도 역 주변 또는 테이크아웃으로 변경.</td></tr>
+        </table></div>
+
+        <h3>금요일 저녁 (18:00~19:00)</h3>
+        <p class="todo"><strong>10/31 모임</strong>: 생활관에서 기숙사생들과 라멘 저녁 예정이라 아래 식당은 예비안입니다.</p>
+        <p class="todo">생활관 방문 종료가 18시이므로 외부 식당 이동시간은 추가 확인 대상입니다. 19시 식사 종료가 불가능하면 운영팀과 저녁·호텔 복귀 구간을 함께 조정합니다. 제공 식사 여부 확인 전 외부 예약은 보류합니다.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 규카츠 정식</td><td>2,000~3,500엔. 점심에 이용했다면 저녁은 2안 선택.</td></tr>
+          <tr><td>2안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시 또는 초밥</td><td>2,000~3,500엔. 회 비선호·알레르기 대체 메뉴 문의.</td></tr>
+        </table></div>
+
+        <h3>토요일 점심 (12:00~13:00)</h3>
+        <p class="todo"><strong>10/31 모임</strong>: 아구리가든 식당에서 점심 예정이라 아래 식당은 예비안입니다.</p>
+        <p class="todo">기업탐방 장소에서 오카야마역 방면 복귀가 가능할 때의 실명 대안입니다. 현지 식사 포함 시 이용하지 않습니다. 방문지 주소가 확정되면 왕복 이동과 13시 산업시찰 복귀 가능 여부를 점검합니다.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td><a href="#fukuzushi">후쿠즈시</a> / 향토 바라즈시·치라시 계열</td><td>2,500~4,000엔. 역 서쪽 호칸초. 11:30 개점, 점심 입점 13:30까지.</td></tr>
+          <tr><td>2안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시 또는 초밥</td><td>2,000~3,500엔. 역 안 접근성 중심.</td></tr>
+        </table></div>
+
+        <h3>토요일 저녁 (18:00~19:00)</h3>
+        <p class="todo">18시 산업시찰 종료와 19시 사역 준비 사이에 식사·이동이 모두 가능한지 확인해야 합니다. 불가능하면 실명 후보를 그대로 강행하지 않고 방문지 인근 식당으로 재선정합니다. 후쿠즈시 점심·저녁을 모두 이용하는 계획은 아닙니다.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td><a href="#fukuzushi">후쿠즈시</a> / 초밥·향토요리 사전 주문</td><td>3,000~5,000엔. 9명 예약과 짧은 제공시간을 문의.</td></tr>
+          <tr><td>2안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 규카츠 정식</td><td>2,000~3,500엔. 예산·역 복귀 동선 대안.</td></tr>
+        </table></div>
+
+        <h3>주일 점심 (12:00~13:00)</h3>
+        <p class="todo">작년처럼 교회 교제 식사가 제공되면 그 식사를 우선합니다. 외부 식사일 때는 13시 팀 모임 복귀 가능 여부 확인이 필수이며, 두 식당이 교회 인근이라고 단정하지 않습니다.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시·초밥</td><td>2,000~3,500엔. 교회 식사 미제공 시 자체 식사 후보.</td></tr>
+          <tr><td>2안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 생선 비선호 대안.</td></tr>
+        </table></div>
+
+        <h3>주일 저녁 (18:00~19:20 제안)</h3>
+        <p class="todo">18시 교회 출발 후 이동까지 포함한 시간 제안입니다. 제공 저녁이 있으면 이용합니다. 외부 식사가 지연되면 카페 또는 산책을 줄이고 22시 호텔 모임은 유지합니다.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 식사 후 니시가와 산책 연결.</td></tr>
+          <tr><td>2안</td><td><a href="#katsugyu">가츠규 산스테점</a> / 규카츠 정식</td><td>2,000~3,500엔. 역에서 카페·호텔 복귀 연결.</td></tr>
+        </table></div>
+
+        <h3>월요일 점심 (11:30~12:15)</h3>
+        <p class="todo">45분 내 식사·계산 가능 여부를 사전에 문의합니다. 대기가 10분을 넘으면 현장에서 다른 맛집을 찾지 않고, 선택한 대안이나 사전 확보한 간단한 식사로 바꿉니다.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td><a href="#azuma">아즈마 스시 산스테점</a> / 바라즈시·초밥</td><td>2,000~3,500엔. 고라쿠엔 코스와 연결.</td></tr>
+          <tr><td>2안</td><td><a href="#wako">와코 이온몰점</a> / 돈카츠 정식</td><td>1,500~2,500엔. 성 코스·생선 비선호 대안.</td></tr>
+        </table></div>
+
+        <h3>월요일 저녁 대체용 공항 이른 식사</h3>
+        <p class="todo">16:50 출발·18:35 인천 도착이라 일본에서 통상적인 저녁 식사는 어렵습니다. 아래 두 곳은 15:00~15:30 전후의 이른 저녁 또는 간식 후보입니다. 11:30 점심과 가까우므로 팀 선택사항이며, 항공 수속 완료와 보안검색·탑승 여유가 확인될 때만 이용합니다. 기내식 제공은 가정하지 않습니다. 귀국 후 저녁은 팀 해산·귀가 동선에 맞춰 따로 정합니다.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>식당과 메뉴</th><th>예산과 적용</th></tr>
+          <tr><td>1안</td><td>하야시야 제면소 다카마쓰공항점 / 소금 붓카케 우동·튀김</td><td>1,000~1,800엔. 공항 1층, 08:00~20:00.</td></tr>
+          <tr><td>2안</td><td>사누키 멘교 다카마쓰공항점 / 우동·돈부리 세트</td><td>1,200~2,000엔. 공항 2층, 09:30~19:45.</td></tr>
+        </table></div>
+        <p class="todo"><strong>공항 식사 운영 기준</strong>: 공항 도착 지연·수속 대기·보안검색 혼잡 시 식사부터 생략합니다. 15:00~15:30 식사는 항공사의 절차와 탑승시간보다 우선하지 않습니다. 국제선 출국심사 이후 해당 매장에 다시 갈 수 있다고 가정하지 않습니다.</p>
+      </details>
+    </details>
+    <details id="travel" open>
+      <summary><h2>교통과 숙소</h2></summary>
+      <div class="card">
+        <p><strong>항공편 (인천 - 다카마쓰)</strong>: 가는 편은 에어서울 RS0297(인천공항 T2 → 다카마쓰공항 T1), 오는 편은 진에어 LJ300(다카마쓰공항 T1 → 인천공항 T2)입니다. 위탁수화물 각 15kg.</p>
+        <div class="wrap"><table>
+          <tr><th>구분</th><th>날짜</th><th>출발</th><th>도착</th><th>소요</th></tr>
+          <tr><td>출발 (인천 - 다카마쓰)</td><td>11/13(금)</td><td>08:45</td><td>10:30</td><td>105분</td></tr>
+          <tr><td>리턴 (다카마쓰 - 인천)</td><td>11/16(월)</td><td>16:50</td><td>18:35</td><td>105분</td></tr>
+        </table></div>
+        <ul>
+          <li><strong>현지 이동</strong>: 리버사이드교회에서 12~16인용 중형 버스를 제공합니다(10/31 모임 전달). 비용 지급은 다시 전달받기로 했고 11/5 모임에서 정리합니다. 교회 차량으로 이동합니다. 가는 날 다카마쓰공항에서 픽업하고, 오는 날 숙소에서 공항까지 이동합니다. 세부 시간은 확인 필요. 작년에는 교회가 버스, 운전자, 인솔자를 4일간 준비해 주셨고 비용은 약 20.3만 엔(약 185만 원)이었습니다.</li>
+          <li><strong>숙소</strong>: <a href="https://www3.apahotel.com/hotel/chushikoku/okayama/okayamaekimae" target="_blank" rel="noopener">아파호텔 오카야마에키마에 (APA HOTEL OKAYAMA-EKIMAE)</a> 공식 홈페이지. 교회에서 버스로 15분. 예약 완료: 11/13(금) ~ 11/16(월), 조식 포함.</li>
+          <li>주소: 1 Chome-3-12 Shimoishii, Kita Ward, Okayama</li>
+          <li>전화: +81 86-236-3111</li>
+        </ul>
+      </div>
+    </details>
+    <details id="budget" open>
+      <summary><h2>예산</h2></summary>
+      <p class="todo">예상 금액과 지출 현황 기준입니다. 차액은 예상 금액에서 지출을 뺀 값이며, 음수는 예상보다 많이 쓴 금액입니다.</p>
+      <div class="wrap"><table class="budget">
+        <tr><th>항목</th><th>예상(원)</th><th>단가(원)</th><th>수량</th><th>지출(원)</th><th>차액(원)</th></tr>
+        <tr><td>항공료</td><td>3,600,000</td><td>466,500</td><td>9</td><td>4,198,500</td><td>-598,500</td></tr>
+        <tr><td>숙박비</td><td>2,520,000</td><td>340,050</td><td>9</td><td>3,060,450</td><td>-540,450</td></tr>
+        <tr><td>여행자 보험</td><td>36,000</td><td>7,820</td><td>9</td><td>70,380</td><td>-34,380</td></tr>
+        <tr><td>사례비 (버스)</td><td>1,300,000</td><td></td><td></td><td>0</td><td>1,300,000</td></tr>
+        <tr><td>주유비</td><td>600,000</td><td></td><td></td><td>0</td><td>600,000</td></tr>
+        <tr><td>헌금</td><td>600,000</td><td></td><td></td><td>0</td><td>600,000</td></tr>
+        <tr><td>선물</td><td>1,200,000</td><td></td><td></td><td>0</td><td>1,200,000</td></tr>
+        <tr><td>식대</td><td>1,800,000</td><td></td><td></td><td>0</td><td>1,800,000</td></tr>
+        <tr><td>간식</td><td>270,000</td><td></td><td></td><td>0</td><td>270,000</td></tr>
+        <tr><td>예비비</td><td>674,000</td><td></td><td></td><td>0</td><td>674,000</td></tr>
+        <tr><td><strong>합계</strong></td><td><strong>12,600,000</strong></td><td></td><td></td><td><strong>7,329,330</strong></td><td><strong>5,270,670</strong></td></tr>
+        <tr><td><strong>회비 수입</strong></td><td colspan="5"><strong>12,600,000</strong> (1인 1,400,000 × 9인)</td></tr>
+        <tr><td><strong>잔액</strong></td><td colspan="5"><strong>5,270,670</strong> (회비 수입 − 지출 합계)</td></tr>
+      </table></div>
+      <p class="todo">9명 기준입니다. 항공료·숙박비·여행자 보험은 같은 단가로 9명분을 우선 적어 두었고, 실제 금액이 바뀌면 수정합니다. 예상 금액은 인원에 비례하는 항목(항공·숙박·보험·식대·간식)을 9명 기준으로 늘리고, 남는 금액은 예비비에 넣었습니다.</p>
+    </details>
+  </section>
+
+  <section class="group" id="group-special">
+    <div class="group-head">
+      <span class="group-no">03</span>
+      <h2 class="group-title">특순</h2>
+    </div>
+    <div class="sub-links"><a href="#special">특순</a><a href="#japanese-worship">일본어 찬양</a></div>
+    <details id="special" open>
+      <summary><h2>특순</h2></summary>
+      <div class="card">
+        <p><strong>무언극: 사랑을 나눠요</strong> (2025 여름 오이타 아웃리치 공연)</p>
+        <ul>
+          <li>
+            <strong>대본</strong>
+            <details class="script">
+              <summary>대본 펼쳐 보기</summary>
+              <h3>캐스팅</h3>
+              <ol>
+                <li>예수님 (가운, 가발) - 신범</li>
+                <li>주인공1 (하트 갯수) - 현우형</li>
+                <li>주인공2 - 시온님</li>
+                <li>노인 (지팡이) - 지호</li>
+                <li>난폭한 사람 (태권도복) - 성경</li>
+                <li>우는 사람 (우는 사람 얼굴 표정 스티커) - 지원님</li>
+                <li>떼쓰는 어린이 (모자 및 망토) - 은환</li>
+                <li>싸우는 친구들 (귀여운 의상) - 하은(한희), 혜린</li>
+                <li>아픈 사람 (깁스) - 유롭</li>
+              </ol>
+              <h3>소품</h3>
+              <ul>
+                <li>신범: 가운, 가발, 하트 튜브 및 하트 6개</li>
+                <li>현우형, 시온: 없음</li>
+                <li>지호: 지팡이나 보드(부술 것), 몸빼바지, 가발</li>
+                <li>성경: 태권도복</li>
+                <li>지원: 눈물 종이 (붙일 것)</li>
+                <li>은환: 어린이 모자, 망토</li>
+                <li>하은, 혜린: 공룡 에어슈트 2개</li>
+                <li>유롭: 손 깁스</li>
+              </ul>
+              <p class="todo">준비 필요: 가운, 가발 2개, 하트 튜브, 하트 7개, 몸빼바지, 태권도복, 눈물 종이, 모자, 망토, 에어슈트 2개, 손 깁스</p>
+              <h3>진행 순서</h3>
+              <p>음원 무한 반복 (약 10분 분량으로 조절 예정)</p>
+              <div class="wrap"><table>
+                <tr><th>시간</th><th>내용</th></tr>
+                <tr><td>0:05</td><td>신범 입장, 중앙 도달 후 현우, 시온 부름</td></tr>
+                <tr><td>0:10</td><td>신범 착석 후 두 주인공과 인사</td></tr>
+                <tr><td>0:20</td><td>보드 중 큰 하트(6)를 꺼내 표현하고 현우에게 전달 → 받은 현우가 신나서 표현</td></tr>
+                <tr><td>0:32</td><td>작은 하트(1)를 꺼내 시온에게 전달 (현우의 작은 하트를 보며 내 것이 훨씬 크다고 자랑)</td></tr>
+                <tr><td>0:40</td><td>시온 퇴장</td></tr>
+                <tr><td>0:45</td><td>지호가 지팡이를 짚으며 등장</td></tr>
+                <tr><td>0:55</td><td>지호가 현우에게 하트 달라고 요구, 현우 거절 (뒤에서 신범이 하트를 주라고 표현)</td></tr>
+                <tr><td>1:00</td><td>지호 퇴장, 신범이 현우를 부름</td></tr>
+                <tr><td>1:05</td><td>신범이 하트(6) 회수</td></tr>
+                <tr><td>1:15</td><td>더 작은 하트(5)를 관객에게 보여준 후 현우에게 전달</td></tr>
+                <tr><td>1:20</td><td>성경 등장, 중앙 이동 후 현우에게 하트 요구, 현우 거절 (앉은 신범이 하트를 표현)</td></tr>
+                <tr><td>1:35</td><td>성경 퇴장, 신범이 현우를 부름</td></tr>
+                <tr><td>1:40</td><td>신범이 하트(5) 회수 후 더 작은 하트를 보여준 뒤 현우에게 전달</td></tr>
+                <tr><td>1:50</td><td>지원 등장, 통곡하며 매달려 하트 달라고 요구, 현우 거절</td></tr>
+                <tr><td>2:10</td><td>지원 퇴장, 신범이 현우를 부름 (현우는 하트 주기 싫어하는 것을 표현하며 끌려가 줌)</td></tr>
+                <tr><td>2:25</td><td>현우가 관객을 향해 작아진 하트(4)를 보여주고, 괜찮아져서 다시 춤</td></tr>
+                <tr><td>2:30</td><td>은환 등장, 중앙 도달 후 현우에게 하트 요구</td></tr>
+                <tr><td>2:50</td><td>은환 퇴장, 신범이 골머리 아픈 표현</td></tr>
+                <tr><td>2:55</td><td>신범이 현우를 부름 (주기 싫어하는 현우와 부르는 신범)</td></tr>
+                <tr><td>3:10</td><td>신범이 하트 회수 후 더 작은 하트(3)로 전달 (현우가 무대 앞에서 작아진 하트를 보임)</td></tr>
+                <tr><td>3:15</td><td>하은, 혜린 등장 (싸우고 밀치다 현우에게 하트 달라고 표현, 현우 거절)</td></tr>
+                <tr><td>3:40</td><td>하은, 혜린 퇴장</td></tr>
+                <tr><td>3:45</td><td>신범이 현우를 부름 (주기 싫어하는 현우와 부르는 신범)</td></tr>
+                <tr><td>3:55</td><td>작은 하트(2) 전달</td></tr>
+                <tr><td>4:00</td><td>유롭, 깁스 상태로 등장 후 중앙 이동, 현우에게 하트 요구</td></tr>
+                <tr><td>4:15</td><td>거절당한 유롭 퇴장, 슬픈 신범이 다시 현우를 부름</td></tr>
+                <tr><td>4:25</td><td>신범이 하트 회수 후 손가락으로 하트를 만들어 현우에게 전달 → 현우 하트가 사라져 엉엉 울다 퇴장</td></tr>
+                <tr><td>4:35</td><td>시온 등장, 무대를 이동하며 하트를 보여주며 표현</td></tr>
+                <tr><td>4:40</td><td>지호 등장, 중앙 이동 후 시온에게 하트(1) 요구</td></tr>
+                <tr><td>4:50</td><td>시온이 하트 전달 → 지호가 받고 일어서서 지팡이를 부수고 하트를 들고 퇴장</td></tr>
+                <tr><td>5:00</td><td>지호 퇴장 후 신범이 시온을 불러 더 큰 하트(2) 전달</td></tr>
+                <tr><td>5:10</td><td>성경 등장, 폭력적으로 중앙 이동, 시온에게 하트(2) 요구</td></tr>
+                <tr><td>5:15</td><td>시온이 성경을 안아주며 하트(2)를 성경에게 전달</td></tr>
+                <tr><td>5:20</td><td>하트를 받은 성경이 시온과 손뼉 치다(변경 有) 퇴장</td></tr>
+                <tr><td>5:25</td><td>신범이 시온을 불러 손뼉 등을 칭찬하며 새로운 하트(3) 줌</td></tr>
+                <tr><td>5:35</td><td>지원 등장, 눈물을 표현하며 중앙 이동 후 시온에게 하트(3) 요구</td></tr>
+                <tr><td>5:50</td><td>지원이 시온에게 하트(3)를 받고 펄쩍 뛰며 눈물을 떼고 퇴장</td></tr>
+                <tr><td>5:55</td><td>신범이 시온을 불러 칭찬하며 새로운 하트(4) 줌 → 더 커진 하트를 받고 신난 시온 표현</td></tr>
+                <tr><td>6:05</td><td>은환 등장, 중앙 이동 후 시온에게 하트(4) 요구</td></tr>
+                <tr><td>6:15</td><td>은환을 발견한 시온이 하트(4) 전달, 함께 타이밍 맞춰 뛰기 후 은환 퇴장. 이후 신범이 시온을 불러 칭찬하고 더 큰 하트(5) 전달, 받고 신난 시온</td></tr>
+                <tr><td>6:35</td><td>하은, 혜린 등장, 중앙 이동해 서로 다투다 시온을 발견하고 하트(5) 요구</td></tr>
+                <tr><td>6:50</td><td>시온이 하은, 혜린을 발견하고 둘 사이에 하트를 주며 셋이 화해함을 표현</td></tr>
+                <tr><td>7:00</td><td>하은, 혜린 퇴장, 신범이 시온을 불러 칭찬한 뒤 더 큰 하트(6) 전달</td></tr>
+                <tr><td>7:15</td><td>유롭 등장, 중앙 이동 후 시온에게 하트(6) 요구</td></tr>
+                <tr><td>7:25</td><td>하트를 받은 유롭이 기브스를 풀어헤치며 하트를 머리 위로 흔들고 퇴장</td></tr>
+                <tr><td>7:30</td><td>신범이 시온을 불러 칭찬하며 더 큰 하트를 꺼내 표현한 뒤 시온에게 전달</td></tr>
+                <tr><td>7:45</td><td>현우가 울면서 등장, 중앙 이동해 큰 하트를 든 시온을 보며 하트 달라고 요구</td></tr>
+                <tr><td>7:55</td><td>하트를 전달해 주는 시온을 보며 신범이 시온과 현우를 부름. 신범 양옆에서 시온과 현우가 하트 튜브를 전달받음</td></tr>
+                <tr><td>8:10</td><td>둘이 하트를 들려 하나 이리저리 흔들리다 다른 친구들을 부름</td></tr>
+                <tr><td>8:15</td><td>전부 나와서 하트 튜브를 보이며 좌로 우로 흔들림</td></tr>
+                <tr><td>8:30</td><td>중앙으로 이동 후 모두 멈춰 서서 신범을 부름</td></tr>
+                <tr><td>마무리</td><td>신범이 나와서 함께 "하나 둘 셋"을 외친 후 하트를 번쩍 들며 마무리</td></tr>
+              </table></div>
+            </details>
+          </li>
+          <li><strong>참고 영상</strong>: <a href="https://youtu.be/L9w_wRXBebA?si=qs2r3RnMbtcXy5qf" target="_blank" rel="noopener">유튜브 참고 영상 보기</a></li>
+          <li><strong>준비</strong>: 소품은 하트를 제외하고 기존 것이 있습니다. 역할 분담과 준비는 11/5(목) 모임에서 정합니다.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p><strong>찬양: 주님 다시 오실 때까지</strong></p>
+        <ul>
+          <li>1절은 한국팀이 한국어로, 2절은 일본어로 부릅니다.</li>
+          <li>후렴은 리버사이드 교우들과 함께 부릅니다.</li>
+          <li>시작할 때나 중간에 나레이션 또는 인사말을 넣을 수 있습니다.</li>
+          <li><strong>한국어 찬양 참고 영상</strong>: <a href="https://youtu.be/xkKvqxHUBsk?si=0pULwYdnwpxsZ_s-" target="_blank" rel="noopener">유튜브에서 보기</a></li>
+          <li><strong>일본어 찬양 참고 영상</strong>: <a href="https://youtu.be/BIUoSz0oKvU?si=HxAUs6hKyCu_KDwf" target="_blank" rel="noopener">유튜브에서 보기</a></li>
+          <li><strong>일본어 가사 악보 (C키)</strong>: 일본어 원문, 가나 독음, 한글 발음 포함
+            <details class="script" open>
+              <summary>가사 보기 (한국어 · 일본어 · 한글 발음)</summary>
               <p class="lyric-part">1절</p>
-              <a href="score/jusim-dasi-c-1-1.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-1.png" alt="주님 다시 오실 때까지 1절 악보 1째 줄" loading="lazy"></a>
-              <a href="score/jusim-dasi-c-1-2.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-2.png" alt="주님 다시 오실 때까지 1절 악보 2째 줄" loading="lazy"></a>
-              <a href="score/jusim-dasi-c-1-3.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-3.png" alt="주님 다시 오실 때까지 1절 악보 3째 줄" loading="lazy"></a>
-              <a href="score/jusim-dasi-c-1-4.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-4.png" alt="주님 다시 오실 때까지 1절 악보 4째 줄" loading="lazy"></a>
+              <div class="lyric"><p class="ly-ko">주님 다시 오실 때까지 나는 이 길을 가리라</p><p class="ly-ja" lang="ja">主が来られる日まで この道を歩む</p><p class="ly-pr">슈가 코라레루 히마데 코노 미치오 아유무</p></div>
+              <div class="lyric"><p class="ly-ko">좁은 문 좁은 길 나의 십자가 지고</p><p class="ly-ja" lang="ja">せまき道を 十字架をせおい</p><p class="ly-pr">세마키 미치오 쥬지가오 세오이</p></div>
+              <div class="lyric"><p class="ly-ko">나의 가는 이 길 끝에서 나는 주님을 보리라</p><p class="ly-ja" lang="ja">その道のはてに立ち 主を見上げるとき</p><p class="ly-pr">소노 미치노 하테니 타치 슈오 미아게루 토키</p></div>
+              <div class="lyric"><p class="ly-ko">영광의 내 주님 나를 맞아주시리</p><p class="ly-ja" lang="ja">栄光の主よ 受け入れたまえ</p><p class="ly-pr">에이코오노 슈요우 우케이레타마에</p></div>
               <p class="lyric-part">후렴</p>
-              <a href="score/jusim-dasi-c-2-1.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-1.png" alt="주님 다시 오실 때까지 후렴 악보 1째 줄" loading="lazy"></a>
-              <a href="score/jusim-dasi-c-2-2.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-2.png" alt="주님 다시 오실 때까지 후렴 악보 2째 줄" loading="lazy"></a>
-              <a href="score/jusim-dasi-c-2-3.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-3.png" alt="주님 다시 오실 때까지 후렴 악보 3째 줄" loading="lazy"></a>
-              <a href="score/jusim-dasi-c-2-4.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-4.png" alt="주님 다시 오실 때까지 후렴 악보 4째 줄" loading="lazy"></a>
-            </div>
-            <p class="todo">PDF 원본: <a href="jusim-dasi-japanese-score-c.pdf" target="_blank" rel="noopener">내려받기·인쇄용 PDF 열기</a></p>
-          </details>
-        </li>
-      </ul>
-    </div>
-    <p class="todo">11/15(주일) 리버사이드교회 예배 특순은 스킷 드라마와 찬양 두 가지입니다 (10/31 모임 결정).</p>
-  </details>
+              <div class="lyric"><p class="ly-ko">주님 다시 오실 때까지 나는 일어나 달려가리라</p><p class="ly-ja" lang="ja">主が来られる日まで 立ち上がり走り行く</p><p class="ly-pr">슈가 코라레루 히마데 타치아가리 하시리유쿠</p></div>
+              <div class="lyric"><p class="ly-ko">주의 영광 온 땅 덮을 때 나는 일어나 노래하리</p><p class="ly-ja" lang="ja">主の栄光みちあふれ 立ち上がり賛美する</p><p class="ly-pr">슈노 에이코오 미치아후레 타치아가리 산비스루</p></div>
+              <div class="lyric"><p class="ly-ko">내 사모하는 주님 온 세상 구주시라</p><p class="ly-ja" lang="ja">メシアなるイエスよ われはまちのぞむ</p><p class="ly-pr">메시아나루 이에스요 와레와 마치노조무</p></div>
+              <div class="lyric"><p class="ly-ko">내 사모하는 주님 영광의 왕이시라</p><p class="ly-ja" lang="ja">栄光の王主よ われはしたがう</p><p class="ly-pr">에이코오노 오오슈요 와레와 시타가우</p></div>
+              <p class="todo">일본어는 보내 주신 영상 버전이며, 공식 번역으로 따로 확인한 문안은 아닙니다.</p>
+            </details>
+            <details class="script">
+              <summary>악보 바로 보기</summary>
+              <div class="score-zoom" role="group" aria-label="악보 크기">
+                <button type="button" data-zoom="100" aria-pressed="true">기본</button>
+                <button type="button" data-zoom="160">크게</button>
+                <button type="button" data-zoom="230">아주 크게</button>
+              </div>
+              <p class="todo">크게 보기를 누르면 옆으로 밀어서 볼 수 있습니다. 악보 줄을 누르면 새 창에서 확대해 볼 수 있습니다.</p>
+              <div class="score-wrap" data-zoom="100">
+                <p class="lyric-part">1절</p>
+                <a href="score/jusim-dasi-c-1-1.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-1.png" alt="주님 다시 오실 때까지 1절 악보 1째 줄" loading="lazy"></a>
+                <a href="score/jusim-dasi-c-1-2.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-2.png" alt="주님 다시 오실 때까지 1절 악보 2째 줄" loading="lazy"></a>
+                <a href="score/jusim-dasi-c-1-3.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-3.png" alt="주님 다시 오실 때까지 1절 악보 3째 줄" loading="lazy"></a>
+                <a href="score/jusim-dasi-c-1-4.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-1-4.png" alt="주님 다시 오실 때까지 1절 악보 4째 줄" loading="lazy"></a>
+                <p class="lyric-part">후렴</p>
+                <a href="score/jusim-dasi-c-2-1.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-1.png" alt="주님 다시 오실 때까지 후렴 악보 1째 줄" loading="lazy"></a>
+                <a href="score/jusim-dasi-c-2-2.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-2.png" alt="주님 다시 오실 때까지 후렴 악보 2째 줄" loading="lazy"></a>
+                <a href="score/jusim-dasi-c-2-3.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-3.png" alt="주님 다시 오실 때까지 후렴 악보 3째 줄" loading="lazy"></a>
+                <a href="score/jusim-dasi-c-2-4.png" target="_blank" rel="noopener"><img class="score" src="score/jusim-dasi-c-2-4.png" alt="주님 다시 오실 때까지 후렴 악보 4째 줄" loading="lazy"></a>
+              </div>
+              <p class="todo">PDF 원본: <a href="jusim-dasi-japanese-score-c.pdf" target="_blank" rel="noopener">내려받기·인쇄용 PDF 열기</a></p>
+            </details>
+          </li>
+        </ul>
+      </div>
+      <p class="todo">11/15(주일) 리버사이드교회 예배 특순은 스킷 드라마와 찬양 두 가지입니다 (10/31 모임 결정).</p>
+    </details>
+    <details id="japanese-worship" open>
+      <summary><h2>일본어 찬양</h2></summary>
+      <div class="card">
+        <ul>
+          <li><strong>참고 영상</strong>: <a href="https://www.youtube.com/live/kof8s21RGJQ?si=IVxW5kCxiebhhOoz" target="_blank" rel="noopener">유튜브 참고 영상 보기</a></li>
+        </ul>
+      </div>
+    </details>
+  </section>
 
-  <details id="japanese-worship" open>
-    <summary><h2>일본어 찬양</h2></summary>
-    <div class="card">
-      <ul>
-        <li><strong>참고 영상</strong>: <a href="https://www.youtube.com/live/kof8s21RGJQ?si=IVxW5kCxiebhhOoz" target="_blank" rel="noopener">유튜브 참고 영상 보기</a></li>
-      </ul>
+  <section class="group" id="group-materials">
+    <div class="group-head">
+      <span class="group-no">04</span>
+      <h2 class="group-title">자료실</h2>
     </div>
-  </details>
-
-  <details id="materials" open>
-    <summary><h2>자료실</h2></summary>
-    <div class="sub-links"><a href="#prep">준비물</a><a href="#contacts">연락처</a></div>
-    <div class="card">
-      <p>자료 업로드와 의견 남기기는 이 페이지만으로는 할 수 없습니다. 아래 도구를 함께 쓰세요.</p>
-      <ul>
-        <li><strong>사진과 영상 업로드</strong>: <a href="https://drive.google.com/drive/folders/1E9jMo0z8Z4lL4tnvzRj1EZFrviV-lxtf?usp=sharing" target="_blank" rel="noopener">구글 드라이브 자료실 열기</a></li>
-        <li><strong>비전트립 수기 쓰기</strong>: <a href="https://docs.google.com/document/d/1Tiz556s65TgTiMRy9DGjB89zU2-Ok_sFjpW9e5WOAYg/edit?usp=drive_link" target="_blank" rel="noopener">비전트립 수기 문서 열기</a></li>
-        <li><strong>의견과 질문 남기기</strong>: <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2XkL92OzXqNuP6l0A7B3wXWuADAf9092DmkJy_kn8EUMvNA/viewform?usp=publish-editor" target="_blank" rel="noopener">의견과 질문 폼 열기</a></li>
-      </ul>
-    </div>
-  </details>
-
-  <details id="prep" open>
-    <summary><h2>준비물과 유의사항</h2></summary>
-    <div class="card" id="gifts">
-      <p><strong>리버사이드교회 감사 선물</strong> (10/31 모임 결정)</p>
-      <ul>
-        <li>작년처럼 올리브영에서 인원수에 맞게 구성</li>
-        <li>수량: 성인 120명, 어린이 30명 예상 + 여분</li>
-        <li>예산: 120만 원 선 (상황에 따라 여분 추가)</li>
-        <li>운반: 대형 포장으로 한 번에 화물 이동 → 첫날(13일) 자유시간에 개별 포장</li>
-        <li>필요 물품: 1인 1세트용 작은 쇼핑백, 봉합용 환영 스티커 (이제헌 집사님 부부가 알아봐 주시기로 함)</li>
-      </ul>
-    </div>
-    <p class="todo">그 밖의 준비물 목록과 유의사항은 확정되면 추가합니다.</p>
-  </details>
-
-  <details id="contacts" open>
-    <summary><h2>연락처</h2></summary>
-    <div class="wrap"><table>
-      <tr><th>역할</th><th>이름</th></tr>
-      <tr><td>인솔자</td><td>이준인 목사님</td></tr>
-      <tr><td>팀장</td><td>조남준 형제님</td></tr>
-      <tr><td>회계</td><td>이민섭 형제님</td></tr>
-      <tr><td>총무</td><td>이찬호 형제님</td></tr>
-      <tr><td>액티비티</td><td>조영근 형제님</td></tr>
-      <tr><td>서기 (영상, 사진 기록)</td><td>이제헌 형제님</td></tr>
-      <tr><td>블레싱(QT) &amp; 가이드북</td><td>강병도 형제님</td></tr>
-      <tr><td>특순</td><td>이규현 형제님</td></tr>
-      <tr><td></td><td>이선기 형제님</td></tr>
-    </table></div>
-    <p class="todo">전화번호는 추후 추가합니다.</p>
-  </details>
+    <div class="sub-links"><a href="#materials">자료실</a><a href="#prep">준비물</a><a href="#contacts">연락처</a></div>
+    <details id="materials" open>
+      <summary><h2>자료실</h2></summary>
+      <div class="card">
+        <p>자료 업로드와 의견 남기기는 이 페이지만으로는 할 수 없습니다. 아래 도구를 함께 쓰세요.</p>
+        <ul>
+          <li><strong>사진과 영상 업로드</strong>: <a href="https://drive.google.com/drive/folders/1E9jMo0z8Z4lL4tnvzRj1EZFrviV-lxtf?usp=sharing" target="_blank" rel="noopener">구글 드라이브 자료실 열기</a></li>
+          <li><strong>비전트립 수기 쓰기</strong>: <a href="https://docs.google.com/document/d/1Tiz556s65TgTiMRy9DGjB89zU2-Ok_sFjpW9e5WOAYg/edit?usp=drive_link" target="_blank" rel="noopener">비전트립 수기 문서 열기</a></li>
+          <li><strong>의견과 질문 남기기</strong>: <a href="https://docs.google.com/forms/d/e/1FAIpQLSf2XkL92OzXqNuP6l0A7B3wXWuADAf9092DmkJy_kn8EUMvNA/viewform?usp=publish-editor" target="_blank" rel="noopener">의견과 질문 폼 열기</a></li>
+        </ul>
+      </div>
+    </details>
+    <details id="prep" open>
+      <summary><h2>준비물과 유의사항</h2></summary>
+      <div class="card" id="gifts">
+        <p><strong>리버사이드교회 감사 선물</strong> (10/31 모임 결정)</p>
+        <ul>
+          <li>작년처럼 올리브영에서 인원수에 맞게 구성</li>
+          <li>수량: 성인 120명, 어린이 30명 예상 + 여분</li>
+          <li>예산: 120만 원 선 (상황에 따라 여분 추가)</li>
+          <li>운반: 대형 포장으로 한 번에 화물 이동 → 첫날(13일) 자유시간에 개별 포장</li>
+          <li>필요 물품: 1인 1세트용 작은 쇼핑백, 봉합용 환영 스티커 (이제헌 집사님 부부가 알아봐 주시기로 함)</li>
+        </ul>
+      </div>
+      <p class="todo">그 밖의 준비물 목록과 유의사항은 확정되면 추가합니다.</p>
+    </details>
+    <details id="contacts" open>
+      <summary><h2>연락처</h2></summary>
+      <div class="wrap"><table>
+        <tr><th>역할</th><th>이름</th></tr>
+        <tr><td>인솔자</td><td>이준인 목사님</td></tr>
+        <tr><td>팀장</td><td>조남준 형제님</td></tr>
+        <tr><td>회계</td><td>이민섭 형제님</td></tr>
+        <tr><td>총무</td><td>이찬호 형제님</td></tr>
+        <tr><td>액티비티</td><td>조영근 형제님</td></tr>
+        <tr><td>서기 (영상, 사진 기록)</td><td>이제헌 형제님</td></tr>
+        <tr><td>블레싱(QT) &amp; 가이드북</td><td>강병도 형제님</td></tr>
+        <tr><td>특순</td><td>이규현 형제님</td></tr>
+        <tr><td></td><td>이선기 형제님</td></tr>
+      </table></div>
+      <p class="todo">전화번호는 추후 추가합니다.</p>
+    </details>
+  </section>
 
   <a class="to-top" href="#top">위로 ↑</a>
 </main>
