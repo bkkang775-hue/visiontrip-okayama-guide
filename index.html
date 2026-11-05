@@ -81,7 +81,11 @@
 
   /* Section groups */
   .group { margin:18px 0; padding:14px 12px 4px; border-radius:22px; background:var(--surface-2); scroll-margin-top:60px; }
-  .group-head { display:flex; align-items:baseline; gap:10px; padding:2px 4px 8px; }
+  .group-head { display:flex; align-items:baseline; gap:10px; padding:2px 4px 8px; list-style:none; cursor:pointer; }
+  .group-head::-webkit-details-marker { display:none; }
+  .group-head::after { content:"접기"; margin-left:auto; align-self:center; font-size:0.75rem; color:var(--muted); background:var(--surface); padding:2px 10px; border-radius:999px; }
+  .group:not([open]) > .group-head::after { content:"펼치기"; color:var(--accent); background:var(--accent-soft); }
+  .group:not([open]) { padding-bottom:10px; }
   .group-no { font-family:var(--font-display); font-size:0.9rem; color:var(--accent); font-variant-numeric:tabular-nums; }
   .group-title { margin:0; font-family:var(--font-display); font-size:1.45rem; color:var(--fg); }
   .group .sub-links { padding:0 2px; }
@@ -219,11 +223,11 @@
     <p class="verse-en">“The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance.” <span class="verse-ref">시편 16:6</span></p>
   </div>
 
-  <section class="group" id="group-overview">
-    <div class="group-head">
+  <details class="group" id="group-overview" open>
+    <summary class="group-head">
       <span class="group-no">01</span>
       <h2 class="group-title">개요</h2>
-    </div>
+    </summary>
     <div class="sub-links"><a href="#overview">트립 개요</a><a href="#city">오카야마 소개</a><a href="#sights">관광과 쇼핑</a><a href="#food">맛집</a></div>
     <details id="overview" open>
       <summary><h2>트립 개요</h2></summary>
@@ -553,13 +557,13 @@
         </div>
       </div>
     </details>
-  </section>
+  </details>
 
-  <section class="group" id="group-schedule">
-    <div class="group-head">
+  <details class="group" id="group-schedule" open>
+    <summary class="group-head">
       <span class="group-no">02</span>
       <h2 class="group-title">일정</h2>
-    </div>
+    </summary>
     <div class="sub-links"><a href="#meeting">준비모임</a><a href="#schedule">일정</a><a href="#travel">교통과 숙소</a></div>
     <details id="meeting" open>
       <summary><h2>준비모임</h2></summary>
@@ -784,13 +788,13 @@
         </ul>
       </div>
     </details>
-  </section>
+  </details>
 
-  <section class="group" id="group-special">
-    <div class="group-head">
+  <details class="group" id="group-special" open>
+    <summary class="group-head">
       <span class="group-no">03</span>
       <h2 class="group-title">특순</h2>
-    </div>
+    </summary>
     <div class="sub-links"><a href="#special">특순</a><a href="#japanese-worship">일본어 찬양</a></div>
     <details id="special" open>
       <summary><h2>특순</h2></summary>
@@ -946,13 +950,13 @@
         </ul>
       </div>
     </details>
-  </section>
+  </details>
 
-  <section class="group" id="group-materials">
-    <div class="group-head">
+  <details class="group" id="group-materials" open>
+    <summary class="group-head">
       <span class="group-no">04</span>
       <h2 class="group-title">자료실</h2>
-    </div>
+    </summary>
     <div class="sub-links"><a href="#materials">자료실</a><a href="#budget">예산</a><a href="#prep">준비물</a><a href="#contacts">연락처</a></div>
     <details id="materials" open>
       <summary><h2>자료실</h2></summary>
@@ -1016,7 +1020,7 @@
       </table></div>
       <p class="todo">전화번호는 추후 추가합니다.</p>
     </details>
-  </section>
+  </details>
 
   <a class="to-top" href="#top">위로 ↑</a>
 </main>
