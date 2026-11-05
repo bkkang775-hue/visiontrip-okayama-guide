@@ -170,10 +170,14 @@
   @media (max-width: 600px) {
     .group > details { padding:2px 12px 12px; border-radius:14px; }
     .hero { padding:18px 16px 14px; border-radius:16px; }
-    table.budget { font-size:0.78rem; }
+    table.budget { font-size:0.74rem; }
     table.budget th, table.budget td { padding:5px 3px; }
     table.budget th:nth-child(3), table.budget td:nth-child(3),
-    table.budget th:nth-child(4), table.budget td:nth-child(4) { display:none; }
+    table.budget th:nth-child(4), table.budget td:nth-child(4),
+    table.budget th:nth-child(5), table.budget td:nth-child(5) { display:none; }
+    table.budget td:first-child { white-space:nowrap; }
+    table.budget td, table.budget th { font-variant-numeric:tabular-nums; }
+    .budget-note-mobile { display:block !important; }
     table.sched { font-size:0.84rem; }
     table.sched th, table.sched td { padding:6px 5px; }
   }
@@ -1034,24 +1038,29 @@
     </details>
     <details id="budget">
       <summary><h2>예산</h2></summary>
-      <p class="todo">예상 금액과 지출 현황 기준입니다. 차액은 예상 금액에서 지출을 뺀 값이며, 음수는 예상보다 많이 쓴 금액입니다.</p>
+      <p class="todo">차액은 예상 금액에서 지출을 뺀 값이며, 음수는 예상보다 많이 쓴 금액입니다.</p>
+      <p class="todo budget-note-mobile" style="display:none;">휴대폰 화면에서는 단가·수량·차액 칸을 숨깁니다. PC에서 보면 모든 칸이 나옵니다.</p>
       <div class="wrap"><table class="budget">
-        <tr><th>항목</th><th>예상(원)</th><th>단가(원)</th><th>수량</th><th>지출(원)</th><th>차액(원)</th></tr>
-        <tr><td>항공료</td><td>3,600,000</td><td>466,500</td><td>9</td><td>4,198,500</td><td>-598,500</td></tr>
-        <tr><td>숙박비</td><td>2,520,000</td><td>340,050</td><td>9</td><td>3,060,450</td><td>-540,450</td></tr>
-        <tr><td>여행자 보험</td><td>36,000</td><td>7,820</td><td>9</td><td>70,380</td><td>-34,380</td></tr>
-        <tr><td>사례비 (버스)</td><td>1,300,000</td><td></td><td></td><td>0</td><td>1,300,000</td></tr>
-        <tr><td>주유비</td><td>600,000</td><td></td><td></td><td>0</td><td>600,000</td></tr>
-        <tr><td>헌금</td><td>600,000</td><td></td><td></td><td>0</td><td>600,000</td></tr>
-        <tr><td>선물</td><td>1,200,000</td><td></td><td></td><td>0</td><td>1,200,000</td></tr>
-        <tr><td>식대</td><td>1,800,000</td><td></td><td></td><td>0</td><td>1,800,000</td></tr>
-        <tr><td>간식</td><td>270,000</td><td></td><td></td><td>0</td><td>270,000</td></tr>
-        <tr><td>예비비</td><td>674,000</td><td></td><td></td><td>0</td><td>674,000</td></tr>
-        <tr><td><strong>합계</strong></td><td><strong>12,600,000</strong></td><td></td><td></td><td><strong>7,329,330</strong></td><td><strong>5,270,670</strong></td></tr>
-        <tr><td><strong>회비 수입</strong></td><td colspan="5"><strong>12,600,000</strong> (1인 1,400,000 × 9인)</td></tr>
-        <tr><td><strong>잔액</strong></td><td colspan="5"><strong>5,270,670</strong> (회비 수입 − 지출 합계)</td></tr>
+        <tr><th>항목</th><th>예상(원)</th><th>단가(원)</th><th>수량</th><th>차액(원)</th><th>지출(원)</th><th>잔액(원)</th></tr>
+        <tr><td>항공료</td><td>3,200,000</td><td>466,500</td><td>8</td><td>-532,000</td><td>3,732,000</td><td>8,868,000</td></tr>
+        <tr><td>항공료 (추가)</td><td>400,000</td><td>463,100</td><td>1</td><td>-63,100</td><td>463,100</td><td>8,404,900</td></tr>
+        <tr><td>숙박비</td><td>2,240,000</td><td>340,050</td><td>8</td><td>-480,400</td><td>2,720,400</td><td>5,684,500</td></tr>
+        <tr><td>숙박비 (추가)</td><td>280,000</td><td>342,000</td><td>1</td><td>-62,000</td><td>342,000</td><td>5,342,500</td></tr>
+        <tr><td>여행자 보험</td><td>32,000</td><td>62,560</td><td>1</td><td>-30,560</td><td>62,560</td><td>5,279,940</td></tr>
+        <tr><td>보험 (추가)</td><td>8,000</td><td>8,710</td><td>1</td><td>-710</td><td>8,710</td><td>5,271,230</td></tr>
+        <tr><td>사례비 (버스)</td><td>1,300,000</td><td>1,800,000</td><td>1</td><td>-500,000</td><td>1,800,000</td><td>3,471,230</td></tr>
+        <tr><td>주유비</td><td>600,000</td><td></td><td></td><td>600,000</td><td>0</td><td>3,471,230</td></tr>
+        <tr><td>헌금</td><td>600,000</td><td>600,000</td><td>1</td><td>0</td><td>600,000</td><td>2,871,230</td></tr>
+        <tr><td>선물</td><td>1,200,000</td><td>1,200,000</td><td>1</td><td>0</td><td>1,200,000</td><td>1,671,230</td></tr>
+        <tr><td>식대</td><td>1,600,000</td><td>200,000</td><td>4</td><td>800,000</td><td>800,000</td><td>871,230</td></tr>
+        <tr><td>간식</td><td>240,000</td><td></td><td></td><td>240,000</td><td>0</td><td>871,230</td></tr>
+        <tr><td>예비비</td><td>188,000</td><td></td><td></td><td>188,000</td><td>0</td><td>871,230</td></tr>
+        <tr><td>식사 대접</td><td>650,000</td><td>650,000</td><td>1</td><td>0</td><td>650,000</td><td>221,230</td></tr>
+        <tr><td><strong>합계</strong></td><td><strong>12,538,000</strong></td><td></td><td></td><td><strong>159,230</strong></td><td><strong>12,378,770</strong></td><td><strong>221,230</strong></td></tr>
+        <tr><td><strong>회비 수입</strong></td><td colspan="6"><strong>12,600,000</strong> (1인 1,400,000 × 9인)</td></tr>
+        <tr><td><strong>잔액</strong></td><td colspan="6"><strong>221,230</strong> (회비 수입 − 지출 합계)</td></tr>
       </table></div>
-      <p class="todo">9명 기준입니다. 항공료·숙박비·여행자 보험은 같은 단가로 9명분을 우선 적어 두었고, 실제 금액이 바뀌면 수정합니다. 예상 금액은 인원에 비례하는 항목(항공·숙박·보험·식대·간식)을 9명 기준으로 늘리고, 남는 금액은 예비비에 넣었습니다.</p>
+      <p class="todo">9명 기준입니다. 추가 인원(이선기 형제님)의 항공·숙박·보험은 따로 적었습니다. 잔액은 회비 수입 12,600,000원에서 지출을 위에서부터 차례로 뺀 금액입니다.</p>
     </details>
     <details id="prep">
       <summary><h2>준비물과 유의사항</h2></summary>
