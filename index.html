@@ -63,7 +63,7 @@
   .nav { position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; display:flex; flex-wrap:wrap; gap:6px; padding:8px 0; margin:0 0 6px; background:var(--bg); }
   .nav a { flex:0 0 auto; text-align:center; white-space:nowrap; text-decoration:none; font-size:0.85rem; color:var(--fg); background:var(--surface); border:1px solid var(--line); padding:5px 12px; border-radius:999px; }
   @media (max-width: 700px) {
-    .nav { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:5px; }
+    .nav { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:5px; }
     .nav a { font-size:0.74rem; padding:5px 2px; letter-spacing:-0.02em; }
   }
   .sub-links { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px; }
@@ -123,6 +123,11 @@
   tr:last-child > td { border-bottom:none; }
   th { background:var(--surface-2); color:var(--muted); font-weight:600; font-size:0.82rem; }
   td[colspan] { background:var(--surface-2); font-size:0.86rem; }
+  #summary > .wrap td:first-child { white-space:nowrap; color:var(--muted); font-size:0.86rem; }
+  #summary table.sched th:nth-child(1), #summary table.sched td:nth-child(1) { width:19%; }
+  #summary table.sched th:nth-child(2), #summary table.sched td:nth-child(2) { width:33%; }
+  #summary table.sched th:nth-child(3), #summary table.sched td:nth-child(3) { width:48%; }
+  #summary .meeting-body { padding:10px 8px; }
   #overview td:first-child, #contacts td:first-child { white-space:nowrap; color:var(--muted); font-size:0.86rem; }
   table.sched { table-layout:fixed; }
   table.sched th, table.sched td { overflow-wrap:anywhere; }
@@ -225,13 +230,108 @@
     <div class="meta">기준일: 2026-11-02</div>
   </header>
   <nav class="nav">
-    <a href="#group-overview">개요</a><a href="#group-schedule">일정</a><a href="#group-special">특순</a><a href="#group-materials">자료실</a>
+    <a href="#group-summary">요약</a><a href="#group-overview">개요</a><a href="#group-schedule">일정</a><a href="#group-special">특순</a><a href="#group-materials">자료실</a>
   </nav>
 
   <div class="card verse">
     <p class="verse-ko">“내게 줄로 재어 준 구역은 아름다운 곳에 있음이여 나의 기업이 실로 아름답도다.”</p>
     <p class="verse-en">“The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance.” <span class="verse-ref">시편 16:6</span></p>
   </div>
+
+  <details class="group" id="group-summary" open>
+    <summary class="group-head">
+      <span class="group-no">00</span>
+      <h2 class="group-title">일정 요약</h2>
+    </summary>
+    <details id="summary" open>
+      <summary><h2>한눈에 보기</h2></summary>
+      <div class="wrap"><table>
+        <tr><th>항목</th><th>내용</th></tr>
+        <tr><td>기간</td><td>2026년 11월 13일(금)~16일(월), 3박 4일, 9명</td></tr>
+        <tr><td>가는 편</td><td>11/13(금) 08:45 인천 T2 → 10:30 다카마쓰 · 에어서울 RS0297</td></tr>
+        <tr><td>오는 편</td><td>11/16(월) 16:50 다카마쓰 → 18:35 인천 T2 · 진에어 LJ300</td></tr>
+        <tr><td>숙소</td><td>아파호텔 오카야마에키마에 (조식 포함)</td></tr>
+        <tr><td>방문 교회</td><td>리버사이드처치 오카야마교회 · 〒700-0072 岡山市北区万成東町10-26</td></tr>
+        <tr><td>현지 이동</td><td>교회 제공 12~16인승 중형 버스</td></tr>
+      </table></div>
+      <details class="day" open>
+        <summary>13일 (금) 도착과 첫 만남</summary>
+        <div class="card meeting-body">
+          <p class="meeting-when">13시에 교회에 도착해 예배하고, 저녁에는 트립 인원이 만든 비빔밥으로 62명과 공동 식사를 합니다.</p>
+          <div class="wrap"><table class="sched">
+            <tr><th>시간</th><th>일정</th><th>비고</th></tr>
+            <tr><td>06:00</td><td>인천공항 T2 집결</td><td>1팀·2팀·개별 이동</td></tr>
+            <tr><td>06:00~<br>07:30</td><td>탑승수속 · QT · 아침식사</td><td></td></tr>
+            <tr><td>08:45~<br>10:30</td><td>인천 → 다카마쓰</td><td>에어서울 RS0297</td></tr>
+            <tr><td>11:00~<br>11:30</td><td>공항 점심</td><td>다카마쓰공항</td></tr>
+            <tr><td>11:30~<br>13:00</td><td>교회버스로 오카야마 이동</td><td>13:00 도착 목표</td></tr>
+            <tr><td>13:00~</td><td>교회 도착 및 예배</td><td></td></tr>
+            <tr><td>예배 후</td><td>호텔 이동·짐 보관</td><td>시간 여유가 있을 때만</td></tr>
+            <tr><td>~16:30</td><td>청소년 생활관 방문</td><td></td></tr>
+            <tr><td>16:30~</td><td>장보기 &amp; 선물 포장</td><td>장보기는 교회 근처 이온몰, 선물 포장은 교회</td></tr>
+            <tr><td>17:30~<br>19:30</td><td>비빔밥 만들기</td><td>교회 식당 주방 · 리더 이제헌 형제님</td></tr>
+            <tr><td>19:30~<br>21:00</td><td>공동 식사 및 교제</td><td>62명 (청소년 생활관 학생 20명, 성도 42명)</td></tr>
+            <tr><td>21:00</td><td>호텔 복귀 → 나눔·조별 교제</td><td></td></tr>
+          </table></div>
+        </div>
+      </details>
+      <details class="day" open>
+        <summary>14일 (토) 기업탐방과 산업시찰</summary>
+        <div class="card meeting-body">
+          <p class="meeting-when">낮에는 기업탐방과 산업시찰을 하고, 점심은 아구리가든, 나눔은 호텔 온천에서 합니다.</p>
+          <div class="wrap"><table class="sched">
+            <tr><th>시간</th><th>일정</th><th>비고</th></tr>
+            <tr><td>07:30~<br>08:30</td><td>호텔 조식</td><td></td></tr>
+            <tr><td>08:30~<br>09:30</td><td>QT</td><td>호텔 식당</td></tr>
+            <tr><td>09:30~<br>10:00</td><td>정비와 이동</td><td>교회 차량</td></tr>
+            <tr><td>10:00~<br>12:00</td><td>기업탐방</td><td>음식물 처리공장, 아구리가든 등</td></tr>
+            <tr><td>12:00~<br>13:00</td><td>점심</td><td>아구리가든 식당 (확정)</td></tr>
+            <tr><td>13:00~<br>18:00</td><td>산업시찰</td><td></td></tr>
+            <tr><td>18:00~<br>19:00</td><td>저녁</td><td>1안 규카쿠 오카야마역앞점, 2안 가츠규 산스테점</td></tr>
+            <tr><td>19:00~<br>21:00</td><td>주일사역 준비</td><td></td></tr>
+            <tr><td>21:00~<br>22:00</td><td>나눔·조별 교제 (온천)</td><td>호텔 대욕장 玄要の湯, 숙박자 무료</td></tr>
+          </table></div>
+        </div>
+      </details>
+      <details class="day" open>
+        <summary>15일 (주일) 예배와 특순</summary>
+        <div class="card meeting-body">
+          <p class="meeting-when">10:30 주일예배에서 무언극 「사랑을 나눠요」와 찬양 「주님 다시 오실 때까지」를 특순으로 나눕니다.</p>
+          <div class="wrap"><table class="sched">
+            <tr><th>시간</th><th>일정</th><th>비고</th></tr>
+            <tr><td>07:30~<br>09:00</td><td>호텔 조식 · QT</td><td></td></tr>
+            <tr><td>09:00~<br>10:30</td><td>교회 이동과 예배 준비</td><td></td></tr>
+            <tr><td>10:30~<br>12:00</td><td>주일예배</td><td>특순, 헌금</td></tr>
+            <tr><td>12:00~<br>13:00</td><td>점심과 교제</td><td>교회 제공 시 이용</td></tr>
+            <tr><td>13:00~<br>15:00</td><td>팀 모임</td><td></td></tr>
+            <tr><td>15:00~<br>18:00</td><td>오후예배</td><td>설교, 찬양</td></tr>
+            <tr><td>18:00~<br>19:20</td><td>이동과 저녁</td><td>1안 와코, 2안 가츠규</td></tr>
+            <tr><td>19:20~<br>20:25</td><td>니시가와 산책 · 기도 (땅밟기)</td><td></td></tr>
+            <tr><td>20:45~<br>21:30</td><td>가라후네야 CAFÉ</td><td>라스트 오더 21:00</td></tr>
+            <tr><td>22:00~<br>23:00</td><td>전체 나눔</td><td>호텔</td></tr>
+          </table></div>
+        </div>
+      </details>
+      <details class="day" open>
+        <summary>16일 (월) 관광과 귀국</summary>
+        <div class="card meeting-body">
+          <p class="meeting-when">오전에 고라쿠엔(1안) 또는 오카야마성(2안)을 둘러보고, 13시에 공항으로 출발합니다.</p>
+          <div class="wrap"><table class="sched">
+            <tr><th>시간</th><th>일정</th><th>비고</th></tr>
+            <tr><td>07:30~<br>08:30</td><td>호텔 조식 · QT</td><td></td></tr>
+            <tr><td>08:30~<br>09:20</td><td>체크아웃·짐 보관, 택시 배정</td><td></td></tr>
+            <tr><td>09:20~<br>11:00</td><td>관광 · 티타임</td><td>1안 고라쿠엔 + 사자나미 찻집, 2안 오카야마성 + 우조 카페</td></tr>
+            <tr><td>11:30~<br>12:15</td><td>점심</td><td>1안 아즈마 스시, 2안 와코</td></tr>
+            <tr><td>12:15~<br>12:50</td><td>구매 · 호텔 짐 회수</td><td></td></tr>
+            <tr><td>13:00~<br>14:30</td><td>다카마쓰공항 이동</td><td>교회버스</td></tr>
+            <tr><td>14:30~<br>16:30</td><td>수속·출국</td><td>여유 시 공항에서 이른 저녁</td></tr>
+            <tr><td>16:50~<br>18:35</td><td>다카마쓰 → 인천</td><td>진에어 LJ300</td></tr>
+          </table></div>
+        </div>
+      </details>
+      <p class="todo">자세한 내용은 아래 개요·일정·특순·자료실을 보세요.</p>
+    </details>
+  </details>
 
   <details class="group" id="group-overview" open>
     <summary class="group-head">
