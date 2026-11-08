@@ -218,8 +218,14 @@
   .score-wrap[data-zoom="230"] img.score { width:230%; }
   .score-wrap .lyric-part { position:sticky; left:0; }
   .score-lyric { margin:-2px 0 10px; padding:6px 8px; border-radius:6px; background:var(--surface-2); position:sticky; left:0; max-width:calc(100vw - 80px); }
-  .score-lyric .sl-ja { margin:0; font-size:0.95rem; }
-  .score-lyric .sl-pr { margin:0; color:var(--accent); font-weight:700; font-size:0.95rem; }
+  .score-lyric { overflow-x:auto; }
+  .score-lyric .sl-ja { margin:0 0 4px; font-size:0.9rem; white-space:pre; display:none; }
+  .score-lyric .sl-pr { display:none; }
+  .score-wrap.sl-editing .score-lyric .sl-ja { display:block; overflow-x:auto; }
+  .sl-view { white-space:pre; line-height:1.35; }
+  .sl-tok { display:inline-block; vertical-align:top; white-space:nowrap; }
+  .sl-tok .t-ja { display:block; font-size:0.95rem; }
+  .sl-tok .t-pr { display:block; color:var(--accent); font-weight:700; font-size:0.85rem; }
   .score-wrap.sl-editing .sl-ja { background:var(--surface); border-radius:4px; padding:2px 4px; outline:1px solid var(--line); }
   .sl-tools { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; }
   .sl-tools button { font:inherit; font-size:0.8rem; padding:4px 10px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--fg); cursor:pointer; }
@@ -1233,21 +1239,21 @@
               <p class="todo">악보 줄마다 아래에 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 일본어 가사의 띄어쓰기를 고칠 수 있고, 한글 발음은 자동으로 따라 바뀝니다. 글자는 바뀌지 않고 띄어쓰기만 고쳐집니다. 고친 내용은 이 기기에만 저장되니, 모두에게 반영하려면 "내용 복사"로 복사해 보내 주세요.</p>
               <div class="score-wrap" data-zoom="100" data-song="jumanyi">
                 <a href="score/jumanyi-1.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-1.png" alt="주님만이 모든 것 악보 1째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="1"><p class="sl-ja" lang="ja" data-k="1-ja" data-read="[[&quot;麗&quot;, &quot;우루와&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;], [&quot;何&quot;, &quot;나니&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;変&quot;, &quot;카&quot;], [&quot;え&quot;, &quot;에&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">麗しい イエス 何にも 変えられない</p><p class="sl-pr">우루와시이 이에스 나니니모 카에라레나이</p></div>
+                <div class="score-lyric" data-strip="1"><p class="sl-ja" lang="ja" data-k="1-ja" data-read="[[&quot;麗&quot;, &quot;우루와&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;], [&quot;何&quot;, &quot;나니&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;変&quot;, &quot;카&quot;], [&quot;え&quot;, &quot;에&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">                           麗しい                                                    イエス                     何にも 変えられない</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">우루와시이 이에스 나니니모 카에라레나이</p></div>
                 <a href="score/jumanyi-2.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-2.png" alt="주님만이 모든 것 악보 2째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="2"><p class="sl-ja" lang="ja" data-k="2-ja" data-read="[[&quot;ど&quot;, &quot;도&quot;], [&quot;ん&quot;, &quot;온&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;宝&quot;, &quot;타카라&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;及&quot;, &quot;오요&quot;], [&quot;ば&quot;, &quot;바&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">どんな 宝も あなたに 及ばない</p><p class="sl-pr">도온나 타카라모 아나타니 오요바나이</p></div>
+                <div class="score-lyric" data-strip="2"><p class="sl-ja" lang="ja" data-k="2-ja" data-read="[[&quot;ど&quot;, &quot;도&quot;], [&quot;ん&quot;, &quot;온&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;宝&quot;, &quot;타카라&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;及&quot;, &quot;오요&quot;], [&quot;ば&quot;, &quot;바&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">                           どんな 宝も                                                                           あなたに 及ばない</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">도온나 타카라모 아나타니 오요바나이</p></div>
                 <a href="score/jumanyi-3.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-3.png" alt="주님만이 모든 것 악보 3째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="3"><p class="sl-ja" lang="ja" data-k="3-ja" data-read="[[&quot;命&quot;, &quot;이노치&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;か&quot;, &quot;카&quot;], [&quot;ぎ&quot;, &quot;기&quot;], [&quot;り&quot;, &quot;리&quot;]]">命の かぎり</p><p class="sl-pr">이노치노 카기리</p></div>
+                <div class="score-lyric" data-strip="3"><p class="sl-ja" lang="ja" data-k="3-ja" data-read="[[&quot;命&quot;, &quot;이노치&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;か&quot;, &quot;카&quot;], [&quot;ぎ&quot;, &quot;기&quot;], [&quot;り&quot;, &quot;리&quot;]]">                          命の かぎり</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">이노치노 카기리</p></div>
                 <a href="score/jumanyi-4.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-4.png" alt="주님만이 모든 것 악보 4째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="4"><p class="sl-ja" lang="ja" data-k="4-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;を&quot;, &quot;오&quot;], [&quot;崇&quot;, &quot;아가&quot;], [&quot;め&quot;, &quot;메&quot;], [&quot;る&quot;, &quot;루&quot;]]">あなたを 崇める</p><p class="sl-pr">아나타오 아가메루</p></div>
+                <div class="score-lyric" data-strip="4"><p class="sl-ja" lang="ja" data-k="4-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;を&quot;, &quot;오&quot;], [&quot;崇&quot;, &quot;아가&quot;], [&quot;め&quot;, &quot;메&quot;], [&quot;る&quot;, &quot;루&quot;]]">                            あなたを 崇める</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">아나타오 아가메루</p></div>
                 <a href="score/jumanyi-5.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-5.png" alt="주님만이 모든 것 악보 5째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="5"><p class="sl-ja" lang="ja" data-k="5-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;が&quot;, &quot;가&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;べ&quot;, &quot;베&quot;], [&quot;て&quot;, &quot;테&quot;], [&quot;わ&quot;, &quot;와&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;べ&quot;, &quot;베&quot;], [&quot;て&quot;, &quot;테&quot;]]">あなたが すべて わたしの すべて</p><p class="sl-pr">아나타가 스베테 와타시노 스베테</p></div>
+                <div class="score-lyric" data-strip="5"><p class="sl-ja" lang="ja" data-k="5-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;が&quot;, &quot;가&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;べ&quot;, &quot;베&quot;], [&quot;て&quot;, &quot;테&quot;], [&quot;わ&quot;, &quot;와&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;べ&quot;, &quot;베&quot;], [&quot;て&quot;, &quot;테&quot;]]">あなたが すべて わたしの すべて</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">아나타가 스베테 와타시노 스베테</p></div>
                 <a href="score/jumanyi-6.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-6.png" alt="주님만이 모든 것 악보 6째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="6"><p class="sl-ja" lang="ja" data-k="6-ja" data-read="[[&quot;闇&quot;, &quot;야미&quot;], [&quot;を&quot;, &quot;오&quot;], [&quot;照&quot;, &quot;테&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;真&quot;, &quot;마코토&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;光&quot;, &quot;히카리&quot;]]">闇を 照らす 真の 光</p><p class="sl-pr">야미오 테라스 마코토노 히카리</p></div>
+                <div class="score-lyric" data-strip="6"><p class="sl-ja" lang="ja" data-k="6-ja" data-read="[[&quot;闇&quot;, &quot;야미&quot;], [&quot;を&quot;, &quot;오&quot;], [&quot;照&quot;, &quot;테&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;真&quot;, &quot;마코토&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;光&quot;, &quot;히카리&quot;]]">闇を 照らす 真の 光</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">야미오 테라스 마코토노 히카리</p></div>
                 <a href="score/jumanyi-7.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-7.png" alt="주님만이 모든 것 악보 7째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="7"><p class="sl-ja" lang="ja" data-k="7-ja" data-read="[[&quot;栄&quot;, &quot;에이&quot;], [&quot;光&quot;, &quot;코오&quot;], [&quot;あ&quot;, &quot;아&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;子&quot;, &quot;코&quot;], [&quot;羊&quot;, &quot;히츠지&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;]]">栄光 あれ 子羊 イエス</p><p class="sl-pr">에이코오 아레 코히츠지 이에스</p></div>
+                <div class="score-lyric" data-strip="7"><p class="sl-ja" lang="ja" data-k="7-ja" data-read="[[&quot;栄&quot;, &quot;에이&quot;], [&quot;光&quot;, &quot;코오&quot;], [&quot;あ&quot;, &quot;아&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;子&quot;, &quot;코&quot;], [&quot;羊&quot;, &quot;히츠지&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;]]">栄光 あれ 子羊 イエス</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">에이코오 아레 코히츠지 이에스</p></div>
                 <a href="score/jumanyi-8.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-8.png" alt="주님만이 모든 것 악보 8째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="8"><p class="sl-ja" lang="ja" data-k="8-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;だ&quot;, &quot;다&quot;], [&quot;け&quot;, &quot;케&quot;], [&quot;が&quot;, &quot;가&quot;], [&quot;救&quot;, &quot;스쿠&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;主&quot;, &quot;누시&quot;]]">あなただけが 救い主</p><p class="sl-pr">아나타다케가 스쿠이누시</p></div>
+                <div class="score-lyric" data-strip="8"><p class="sl-ja" lang="ja" data-k="8-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;だ&quot;, &quot;다&quot;], [&quot;け&quot;, &quot;케&quot;], [&quot;が&quot;, &quot;가&quot;], [&quot;救&quot;, &quot;스쿠&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;主&quot;, &quot;누시&quot;]]">あなただけが 救い主</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">아나타다케가 스쿠이누시</p></div>
               </div>
             </details>
           </li>
@@ -1485,16 +1491,24 @@
     var key = 'sl-space-' + wrap.dataset.song;
     var fields = Array.prototype.slice.call(wrap.querySelectorAll('.sl-ja[data-read]'));
     var original = {};
+    function norm(t) { return t.replace(/ /g, ' ').replace(/[\r\n]+/g, ' '); }
     function render(f) {
-      var pairs = JSON.parse(f.dataset.read), i = 0, out = '';
-      var text = f.textContent.replace(/\s+/g, ' ').trim();
-      for (var c = 0; c < text.length; c++) {
-        if (text[c] === ' ') { out += ' '; continue; }
-        out += pairs[i] ? pairs[i][1] : ''; i++;
-      }
-      f.nextElementSibling.textContent = out;
+      var pairs = JSON.parse(f.dataset.read), i = 0, text = norm(f.textContent);
+      var view = f.nextElementSibling, pr = view.nextElementSibling, flat = '';
+      view.textContent = '';
+      text.split(/( +)/).forEach(function (part) {
+        if (!part) return;
+        if (part[0] === ' ') { view.appendChild(document.createTextNode(part)); flat += part; return; }
+        var reading = '';
+        for (var c = 0; c < part.length; c++) { reading += pairs[i] ? pairs[i][1] : ''; i++; }
+        var tok = document.createElement('span'); tok.className = 'sl-tok';
+        var a = document.createElement('span'); a.className = 't-ja'; a.lang = 'ja'; a.textContent = part;
+        var b = document.createElement('span'); b.className = 't-pr'; b.textContent = reading;
+        tok.appendChild(a); tok.appendChild(b); view.appendChild(tok); flat += reading;
+      });
+      pr.textContent = flat;
     }
-    function letters(t) { return t.replace(/\s+/g, ''); }
+    function letters(t) { return t.replace(/[\s ]+/g, ''); }
     fields.forEach(function (f) {
       original[f.dataset.k] = f.textContent;
       f.dataset.last = f.textContent;
