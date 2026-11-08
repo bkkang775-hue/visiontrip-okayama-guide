@@ -218,16 +218,12 @@
   .score-wrap[data-zoom="230"] img.score { width:230%; }
   .score-wrap .lyric-part { position:sticky; left:0; }
   .score-lyric { margin:-2px 0 10px; padding:6px 8px; border-radius:6px; background:var(--surface-2); position:sticky; left:0; max-width:calc(100vw - 80px); }
-  .score-lyric .sl-line { margin:2px 0; font-size:0.9rem; }
-  .score-lyric .ly-pr { font-size:0.95rem; }
+  .score-lyric .sl-ja { margin:0; font-size:0.95rem; }
+  .score-lyric .sl-pr { margin:0; color:var(--accent); font-weight:700; font-size:0.95rem; }
+  .score-wrap.sl-editing .sl-ja { background:var(--surface); border-radius:4px; padding:2px 4px; outline:1px solid var(--line); }
   .sl-tools { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; }
-  .sl-tools button, .sl-move { font:inherit; font-size:0.8rem; padding:4px 10px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--fg); cursor:pointer; }
+  .sl-tools button { font:inherit; font-size:0.8rem; padding:4px 10px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--fg); cursor:pointer; }
   .sl-tools .sl-edit[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
-  .sl-move { padding:1px 8px; margin-left:4px; display:none; }
-  .score-wrap.sl-editing .sl-move { display:inline-block; }
-  .score-wrap.sl-editing .score-lyric { outline:1px dashed var(--accent); min-height:28px; }
-  .score-lyric.sl-empty { display:none; }
-  .score-wrap.sl-editing .score-lyric.sl-empty { display:block; }
   .score-zoom { display:flex; gap:6px; margin:8px 0 4px; }
   .score-zoom button { font:inherit; font-size:0.82rem; padding:5px 12px; border-radius:999px; border:1px solid var(--accent); background:var(--surface); color:var(--accent); cursor:pointer; }
   .score-zoom button[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); }
@@ -1233,25 +1229,25 @@
                 <button type="button" data-zoom="160">크게</button>
                 <button type="button" data-zoom="230">아주 크게</button>
               </div>
-              <div class="sl-tools"><button type="button" class="sl-edit" aria-pressed="false">가사 위치 조정</button><button type="button" class="sl-reset">처음 배치로</button><button type="button" class="sl-copy">배치 복사</button></div>
-              <p class="todo">악보 줄마다 아래에 일본어 가사와 한글 발음을 붙였습니다. "가사 위치 조정"을 누르면 가사마다 ▲▼ 버튼이 나와 위·아래 악보 줄로 옮길 수 있습니다. 바꾼 배치는 이 기기에만 저장되니, 모두에게 반영하려면 "배치 복사"로 복사해 보내 주세요. 악보 줄을 누르면 새 창에서 확대해 볼 수 있습니다.</p>
+              <div class="sl-tools"><button type="button" class="sl-edit" aria-pressed="false">띄어쓰기 수정</button><button type="button" class="sl-reset">처음대로</button><button type="button" class="sl-copy">내용 복사</button></div>
+              <p class="todo">악보 줄마다 아래에 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 일본어 가사의 띄어쓰기를 고칠 수 있고, 한글 발음은 자동으로 따라 바뀝니다. 글자는 바뀌지 않고 띄어쓰기만 고쳐집니다. 고친 내용은 이 기기에만 저장되니, 모두에게 반영하려면 "내용 복사"로 복사해 보내 주세요.</p>
               <div class="score-wrap" data-zoom="100" data-song="jumanyi">
                 <a href="score/jumanyi-1.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-1.png" alt="주님만이 모든 것 악보 1째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="1"><p class="sl-line" data-idx="0"><span class="ly-ja" lang="ja">麗しいイエス</span> <span class="ly-pr">우루와시이 이에스</span></p><p class="sl-line" data-idx="1"><span class="ly-ja" lang="ja">何にも変えられない</span> <span class="ly-pr">나니니모 카에라레나이</span></p></div>
+                <div class="score-lyric" data-strip="1"><p class="sl-ja" lang="ja" data-k="1-ja" data-read="[[&quot;麗&quot;, &quot;우루와&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;], [&quot;何&quot;, &quot;나니&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;変&quot;, &quot;카&quot;], [&quot;え&quot;, &quot;에&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">麗しい イエス 何にも 変えられない</p><p class="sl-pr">우루와시이 이에스 나니니모 카에라레나이</p></div>
                 <a href="score/jumanyi-2.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-2.png" alt="주님만이 모든 것 악보 2째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="2"><p class="sl-line" data-idx="2"><span class="ly-ja" lang="ja">どんな宝も</span> <span class="ly-pr">도온나 타카라모</span></p><p class="sl-line" data-idx="3"><span class="ly-ja" lang="ja">あなたに及ばない</span> <span class="ly-pr">아나타니 오요바나이</span></p></div>
+                <div class="score-lyric" data-strip="2"><p class="sl-ja" lang="ja" data-k="2-ja" data-read="[[&quot;ど&quot;, &quot;도&quot;], [&quot;ん&quot;, &quot;온&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;宝&quot;, &quot;타카라&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;及&quot;, &quot;오요&quot;], [&quot;ば&quot;, &quot;바&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">どんな 宝も あなたに 及ばない</p><p class="sl-pr">도온나 타카라모 아나타니 오요바나이</p></div>
                 <a href="score/jumanyi-3.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-3.png" alt="주님만이 모든 것 악보 3째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="3"><p class="sl-line" data-idx="4"><span class="ly-ja" lang="ja">命のかぎり</span> <span class="ly-pr">이노치노 카기리</span></p></div>
+                <div class="score-lyric" data-strip="3"><p class="sl-ja" lang="ja" data-k="3-ja" data-read="[[&quot;命&quot;, &quot;이노치&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;か&quot;, &quot;카&quot;], [&quot;ぎ&quot;, &quot;기&quot;], [&quot;り&quot;, &quot;리&quot;]]">命の かぎり</p><p class="sl-pr">이노치노 카기리</p></div>
                 <a href="score/jumanyi-4.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-4.png" alt="주님만이 모든 것 악보 4째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="4"><p class="sl-line" data-idx="5"><span class="ly-ja" lang="ja">あなたを崇める</span> <span class="ly-pr">아나타오 아가메루</span></p></div>
+                <div class="score-lyric" data-strip="4"><p class="sl-ja" lang="ja" data-k="4-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;を&quot;, &quot;오&quot;], [&quot;崇&quot;, &quot;아가&quot;], [&quot;め&quot;, &quot;메&quot;], [&quot;る&quot;, &quot;루&quot;]]">あなたを 崇める</p><p class="sl-pr">아나타오 아가메루</p></div>
                 <a href="score/jumanyi-5.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-5.png" alt="주님만이 모든 것 악보 5째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="5"><p class="sl-line" data-idx="6"><span class="ly-ja" lang="ja">あなたがすべて</span> <span class="ly-pr">아나타가 스베테</span></p><p class="sl-line" data-idx="7"><span class="ly-ja" lang="ja">わたしのすべて</span> <span class="ly-pr">와타시노 스베테</span></p></div>
+                <div class="score-lyric" data-strip="5"><p class="sl-ja" lang="ja" data-k="5-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;が&quot;, &quot;가&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;べ&quot;, &quot;베&quot;], [&quot;て&quot;, &quot;테&quot;], [&quot;わ&quot;, &quot;와&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;べ&quot;, &quot;베&quot;], [&quot;て&quot;, &quot;테&quot;]]">あなたが すべて わたしの すべて</p><p class="sl-pr">아나타가 스베테 와타시노 스베테</p></div>
                 <a href="score/jumanyi-6.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-6.png" alt="주님만이 모든 것 악보 6째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="6"><p class="sl-line" data-idx="8"><span class="ly-ja" lang="ja">闇を照らす</span> <span class="ly-pr">야미오 테라스</span></p><p class="sl-line" data-idx="9"><span class="ly-ja" lang="ja">真の光</span> <span class="ly-pr">마코토노 히카리</span></p></div>
+                <div class="score-lyric" data-strip="6"><p class="sl-ja" lang="ja" data-k="6-ja" data-read="[[&quot;闇&quot;, &quot;야미&quot;], [&quot;を&quot;, &quot;오&quot;], [&quot;照&quot;, &quot;테&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;す&quot;, &quot;스&quot;], [&quot;真&quot;, &quot;마코토&quot;], [&quot;の&quot;, &quot;노&quot;], [&quot;光&quot;, &quot;히카리&quot;]]">闇を 照らす 真の 光</p><p class="sl-pr">야미오 테라스 마코토노 히카리</p></div>
                 <a href="score/jumanyi-7.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-7.png" alt="주님만이 모든 것 악보 7째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="7"><p class="sl-line" data-idx="10"><span class="ly-ja" lang="ja">栄光あれ</span> <span class="ly-pr">에이코오 아레</span></p><p class="sl-line" data-idx="11"><span class="ly-ja" lang="ja">子羊イエス</span> <span class="ly-pr">코히츠지 이에스</span></p></div>
+                <div class="score-lyric" data-strip="7"><p class="sl-ja" lang="ja" data-k="7-ja" data-read="[[&quot;栄&quot;, &quot;에이&quot;], [&quot;光&quot;, &quot;코오&quot;], [&quot;あ&quot;, &quot;아&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;子&quot;, &quot;코&quot;], [&quot;羊&quot;, &quot;히츠지&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;]]">栄光 あれ 子羊 イエス</p><p class="sl-pr">에이코오 아레 코히츠지 이에스</p></div>
                 <a href="score/jumanyi-8.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-8.png" alt="주님만이 모든 것 악보 8째 줄" loading="lazy"></a>
-                <div class="score-lyric" data-strip="8"><p class="sl-line" data-idx="12"><span class="ly-ja" lang="ja">あなただけが</span> <span class="ly-pr">아나타다케가</span></p><p class="sl-line" data-idx="13"><span class="ly-ja" lang="ja">救い主</span> <span class="ly-pr">스쿠이누시</span></p></div>
+                <div class="score-lyric" data-strip="8"><p class="sl-ja" lang="ja" data-k="8-ja" data-read="[[&quot;あ&quot;, &quot;아&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;た&quot;, &quot;타&quot;], [&quot;だ&quot;, &quot;다&quot;], [&quot;け&quot;, &quot;케&quot;], [&quot;が&quot;, &quot;가&quot;], [&quot;救&quot;, &quot;스쿠&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;主&quot;, &quot;누시&quot;]]">あなただけが 救い主</p><p class="sl-pr">아나타다케가 스쿠이누시</p></div>
               </div>
             </details>
           </li>
@@ -1486,56 +1482,59 @@
   window.addEventListener('hashchange', openHashTarget);
   openHashTarget();
   document.querySelectorAll('.score-wrap[data-song]').forEach(function (wrap) {
-    var key = 'sl-' + wrap.dataset.song;
-    var boxes = Array.prototype.slice.call(wrap.querySelectorAll('.score-lyric'));
-    var lines = Array.prototype.slice.call(wrap.querySelectorAll('.sl-line'));
-    var original = lines.map(function (l) { return l.closest('.score-lyric').dataset.strip; });
-    lines.forEach(function (l) {
-      var up = document.createElement('button'); up.type = 'button'; up.className = 'sl-move'; up.textContent = '▲'; up.setAttribute('aria-label', '위 악보 줄로');
-      var dn = document.createElement('button'); dn.type = 'button'; dn.className = 'sl-move'; dn.textContent = '▼'; dn.setAttribute('aria-label', '아래 악보 줄로');
-      up.addEventListener('click', function () { move(l, -1); });
-      dn.addEventListener('click', function () { move(l, 1); });
-      l.appendChild(up); l.appendChild(dn);
-    });
-    function place(assign) {
-      lines.forEach(function (l, i) {
-        var box = boxes[Number(assign[i]) - 1];
-        if (box) box.appendChild(l);
+    var key = 'sl-space-' + wrap.dataset.song;
+    var fields = Array.prototype.slice.call(wrap.querySelectorAll('.sl-ja[data-read]'));
+    var original = {};
+    function render(f) {
+      var pairs = JSON.parse(f.dataset.read), i = 0, out = '';
+      var text = f.textContent.replace(/\s+/g, ' ').trim();
+      for (var c = 0; c < text.length; c++) {
+        if (text[c] === ' ') { out += ' '; continue; }
+        out += pairs[i] ? pairs[i][1] : ''; i++;
+      }
+      f.nextElementSibling.textContent = out;
+    }
+    function letters(t) { return t.replace(/\s+/g, ''); }
+    fields.forEach(function (f) {
+      original[f.dataset.k] = f.textContent;
+      f.dataset.last = f.textContent;
+      f.addEventListener('input', function () {
+        var want = JSON.parse(f.dataset.read).map(function (p) { return p[0]; }).join('');
+        if (letters(f.textContent) !== want) { f.textContent = f.dataset.last; }
+        f.dataset.last = f.textContent;
+        render(f); save();
       });
-      refresh();
+    });
+    function save() {
+      var data = {};
+      fields.forEach(function (f) { if (f.textContent !== original[f.dataset.k]) data[f.dataset.k] = f.textContent; });
+      try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
     }
-    function current() { return lines.map(function (l) { return l.closest('.score-lyric').dataset.strip; }); }
-    function refresh() { boxes.forEach(function (b) { b.classList.toggle('sl-empty', !b.querySelector('.sl-line')); }); }
-    function save() { try { localStorage.setItem(key, JSON.stringify(current())); } catch (e) {} }
-    function move(l, dir) {
-      var at = Number(l.closest('.score-lyric').dataset.strip) - 1 + dir;
-      if (at < 0 || at >= boxes.length) return;
-      if (dir < 0) boxes[at].appendChild(l); else boxes[at].insertBefore(l, boxes[at].firstChild);
-      refresh(); save();
-    }
-    try { var saved = JSON.parse(localStorage.getItem(key) || 'null'); if (saved && saved.length === lines.length) place(saved); } catch (e) {}
-    refresh();
+    try {
+      var saved = JSON.parse(localStorage.getItem(key) || '{}');
+      fields.forEach(function (f) { if (saved[f.dataset.k] != null) { f.textContent = saved[f.dataset.k]; f.dataset.last = f.textContent; } });
+    } catch (e) {}
+    fields.forEach(render);
     var root = wrap.closest('details');
     var edit = root.querySelector('.sl-edit');
     edit.addEventListener('click', function () {
       var on = !wrap.classList.contains('sl-editing');
       wrap.classList.toggle('sl-editing', on);
       edit.setAttribute('aria-pressed', on ? 'true' : 'false');
+      fields.forEach(function (f) { f.contentEditable = on ? 'true' : 'false'; });
     });
     root.querySelector('.sl-reset').addEventListener('click', function () {
-      place(original);
+      fields.forEach(function (f) { f.textContent = original[f.dataset.k]; f.dataset.last = f.textContent; render(f); });
       try { localStorage.removeItem(key); } catch (e) {}
     });
     var copyBtn = root.querySelector('.sl-copy');
     copyBtn.addEventListener('click', function () {
-      var text = boxes.map(function (b) {
-        var words = Array.prototype.map.call(b.querySelectorAll('.sl-line .ly-ja'), function (x) { return x.textContent; });
-        return b.dataset.strip + '줄: ' + (words.length ? words.join(' / ') : '(없음)');
-      }).join('\n');
-      var done = function () { copyBtn.textContent = '복사됨'; setTimeout(function () { copyBtn.textContent = '배치 복사'; }, 1500); };
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, function () { showText(text); });
-      } else { showText(text); }
+      var text = Array.prototype.map.call(wrap.querySelectorAll('.score-lyric'), function (b) {
+        return b.dataset.strip + '줄\n' + b.querySelector('.sl-ja').textContent + '\n' + b.querySelector('.sl-pr').textContent;
+      }).join('\n\n');
+      var done = function () { copyBtn.textContent = '복사됨'; setTimeout(function () { copyBtn.textContent = '내용 복사'; }, 1500); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { showText(text); });
+      else showText(text);
     });
     function showText(text) {
       var ta = root.querySelector('.sl-copytext');
