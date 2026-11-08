@@ -217,6 +217,9 @@
   .score-wrap[data-zoom="160"] img.score { width:160%; }
   .score-wrap[data-zoom="230"] img.score { width:230%; }
   .score-wrap .lyric-part { position:sticky; left:0; }
+  .score-lyric { margin:-2px 0 10px; padding:6px 8px; border-radius:6px; background:var(--surface-2); position:sticky; left:0; max-width:calc(100vw - 80px); }
+  .score-lyric .sl-line { margin:2px 0; font-size:0.9rem; }
+  .score-lyric .ly-pr { font-size:0.95rem; }
   .score-zoom { display:flex; gap:6px; margin:8px 0 4px; }
   .score-zoom button { font:inherit; font-size:0.82rem; padding:5px 12px; border-radius:999px; border:1px solid var(--accent); background:var(--surface); color:var(--accent); cursor:pointer; }
   .score-zoom button[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); }
@@ -1216,39 +1219,30 @@
           </li>
           <li>
             <details class="script inline-toggle">
-              <summary><strong>주님만이 모든 것</strong> (日 「あなたがすべて」): <span class="toggle-label">가사·악보 바로 보기</span></summary>
-              <p class="lyric-part">가사</p>
-              <div class="lyric"><p class="ly-ko">아름다우신 예수</p><p class="ly-ja" lang="ja">麗しいイエス</p><p class="ly-pr">우루와시이 이에스</p></div>
-              <div class="lyric"><p class="ly-ko">무엇과도 바꿀 수 없네</p><p class="ly-ja" lang="ja">何にも変えられない</p><p class="ly-pr">나니니모 카에라레나이</p></div>
-              <div class="lyric"><p class="ly-ko">그 어떤 보물들도</p><p class="ly-ja" lang="ja">どんな宝も</p><p class="ly-pr">도온나 타카라모</p></div>
-              <div class="lyric"><p class="ly-ko">주님과는 비길 수 없네</p><p class="ly-ja" lang="ja">あなたに及ばない</p><p class="ly-pr">아나타니 오요바나이</p></div>
-              <div class="lyric"><p class="ly-ko">나의 평생 사는 동안</p><p class="ly-ja" lang="ja">命のかぎり</p><p class="ly-pr">이노치노 카기리</p></div>
-              <div class="lyric"><p class="ly-ko">주님만을 경배하리</p><p class="ly-ja" lang="ja">あなたを崇める</p><p class="ly-pr">아나타오 아가메루</p></div>
-              <p class="lyric-part">후렴</p>
-              <div class="lyric"><p class="ly-ko">주님만이 모든 것</p><p class="ly-ja" lang="ja">あなたがすべて</p><p class="ly-pr">아나타가 스베테</p></div>
-              <div class="lyric"><p class="ly-ko">내 영혼의 모든 것</p><p class="ly-ja" lang="ja">わたしのすべて</p><p class="ly-pr">와타시노 스베테</p></div>
-              <div class="lyric"><p class="ly-ko">어둠을 밝히는</p><p class="ly-ja" lang="ja">闇を照らす</p><p class="ly-pr">야미오 테라스</p></div>
-              <div class="lyric"><p class="ly-ko">이 세상의 참된 빛</p><p class="ly-ja" lang="ja">真の光</p><p class="ly-pr">마코토노 히카리</p></div>
-              <div class="lyric"><p class="ly-ko">영광을 돌리리</p><p class="ly-ja" lang="ja">栄光あれ</p><p class="ly-pr">에이코오 아레</p></div>
-              <div class="lyric"><p class="ly-ko">어린 양 주 예수</p><p class="ly-ja" lang="ja">子羊イエス</p><p class="ly-pr">코히츠지 이에스</p></div>
-              <div class="lyric"><p class="ly-ko">오직 주님만이</p><p class="ly-ja" lang="ja">あなただけが</p><p class="ly-pr">아나타다케가</p></div>
-              <div class="lyric"><p class="ly-ko">나의 구원자</p><p class="ly-ja" lang="ja">救い主</p><p class="ly-pr">스쿠이누시</p></div>
-              <p class="lyric-part">악보</p>
+              <summary><strong>주님만이 모든 것</strong> (日 「あなたがすべて」): <span class="toggle-label">악보 바로 보기</span></summary>
               <div class="score-zoom" role="group" aria-label="악보 크기">
                 <button type="button" data-zoom="100" aria-pressed="true">기본</button>
                 <button type="button" data-zoom="160">크게</button>
                 <button type="button" data-zoom="230">아주 크게</button>
               </div>
-              <p class="todo">악보 줄을 누르면 새 창에서 확대해 볼 수 있습니다.</p>
+              <p class="todo">악보 줄마다 아래에 일본어 가사와 한글 발음을 붙였습니다. 악보 줄을 누르면 새 창에서 확대해 볼 수 있습니다.</p>
               <div class="score-wrap" data-zoom="100">
                 <a href="score/jumanyi-1.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-1.png" alt="주님만이 모든 것 악보 1째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">麗しいイエス</span> <span class="ly-pr">우루와시이 이에스</span></p><p class="sl-line"><span class="ly-ja" lang="ja">何にも変えられない</span> <span class="ly-pr">나니니모 카에라레나이</span></p></div>
                 <a href="score/jumanyi-2.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-2.png" alt="주님만이 모든 것 악보 2째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">どんな宝も</span> <span class="ly-pr">도온나 타카라모</span></p><p class="sl-line"><span class="ly-ja" lang="ja">あなたに及ばない</span> <span class="ly-pr">아나타니 오요바나이</span></p></div>
                 <a href="score/jumanyi-3.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-3.png" alt="주님만이 모든 것 악보 3째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">命のかぎり</span> <span class="ly-pr">이노치노 카기리</span></p></div>
                 <a href="score/jumanyi-4.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-4.png" alt="주님만이 모든 것 악보 4째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">あなたを崇める</span> <span class="ly-pr">아나타오 아가메루</span></p></div>
                 <a href="score/jumanyi-5.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-5.png" alt="주님만이 모든 것 악보 5째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">あなたがすべて</span> <span class="ly-pr">아나타가 스베테</span></p><p class="sl-line"><span class="ly-ja" lang="ja">わたしのすべて</span> <span class="ly-pr">와타시노 스베테</span></p></div>
                 <a href="score/jumanyi-6.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-6.png" alt="주님만이 모든 것 악보 6째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">闇を照らす</span> <span class="ly-pr">야미오 테라스</span></p><p class="sl-line"><span class="ly-ja" lang="ja">真の光</span> <span class="ly-pr">마코토노 히카리</span></p></div>
                 <a href="score/jumanyi-7.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-7.png" alt="주님만이 모든 것 악보 7째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">栄光あれ</span> <span class="ly-pr">에이코오 아레</span></p><p class="sl-line"><span class="ly-ja" lang="ja">子羊イエス</span> <span class="ly-pr">코히츠지 이에스</span></p></div>
                 <a href="score/jumanyi-8.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-8.png" alt="주님만이 모든 것 악보 8째 줄" loading="lazy"></a>
+                <div class="score-lyric"><p class="sl-line"><span class="ly-ja" lang="ja">あなただけが</span> <span class="ly-pr">아나타다케가</span></p><p class="sl-line"><span class="ly-ja" lang="ja">救い主</span> <span class="ly-pr">스쿠이누시</span></p></div>
               </div>
             </details>
           </li>
