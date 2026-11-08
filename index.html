@@ -63,11 +63,15 @@
   .nav { position:sticky; top:env(safe-area-inset-top, 0px); z-index:5; display:flex; flex-wrap:wrap; gap:6px; padding:8px 0; margin:0 0 6px; background:var(--bg); }
   .nav a { flex:0 0 auto; text-align:center; white-space:nowrap; text-decoration:none; font-size:0.85rem; color:var(--fg); background:var(--surface); border:1px solid var(--line); padding:5px 12px; border-radius:999px; }
   @media (max-width: 700px) {
-    .nav { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:5px; }
+    .nav { display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:5px; }
+    .nav-weather .wx-place { display:none; }
     .nav a { font-size:0.74rem; padding:5px 2px; letter-spacing:-0.02em; }
   }
   .sub-links { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 12px; }
   .sub-links a { text-decoration:none; font-size:0.85rem; font-weight:600; color:var(--accent); background:var(--accent-soft); padding:6px 14px; border-radius:999px; }
+  .nav-weather { margin-left:auto; background:var(--accent-soft) !important; color:var(--accent) !important; border-color:transparent !important; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .nav-weather .wx-icon { margin-right:3px; }
+  .nav-weather .wx-place { margin-right:4px; }
   .nav a:hover { border-color:var(--accent); color:var(--accent); }
 
   /* Verse */
@@ -230,7 +234,7 @@
     <div class="meta">기준일: 2026-11-02</div>
   </header>
   <nav class="nav">
-    <a href="#group-summary">요약</a><a href="#group-overview">개요</a><a href="#group-schedule">일정</a><a href="#group-special">특순</a><a href="#group-materials">자료실</a>
+    <a href="#group-summary">요약</a><a href="#group-overview">개요</a><a href="#group-schedule">일정</a><a href="#group-special">특순</a><a href="#group-materials">자료실</a><a class="nav-weather" id="nav-weather" href="https://www.google.com/search?q=%EC%98%A4%EC%B9%B4%EC%95%BC%EB%A7%88+%EB%82%A0%EC%94%A8" target="_blank" rel="noopener" title="오카야마 날씨"><span class="wx-icon">🌤</span><span class="wx-place">오카야마</span><span class="wx-temp">날씨</span></a>
   </nav>
 
   <div class="card verse">
@@ -1355,6 +1359,32 @@
   }
   window.addEventListener('hashchange', openHashTarget);
   openHashTarget();
+  (function () {
+    var el = document.getElementById('nav-weather');
+    if (!el || !window.fetch) return;
+    function icon(c) {
+      if (c === 0) return '☀️';
+      if (c <= 2) return '🌤';
+      if (c === 3) return '☁️';
+      if (c <= 48) return '🌫';
+      if (c <= 67 || (c >= 80 && c <= 82)) return '🌧';
+      if (c <= 77 || c === 85 || c === 86) return '❄️';
+      return '⛈';
+    }
+    function load() {
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=34.6551&longitude=133.9195&current=temperature_2m,weather_code&timezone=Asia%2FTokyo')
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          if (!d || !d.current) return;
+          el.querySelector('.wx-icon').textContent = icon(d.current.weather_code);
+          el.querySelector('.wx-temp').textContent = Math.round(d.current.temperature_2m) + '°C';
+          el.title = '오카야마 현재 날씨 (' + d.current.time.replace('T', ' ') + ' 일본 시간)';
+        })
+        .catch(function () {});
+    }
+    load();
+    setInterval(load, 30 * 60 * 1000);
+  })();
   document.querySelectorAll('.score-zoom button').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var wrap = btn.closest('details').querySelector('.score-wrap');
