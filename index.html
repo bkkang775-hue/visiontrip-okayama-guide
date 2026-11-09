@@ -221,6 +221,7 @@
   .score-lyric { overflow-x:auto; }
   .score-lyric .sl-ja { margin:0 0 4px; font-size:0.9rem; white-space:pre; display:none; }
   .score-lyric .sl-pr { display:none; }
+  .sl-editor[hidden] { display:none; }
   .sl-editor { display:block; width:100%; margin:6px 0; font:inherit; font-size:0.9rem; line-height:1.6; white-space:pre; overflow-x:auto; padding:8px; border:1px solid var(--accent); border-radius:8px; background:var(--surface); color:var(--fg); }
   .score-lyric.sl-empty { display:none; }
   .sl-view { white-space:pre; line-height:1.35; }
@@ -1237,7 +1238,7 @@
                 <button type="button" data-zoom="230">아주 크게</button>
               </div>
               <div class="sl-tools"><button type="button" class="sl-edit" aria-pressed="false">띄어쓰기 수정</button><button type="button" class="sl-reset">처음대로</button><button type="button" class="sl-copy">내용 복사</button></div>
-              <p class="todo">악보 줄마다 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 한글 발음 편집 칸이 열립니다. 한 줄이 악보 한 줄이고, 발음 사이에 띄어쓰기를 넣거나 빼면 일본어도 함께 움직입니다. 줄 맨 앞에서 백스페이스를 누르면 그 줄이 윗줄로 올라가고, 엔터를 누르면 아랫줄로 내려갑니다. 발음 글자는 바뀌지 않습니다. 고친 내용은 이 기기에만 저장되니, 모두에게 반영하려면 "내용 복사"로 보내 주세요.</p>
+              <p class="todo">악보 줄마다 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 한글 발음 편집 칸이 열립니다. 한 줄이 악보 한 줄이고, 발음 사이에 띄어쓰기를 넣거나 빼면 일본어도 함께 움직입니다. 줄 맨 앞에서 백스페이스를 누르면 그 줄이 윗줄로 올라가고, 엔터를 누르면 아랫줄로 내려갑니다. "우루와"처럼 한 글자의 발음 사이도 음표에 맞춰 띄어 쓸 수 있습니다. 발음 글자는 바뀌지 않습니다. 고친 내용은 이 기기에만 저장되니, 모두에게 반영하려면 "내용 복사"로 보내 주세요.</p>
               <div class="score-wrap" data-zoom="100" data-song="jumanyi">
                 <a href="score/jumanyi-1.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-1.png" alt="주님만이 모든 것 악보 1째 줄" loading="lazy"></a>
                 <div class="score-lyric" data-strip="1"><p class="sl-ja" lang="ja" data-k="1-ja" data-read="[[&quot;麗&quot;, &quot;우루와&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;], [&quot;何&quot;, &quot;나니&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;変&quot;, &quot;카&quot;], [&quot;え&quot;, &quot;에&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">                            麗                                  し           い             イエ    ス                何に               も          変 え  ら      れ な い</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">우루와시이 이에스 나니니모 카에라레나이</p></div>
@@ -1493,7 +1494,9 @@
     var boxes = Array.prototype.slice.call(wrap.querySelectorAll('.score-lyric'));
     var seq = [];
     boxes.forEach(function (b) {
-      JSON.parse(b.querySelector('.sl-ja').dataset.read).forEach(function (p) { seq.push({ ja: p[0], rd: p[1] }); });
+      JSON.parse(b.querySelector('.sl-ja').dataset.read).forEach(function (p) {
+        Array.prototype.forEach.call(p[1], function (syl, j) { seq.push({ ja: j === 0 ? p[0] : '', s: syl }); });
+      });
     });
     function norm(t) { return t.replace(/ /g, ' ').replace(/\r/g, ''); }
     // default lines: each strip's Japanese spacing turned into pronunciation spacing
@@ -1504,28 +1507,24 @@
       });
       return out.replace(/\s+$/, '');
     }).join('\n');
-    // parse text into lines of tokens; null if letters or reading boundaries changed
+    // parse text into lines of tokens (one pronunciation syllable = one unit); null if letters changed
     function parse(text) {
-      var lines = [[]], k = 0, off = 0, cur = null;
+      var lines = [[]], k = 0, cur = null;
       for (var c = 0; c < text.length; c++) {
         var ch = text[c];
-        if (ch === ' ' || ch === '\n') {
-          if (off) return null;
+        if (ch === '\n') { lines.push([]); cur = null; continue; }
+        if (ch === ' ') {
           cur = null;
-          if (ch === '\n') { lines.push([]); continue; }
           var line = lines[lines.length - 1], last = line[line.length - 1];
           if (last && last.space != null) last.space += ' '; else line.push({ space: ' ' });
           continue;
         }
         var unit = seq[k];
-        if (!unit || unit.rd[off] !== ch) return null;
-        off++;
-        if (off === unit.rd.length) {
-          if (!cur) { cur = { ja: '', pr: '' }; lines[lines.length - 1].push(cur); }
-          cur.ja += unit.ja; cur.pr += unit.rd; k++; off = 0;
-        }
+        if (!unit || unit.s !== ch) return null;
+        if (!cur) { cur = { ja: '', pr: '' }; lines[lines.length - 1].push(cur); }
+        cur.ja += unit.ja; cur.pr += unit.s; k++;
       }
-      if (off || k !== seq.length) return null;
+      if (k !== seq.length) return null;
       return lines;
     }
     function render(lines) {
