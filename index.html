@@ -222,11 +222,14 @@
   .score-lyric .sl-ja { margin:0 0 4px; font-size:0.9rem; white-space:pre; display:none; }
   .score-lyric .sl-pr { display:none; }
   .score-lyric.sl-editing { outline:1px dashed var(--accent); }
-  .score-lyric.sl-editing .sl-view { display:none; }
+  .score-lyric .sl-view { display:none; }
+  .sl-prtext[hidden], .sl-line[hidden] { display:none; }
   .sl-inline { position:relative; }
   .sl-jarow { white-space:pre; font-size:0.95rem; line-height:1.4; height:1.4em; }
   .sl-jarow span { display:inline-block; white-space:nowrap; overflow:visible; vertical-align:top; }
+  .sl-prtext { display:block; margin:0; padding:0; border-bottom:1px solid transparent; color:var(--accent); font-size:0.85rem; font-weight:700; line-height:1.5; letter-spacing:0; white-space:pre; }
   .sl-line { display:block; margin:0; padding:0; border:0; border-bottom:1px solid var(--accent); border-radius:0; background:transparent; color:var(--accent); font:inherit; font-size:0.85rem; font-weight:700; line-height:1.5; letter-spacing:0; white-space:pre; overflow:hidden; resize:none; min-width:120px; }
+  .sl-line.sl-ro { border-bottom-color:transparent; pointer-events:none; cursor:default; }
   .sl-line:focus { outline:none; background:color-mix(in srgb, var(--accent) 10%, transparent); }
   .score-lyric.sl-empty { display:none; }
   .sl-view { white-space:pre; line-height:1.35; }
@@ -1567,23 +1570,26 @@
         b.classList.toggle('sl-empty', !editing && !hasText);
         b.classList.toggle('sl-editing', editing);
         var ed = b.querySelector('.sl-inline');
-        if (!editing) { if (ed) ed.remove(); continue; }
         if (!ed) {
           ed = document.createElement('div'); ed.className = 'sl-inline';
-          ed.innerHTML = '<div class="sl-jarow" lang="ja" aria-hidden="true"></div><textarea class="sl-line" rows="1" wrap="off" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>';
+          ed.innerHTML = '<div class="sl-jarow" lang="ja" aria-hidden="true"></div><div class="sl-prtext"></div><textarea class="sl-line" rows="1" wrap="off" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>';
           b.appendChild(ed); bindLine(ed.querySelector('.sl-line'));
         }
-        var line = ed.querySelector('.sl-line'), row = ed.querySelector('.sl-jarow');
+        var line = ed.querySelector('.sl-line'), row = ed.querySelector('.sl-jarow'), txt = ed.querySelector('.sl-prtext');
         line.dataset.i = i; line.setAttribute('aria-label', (i + 1) + '줄 한글 발음 띄어쓰기');
+        line.readOnly = !editing; line.tabIndex = editing ? 0 : -1; line.classList.toggle('sl-ro', !editing); txt.hidden = true;
+        txt.textContent = cur[i] || '';
         if (line.value !== (cur[i] || '')) line.value = cur[i] || '';
+        var ref = line;
         row.textContent = '';
         items.forEach(function (it) {
           var sp = document.createElement('span');
-          if (it.space != null) { sp.className = 'jr-sp'; sp.style.width = textWidth(it.space, line) + 'px'; }
-          else { sp.className = 'jr-tok'; sp.textContent = it.ja; sp.style.width = textWidth(it.pr, line) + 'px'; }
+          if (it.space != null) { sp.className = 'jr-sp'; sp.style.width = textWidth(it.space, ref) + 'px'; }
+          else { sp.className = 'jr-tok'; sp.textContent = it.ja; sp.style.width = textWidth(it.pr, ref) + 'px'; }
           row.appendChild(sp);
         });
-        line.style.width = Math.max(textWidth(line.value, line) + 120, 160) + 'px'; line.scrollLeft = 0;
+        var w = Math.max(textWidth(cur[i] || '', ref) + 120, 160) + 'px';
+        line.style.width = w; txt.style.width = w; line.scrollLeft = 0;
       }
       if (focusLine != null) {
         var t = boxFor(focusLine).querySelector('.sl-line');
@@ -1635,6 +1641,11 @@
       });
     }
     render();
+    if (document.fonts) {
+      if (document.fonts.ready) document.fonts.ready.then(function () { render(); });
+      if (document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', function () { render(); });
+    }
+    root.addEventListener('toggle', function () { if (root.open) render(); });
     var edit = root.querySelector('.sl-edit');
     edit.addEventListener('click', function () {
       editing = !editing;
