@@ -239,6 +239,9 @@
   .sl-unused-old { background:var(--surface); border-radius:4px; padding:2px 4px; outline:1px solid var(--line); }
   .sl-tools { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0; }
   .sl-tools button { font:inherit; font-size:0.8rem; padding:4px 10px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--fg); cursor:pointer; }
+  .sl-tools .sl-save { border-color:var(--accent); color:var(--accent); font-weight:700; }
+  .sl-status { margin:0 0 6px; font-size:0.82rem; color:var(--accent); }
+  .sl-status:empty { display:none; }
   .sl-tools .sl-edit[aria-pressed="true"] { background:var(--accent); color:var(--on-accent); border-color:var(--accent); }
   .score-zoom { display:flex; gap:6px; margin:8px 0 4px; }
   .score-zoom button { font:inherit; font-size:0.82rem; padding:5px 12px; border-radius:999px; border:1px solid var(--accent); background:var(--surface); color:var(--accent); cursor:pointer; }
@@ -1237,8 +1240,8 @@
                 <button type="button" data-zoom="160">크게</button>
                 <button type="button" data-zoom="230">아주 크게</button>
               </div>
-              <div class="sl-tools"><button type="button" class="sl-edit" aria-pressed="false">띄어쓰기 수정</button><button type="button" class="sl-reset">처음대로</button><button type="button" class="sl-copy">내용 복사</button></div>
-              <p class="todo">악보 줄마다 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 각 악보 줄 밑의 한글 발음을 그 자리에서 바로 고칠 수 있습니다. 발음 사이에 띄어쓰기를 넣거나 빼면 위의 일본어도 함께 움직입니다. 줄 맨 앞에서 백스페이스를 누르면 그 줄이 윗줄로 올라가고, 엔터를 누르면 아랫줄로 내려갑니다. "우루와"처럼 한 글자의 발음 사이도 음표에 맞춰 띄어 쓸 수 있습니다. 발음 글자는 바뀌지 않습니다. 고친 내용은 이 기기에만 저장되니, 모두에게 반영하려면 "내용 복사"로 보내 주세요.</p>
+              <div class="sl-tools"><button type="button" class="sl-edit" aria-pressed="false">띄어쓰기 수정</button><button type="button" class="sl-save">저장</button><button type="button" class="sl-reset">되돌리기</button><button type="button" class="sl-copy">내용 복사</button></div><p class="sl-status" aria-live="polite"></p>
+              <p class="todo">악보 줄마다 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 각 악보 줄 밑의 한글 발음을 그 자리에서 바로 고칠 수 있습니다. 발음 사이에 띄어쓰기를 넣거나 빼면 위의 일본어도 함께 움직입니다. 줄 맨 앞에서 백스페이스를 누르면 그 줄이 윗줄로 올라가고, 엔터를 누르면 아랫줄로 내려갑니다. "우루와"처럼 한 글자의 발음 사이도 음표에 맞춰 띄어 쓸 수 있습니다. 발음 글자는 바뀌지 않습니다. 다 고친 뒤 "저장"을 누르면 그 상태가 최종이 되어 모두에게 같은 띄어쓰기로 보입니다. "되돌리기"는 마지막으로 저장한 상태로 돌아갑니다.</p>
               <div class="score-wrap" data-zoom="100" data-song="jumanyi">
                 <a href="score/jumanyi-1.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-1.png" alt="주님만이 모든 것 악보 1째 줄" loading="lazy"></a>
                 <div class="score-lyric" data-strip="1" data-pron="                            우       루         와                 시 이      이에    스               나    니  니       모      카 에  라      레   나   이"><p class="sl-ja" lang="ja" data-k="1-ja" data-read="[[&quot;麗&quot;, &quot;우루와&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;], [&quot;何&quot;, &quot;나니&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;変&quot;, &quot;카&quot;], [&quot;え&quot;, &quot;에&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">                            麗                                  し           い             イエ    ス                何に               も          変 え  ら      れ な い</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">우루와시이 이에스 나니니모 카에라레나이</p></div>
@@ -1531,9 +1534,13 @@
     var root = wrap.closest('details');
     var editing = false;
     var cur = [];            // one string per lyric line (line i sits under score strip i; extra lines get extra boxes)
+    var finalText = original;   // the saved, shared version (from the page or the shared store)
     var last = original;
     try { var saved = localStorage.getItem(key); if (saved && parse(saved)) last = saved; } catch (e) {}
     cur = last.split('\n');
+    var status = root.querySelector('.sl-status');
+    function setStatus(msg) { if (status) status.textContent = msg || ''; }
+    function showDirty() { setStatus(cur.join('\n') !== finalText ? '저장하지 않은 수정이 있습니다. "저장"을 눌러야 최종이 됩니다.' : ''); }
     var meter = document.createElement('span');
     meter.setAttribute('aria-hidden', 'true');
     meter.style.cssText = 'position:absolute;left:-9999px;top:0;white-space:pre;visibility:hidden;';
@@ -1599,7 +1606,8 @@
     function commit() {
       var v = cur.join('\n');
       last = v;
-      try { if (v === original) localStorage.removeItem(key); else localStorage.setItem(key, v); } catch (e) {}
+      try { if (v === finalText) localStorage.removeItem(key); else localStorage.setItem(key, v); } catch (e) {}
+      showDirty();
     }
     function keepCaret(t) {
       t.scrollLeft = 0;
@@ -1653,9 +1661,46 @@
       render(editing ? 0 : null, 0);
     });
     root.querySelector('.sl-reset').addEventListener('click', function () {
-      cur = original.split('\n'); commit(); render();
+      cur = finalText.split('\n'); commit(); render();
       try { localStorage.removeItem(key); } catch (e) {}
     });
+    // shared final version: kept in the artifact's shared store when this page runs as a Claude artifact
+    var sharedDoc = null, saving = false;
+    var saveBtn = root.querySelector('.sl-save');
+    function applyFinal(text) {
+      if (!text || !parse(text) || text === finalText) return;
+      var hadEdits = cur.join('\n') !== finalText;
+      finalText = text;
+      if (!hadEdits) { cur = text.split('\n'); try { localStorage.removeItem(key); } catch (e) {} }
+      render(); showDirty();
+    }
+    if (window.claude && typeof window.claude.use === 'function') {
+      window.claude.use('db').then(function (db) {
+        if (!db) return;
+        sharedDoc = db.doc('lyrics/' + wrap.dataset.song);
+        sharedDoc.onSnapshot(function (snap) {
+          if (snap.exists) { var d = snap.data(); applyFinal(d && typeof d.text === 'string' ? d.text : null); }
+        }, function () {});
+      }, function () {});
+    }
+    saveBtn.addEventListener('click', function () {
+      if (saving) return;
+      var text = cur.join('\n');
+      if (!sharedDoc) {
+        setStatus('이 화면에서는 모두에게 저장할 수 없습니다. Claude 가이드북 페이지에서 "저장"을 누르거나, "내용 복사"로 보내 주세요.');
+        return;
+      }
+      saving = true; saveBtn.disabled = true; setStatus('저장 중…');
+      sharedDoc.set({ text: text, savedAt: new Date().toISOString() }).then(function () {
+        finalText = text;
+        try { localStorage.removeItem(key); } catch (e) {}
+        if (editing) { editing = false; edit.setAttribute('aria-pressed', 'false'); render(); }
+        setStatus('저장했습니다. 이제 모두에게 이 띄어쓰기로 보입니다.');
+      }, function (e) {
+        setStatus(e && e.code === 'invalid_argument' ? '저장 권한이 없습니다. 편집 권한이 있는 분이 저장해 주세요.' : '저장하지 못했습니다. 잠시 후 다시 눌러 주세요.');
+      }).then(function () { saving = false; saveBtn.disabled = false; });
+    });
+    showDirty();
     var copyBtn = root.querySelector('.sl-copy');
     copyBtn.addEventListener('click', function () {
       var all = Array.prototype.slice.call(wrap.querySelectorAll('.score-lyric')).filter(function (b) { return b.querySelector('.sl-pr').textContent; });
