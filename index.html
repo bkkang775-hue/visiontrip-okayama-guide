@@ -221,8 +221,13 @@
   .score-lyric { overflow-x:auto; }
   .score-lyric .sl-ja { margin:0 0 4px; font-size:0.9rem; white-space:pre; display:none; }
   .score-lyric .sl-pr { display:none; }
-  .sl-editor[hidden] { display:none; }
-  .sl-editor { display:block; width:100%; margin:6px 0; font:inherit; font-size:0.9rem; line-height:1.6; white-space:pre; overflow-x:auto; padding:8px; border:1px solid var(--accent); border-radius:8px; background:var(--surface); color:var(--fg); }
+  .score-lyric.sl-editing { outline:1px dashed var(--accent); }
+  .score-lyric.sl-editing .sl-view { display:none; }
+  .sl-inline { position:relative; }
+  .sl-jarow { white-space:pre; font-size:0.95rem; line-height:1.4; height:1.4em; }
+  .sl-jarow span { display:inline-block; white-space:nowrap; overflow:visible; vertical-align:top; }
+  .sl-line { display:block; margin:0; padding:0; border:0; border-bottom:1px solid var(--accent); border-radius:0; background:transparent; color:var(--accent); font:inherit; font-size:0.85rem; font-weight:700; line-height:1.5; letter-spacing:0; white-space:pre; overflow:hidden; resize:none; min-width:120px; }
+  .sl-line:focus { outline:none; background:color-mix(in srgb, var(--accent) 10%, transparent); }
   .score-lyric.sl-empty { display:none; }
   .sl-view { white-space:pre; line-height:1.35; }
   .sl-tok { display:inline-block; vertical-align:top; white-space:nowrap; }
@@ -1230,7 +1235,7 @@
                 <button type="button" data-zoom="230">아주 크게</button>
               </div>
               <div class="sl-tools"><button type="button" class="sl-edit" aria-pressed="false">띄어쓰기 수정</button><button type="button" class="sl-reset">처음대로</button><button type="button" class="sl-copy">내용 복사</button></div>
-              <p class="todo">악보 줄마다 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 한글 발음 편집 칸이 열립니다. 한 줄이 악보 한 줄이고, 발음 사이에 띄어쓰기를 넣거나 빼면 일본어도 함께 움직입니다. 줄 맨 앞에서 백스페이스를 누르면 그 줄이 윗줄로 올라가고, 엔터를 누르면 아랫줄로 내려갑니다. "우루와"처럼 한 글자의 발음 사이도 음표에 맞춰 띄어 쓸 수 있습니다. 발음 글자는 바뀌지 않습니다. 고친 내용은 이 기기에만 저장되니, 모두에게 반영하려면 "내용 복사"로 보내 주세요.</p>
+              <p class="todo">악보 줄마다 일본어 가사와 그 밑에 한글 발음을 붙였습니다. "띄어쓰기 수정"을 누르면 각 악보 줄 밑의 한글 발음을 그 자리에서 바로 고칠 수 있습니다. 발음 사이에 띄어쓰기를 넣거나 빼면 위의 일본어도 함께 움직입니다. 줄 맨 앞에서 백스페이스를 누르면 그 줄이 윗줄로 올라가고, 엔터를 누르면 아랫줄로 내려갑니다. "우루와"처럼 한 글자의 발음 사이도 음표에 맞춰 띄어 쓸 수 있습니다. 발음 글자는 바뀌지 않습니다. 고친 내용은 이 기기에만 저장되니, 모두에게 반영하려면 "내용 복사"로 보내 주세요.</p>
               <div class="score-wrap" data-zoom="100" data-song="jumanyi">
                 <a href="score/jumanyi-1.png" target="_blank" rel="noopener"><img class="score" src="score/jumanyi-1.png" alt="주님만이 모든 것 악보 1째 줄" loading="lazy"></a>
                 <div class="score-lyric" data-strip="1"><p class="sl-ja" lang="ja" data-k="1-ja" data-read="[[&quot;麗&quot;, &quot;우루와&quot;], [&quot;し&quot;, &quot;시&quot;], [&quot;い&quot;, &quot;이&quot;], [&quot;イ&quot;, &quot;이&quot;], [&quot;エ&quot;, &quot;에&quot;], [&quot;ス&quot;, &quot;스&quot;], [&quot;何&quot;, &quot;나니&quot;], [&quot;に&quot;, &quot;니&quot;], [&quot;も&quot;, &quot;모&quot;], [&quot;変&quot;, &quot;카&quot;], [&quot;え&quot;, &quot;에&quot;], [&quot;ら&quot;, &quot;라&quot;], [&quot;れ&quot;, &quot;레&quot;], [&quot;な&quot;, &quot;나&quot;], [&quot;い&quot;, &quot;이&quot;]]">                            麗                                  し           い             イエ    ス                何に               も          変 え  ら      れ な い</p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr">우루와시이 이에스 나니니모 카에라레나이</p></div>
@@ -1519,11 +1524,34 @@
       if (k !== seq.length) return null;
       return lines;
     }
-    function render(lines) {
-      boxes.forEach(function (b, i) {
+    var root = wrap.closest('details');
+    var editing = false;
+    var cur = [];            // one string per lyric line (line i sits under score strip i; extra lines get extra boxes)
+    var last = original;
+    try { var saved = localStorage.getItem(key); if (saved && parse(saved)) last = saved; } catch (e) {}
+    cur = last.split('\n');
+    var meter = document.createElement('span');
+    meter.setAttribute('aria-hidden', 'true');
+    meter.style.cssText = 'position:absolute;left:-9999px;top:0;white-space:pre;visibility:hidden;';
+    document.body.appendChild(meter);
+    function textWidth(t, el) { meter.style.font = getComputedStyle(el).font; meter.textContent = t; return meter.getBoundingClientRect().width; }
+    function boxFor(i) {
+      if (i < boxes.length) return boxes[i];
+      var extra = wrap.querySelectorAll('.sl-extra')[i - boxes.length];
+      if (!extra) {
+        extra = document.createElement('div'); extra.className = 'score-lyric sl-extra';
+        extra.innerHTML = '<p class="sl-ja" lang="ja"></p><div class="sl-view" aria-hidden="true"></div><p class="sl-pr"></p>';
+        var prev = boxFor(i - 1); prev.after(extra);
+      }
+      return extra;
+    }
+    function render(focusLine, focusPos) {
+      var lines = parse(cur.join('\n'));
+      var n = Math.max(lines.length, boxes.length);
+      wrap.querySelectorAll('.sl-extra').forEach(function (x, j) { if (boxes.length + j >= lines.length) x.remove(); });
+      for (var i = 0; i < n; i++) {
+        var b = boxFor(i), items = lines[i] || [];
         var view = b.querySelector('.sl-view'), pr = b.querySelector('.sl-pr'), ja = b.querySelector('.sl-ja');
-        var items = lines[i] || [];
-        if (i === boxes.length - 1) for (var x = boxes.length; x < lines.length; x++) items = items.concat([{ space: ' ' }], lines[x]);
         view.textContent = ''; var flatPr = '', flatJa = '';
         items.forEach(function (it) {
           if (it.space != null) { view.appendChild(document.createTextNode(it.space)); flatPr += it.space; flatJa += it.space; return; }
@@ -1534,39 +1562,93 @@
           flatPr += it.pr; flatJa += it.ja;
         });
         pr.textContent = flatPr; ja.dataset.flat = flatJa;
-        b.classList.toggle('sl-empty', !items.some(function (it) { return it.space == null; }));
+        var hasText = items.some(function (it) { return it.space == null; });
+        b.classList.toggle('sl-empty', !editing && !hasText);
+        b.classList.toggle('sl-editing', editing);
+        var ed = b.querySelector('.sl-inline');
+        if (!editing) { if (ed) ed.remove(); continue; }
+        if (!ed) {
+          ed = document.createElement('div'); ed.className = 'sl-inline';
+          ed.innerHTML = '<div class="sl-jarow" lang="ja" aria-hidden="true"></div><textarea class="sl-line" rows="1" wrap="off" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>';
+          b.appendChild(ed); bindLine(ed.querySelector('.sl-line'));
+        }
+        var line = ed.querySelector('.sl-line'), row = ed.querySelector('.sl-jarow');
+        line.dataset.i = i; line.setAttribute('aria-label', (i + 1) + '줄 한글 발음 띄어쓰기');
+        if (line.value !== (cur[i] || '')) line.value = cur[i] || '';
+        row.textContent = '';
+        items.forEach(function (it) {
+          var sp = document.createElement('span');
+          if (it.space != null) { sp.className = 'jr-sp'; sp.style.width = textWidth(it.space, line) + 'px'; }
+          else { sp.className = 'jr-tok'; sp.textContent = it.ja; sp.style.width = textWidth(it.pr, line) + 'px'; }
+          row.appendChild(sp);
+        });
+        line.style.width = Math.max(textWidth(line.value, line) + 120, 160) + 'px'; line.scrollLeft = 0;
+      }
+      if (focusLine != null) {
+        var t = boxFor(focusLine).querySelector('.sl-line');
+        if (t) { t.focus({ preventScroll: true }); t.selectionStart = t.selectionEnd = focusPos; keepCaret(t); }
+      }
+    }
+    function commit() {
+      var v = cur.join('\n');
+      last = v;
+      try { if (v === original) localStorage.removeItem(key); else localStorage.setItem(key, v); } catch (e) {}
+    }
+    function keepCaret(t) {
+      t.scrollLeft = 0;
+      var box = t.closest('.score-lyric'), x = textWidth(t.value.slice(0, t.selectionStart), t) + t.offsetLeft;
+      if (x < box.scrollLeft + 20) box.scrollLeft = Math.max(0, x - 40);
+      else if (x > box.scrollLeft + box.clientWidth - 30) box.scrollLeft = x - box.clientWidth + 60;
+    }
+    function bindLine(t) {
+      t.addEventListener('scroll', function () { if (t.scrollLeft) t.scrollLeft = 0; });
+      ['keyup', 'click', 'focus', 'select'].forEach(function (ev) { t.addEventListener(ev, function () { keepCaret(t); }); });
+      t.addEventListener('keydown', function (e) {
+        var i = +t.dataset.i, s0 = t.selectionStart, s1 = t.selectionEnd;
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          var v = t.value; cur.splice(i, 1, v.slice(0, s0), v.slice(s1));
+          commit(); render(i + 1, 0);
+        } else if (e.key === 'Backspace' && s0 === 0 && s1 === 0 && i > 0) {
+          e.preventDefault();
+          var pos = (cur[i - 1] || '').length; cur.splice(i - 1, 2, (cur[i - 1] || '') + (cur[i] || ''));
+          commit(); render(i - 1, pos);
+        } else if (e.key === 'Delete' && s0 === t.value.length && s1 === s0 && i < cur.length - 1) {
+          e.preventDefault();
+          cur.splice(i, 2, cur[i] + (cur[i + 1] || ''));
+          commit(); render(i, s0);
+        } else if ((e.key === 'ArrowUp' && i > 0) || (e.key === 'ArrowDown' && i < cur.length - 1)) {
+          e.preventDefault();
+          var j = e.key === 'ArrowUp' ? i - 1 : i + 1;
+          render(j, Math.min(s0, (cur[j] || '').length));
+        }
+      });
+      t.addEventListener('input', function () {
+        var i = +t.dataset.i, v = norm(t.value).replace(/\n/g, ''), next = cur.slice();
+        next[i] = v;
+        if (!parse(next.join('\n'))) {
+          var pos = Math.max(0, t.selectionStart - 1); t.value = cur[i] || ''; t.selectionStart = t.selectionEnd = Math.min(pos, t.value.length);
+          return;
+        }
+        cur = next; commit(); render(); keepCaret(t);
       });
     }
-    var root = wrap.closest('details');
-    var tools = root.querySelector('.sl-tools');
-    var ta = document.createElement('textarea');
-    ta.className = 'sl-editor'; ta.rows = 9; ta.wrap = 'off'; ta.spellcheck = false; ta.hidden = true;
-    ta.setAttribute('aria-label', '한글 발음 띄어쓰기 편집 (한 줄이 악보 한 줄)');
-    tools.after(ta);
-    var last = original;
-    try { var saved = localStorage.getItem(key); if (saved && parse(saved)) last = saved; } catch (e) {}
-    ta.value = last; render(parse(last));
-    ta.addEventListener('input', function () {
-      var v = norm(ta.value), lines = parse(v);
-      if (!lines) { var pos = ta.selectionStart; ta.value = last; ta.selectionStart = ta.selectionEnd = Math.min(pos - 1 < 0 ? 0 : pos - 1, last.length); return; }
-      last = v; render(lines);
-      try { if (v === original) localStorage.removeItem(key); else localStorage.setItem(key, v); } catch (e) {}
-    });
+    render();
     var edit = root.querySelector('.sl-edit');
     edit.addEventListener('click', function () {
-      var on = ta.hidden;
-      ta.hidden = !on;
-      edit.setAttribute('aria-pressed', on ? 'true' : 'false');
-      if (on) ta.focus();
+      editing = !editing;
+      edit.setAttribute('aria-pressed', editing ? 'true' : 'false');
+      render(editing ? 0 : null, 0);
     });
     root.querySelector('.sl-reset').addEventListener('click', function () {
-      last = original; ta.value = original; render(parse(original));
+      cur = original.split('\n'); commit(); render();
       try { localStorage.removeItem(key); } catch (e) {}
     });
     var copyBtn = root.querySelector('.sl-copy');
     copyBtn.addEventListener('click', function () {
-      var text = boxes.map(function (b) {
-        return b.dataset.strip + '줄\n' + (b.querySelector('.sl-ja').dataset.flat || '') + '\n' + b.querySelector('.sl-pr').textContent;
+      var all = Array.prototype.slice.call(wrap.querySelectorAll('.score-lyric')).filter(function (b) { return b.querySelector('.sl-pr').textContent; });
+      var text = all.map(function (b, n) {
+        return (n + 1) + '줄\n' + (b.querySelector('.sl-ja').dataset.flat || '') + '\n' + b.querySelector('.sl-pr').textContent;
       }).join('\n\n');
       var done = function () { copyBtn.textContent = '복사됨'; setTimeout(function () { copyBtn.textContent = '내용 복사'; }, 1500); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { showText(text); });
@@ -1574,7 +1656,7 @@
     });
     function showText(text) {
       var out = root.querySelector('.sl-copytext');
-      if (!out) { out = document.createElement('textarea'); out.className = 'sl-copytext'; out.rows = 8; out.style.width = '100%'; ta.after(out); }
+      if (!out) { out = document.createElement('textarea'); out.className = 'sl-copytext'; out.rows = 8; out.style.width = '100%'; root.querySelector('.sl-tools').after(out); }
       out.value = text; out.focus(); out.select();
     }
   });
