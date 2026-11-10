@@ -217,7 +217,7 @@
   .score-wrap[data-zoom="160"] img.score { width:160%; }
   .score-wrap[data-zoom="230"] img.score { width:230%; }
   .score-wrap .lyric-part { position:sticky; left:0; }
-  .score-lyric { margin:-2px 0 10px; padding:6px 8px; border-radius:6px; background:var(--surface-2); box-sizing:border-box; width:100%; overflow:hidden; }
+  .score-lyric { margin:-2px 0 10px; padding:6px 0; border-radius:6px; background:var(--surface-2); box-sizing:border-box; width:100%; overflow:hidden; }
   .score-wrap[data-zoom="160"] .score-lyric { width:160%; }
   .score-wrap[data-zoom="230"] .score-lyric { width:230%; }
   .sl-inline { transform-origin:0 0; }
@@ -1633,21 +1633,21 @@
       try { if (v === finalText) localStorage.removeItem(key); else localStorage.setItem(key, v); } catch (e) {}
       showDirty();
     }
-    var REF = 740; // line width (px) the spacing is laid out for: the score image width on a computer screen
-    function scaleOf(b) { return Math.max(0.2, (b.clientWidth - 16) / REF); }
+    var REF = 756; // score image width (px) on a computer screen at 기본 zoom: the spacing is laid out for it
+    function scaleOf(b) { return Math.max(0.2, b.clientWidth / REF); }
     function applyScale() {
       wrap.querySelectorAll('.score-lyric').forEach(function (b) {
         var ed = b.querySelector('.sl-inline'); if (!ed) return;
         var k = scaleOf(b);
-        ed.style.transform = 'scale(' + k + ')';
-        ed.style.width = (100 / k) + '%';
+        ed.style.transform = 'translateX(' + (8 * k) + 'px) scale(' + k + ')';
+        ed.style.width = ((100 / k) - (16 / REF) * 100) + '%';
         ed.style.marginBottom = (-(1 - k) * ed.offsetHeight) + 'px';
       });
     }
     function keepCaret(t) {
       t.scrollLeft = 0;
       var b = t.closest('.score-lyric'), k = scaleOf(b);
-      var x = (textWidth(t.value.slice(0, t.selectionStart), t)) * k + b.offsetLeft + 8;
+      var x = (textWidth(t.value.slice(0, t.selectionStart), t) + 8) * k + b.offsetLeft;
       if (x < wrap.scrollLeft + 20) wrap.scrollLeft = Math.max(0, x - 40);
       else if (x > wrap.scrollLeft + wrap.clientWidth - 30) wrap.scrollLeft = x - wrap.clientWidth + 60;
     }
