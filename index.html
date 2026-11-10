@@ -217,8 +217,10 @@
   .score-wrap[data-zoom="160"] img.score { width:160%; }
   .score-wrap[data-zoom="230"] img.score { width:230%; }
   .score-wrap .lyric-part { position:sticky; left:0; }
-  .score-lyric { margin:-2px 0 10px; padding:6px 8px; border-radius:6px; background:var(--surface-2); position:sticky; left:0; max-width:calc(100vw - 80px); }
-  .score-lyric { overflow-x:auto; }
+  .score-lyric { margin:-2px 0 10px; padding:6px 8px; border-radius:6px; background:var(--surface-2); box-sizing:border-box; width:100%; overflow:hidden; }
+  .score-wrap[data-zoom="160"] .score-lyric { width:160%; }
+  .score-wrap[data-zoom="230"] .score-lyric { width:230%; }
+  .sl-inline { transform-origin:0 0; }
   .score-lyric .sl-ja { margin:0 0 4px; font-size:0.9rem; white-space:pre; display:none; }
   .score-lyric .sl-pr { display:none; }
   .score-lyric.sl-editing { outline:1px dashed var(--accent); }
@@ -1619,6 +1621,7 @@
         var w = Math.max(textWidth(cur[i] || '', ref) + 120, 160) + 'px';
         line.style.width = w; txt.style.width = w; line.scrollLeft = 0;
       }
+      applyScale();
       if (focusLine != null) {
         var t = boxFor(focusLine).querySelector('.sl-line');
         if (t) { t.focus({ preventScroll: true }); t.selectionStart = t.selectionEnd = focusPos; keepCaret(t); }
@@ -1630,11 +1633,23 @@
       try { if (v === finalText) localStorage.removeItem(key); else localStorage.setItem(key, v); } catch (e) {}
       showDirty();
     }
+    var REF = 740; // line width (px) the spacing is laid out for: the score image width on a computer screen
+    function scaleOf(b) { return Math.max(0.2, (b.clientWidth - 16) / REF); }
+    function applyScale() {
+      wrap.querySelectorAll('.score-lyric').forEach(function (b) {
+        var ed = b.querySelector('.sl-inline'); if (!ed) return;
+        var k = scaleOf(b);
+        ed.style.transform = 'scale(' + k + ')';
+        ed.style.width = (100 / k) + '%';
+        ed.style.marginBottom = (-(1 - k) * ed.offsetHeight) + 'px';
+      });
+    }
     function keepCaret(t) {
       t.scrollLeft = 0;
-      var box = t.closest('.score-lyric'), x = textWidth(t.value.slice(0, t.selectionStart), t) + t.offsetLeft;
-      if (x < box.scrollLeft + 20) box.scrollLeft = Math.max(0, x - 40);
-      else if (x > box.scrollLeft + box.clientWidth - 30) box.scrollLeft = x - box.clientWidth + 60;
+      var b = t.closest('.score-lyric'), k = scaleOf(b);
+      var x = (textWidth(t.value.slice(0, t.selectionStart), t)) * k + b.offsetLeft + 8;
+      if (x < wrap.scrollLeft + 20) wrap.scrollLeft = Math.max(0, x - 40);
+      else if (x > wrap.scrollLeft + wrap.clientWidth - 30) wrap.scrollLeft = x - wrap.clientWidth + 60;
     }
     function bindLine(t) {
       t.addEventListener('scroll', function () { if (t.scrollLeft) t.scrollLeft = 0; });
@@ -1675,6 +1690,13 @@
       if (document.fonts.addEventListener) document.fonts.addEventListener('loadingdone', function () { render(); });
     }
     root.addEventListener('toggle', function () { if (root.open) render(); });
+    window.addEventListener('resize', applyScale);
+    new MutationObserver(applyScale).observe(wrap, { attributes: true, attributeFilter: ['data-zoom'] });
+    // on a phone the score is narrow: start these songs at the largest zoom so the lyrics stay readable
+    if (wrap.clientWidth && wrap.clientWidth < 500 || (!wrap.clientWidth && window.innerWidth < 600)) {
+      var zb = root.querySelector('.score-zoom button[data-zoom="230"]');
+      if (zb) { wrap.dataset.zoom = '230'; zb.parentNode.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-pressed', x === zb ? 'true' : 'false'); }); }
+    }
     var edit = root.querySelector('.sl-edit');
     edit.addEventListener('click', function () {
       editing = !editing;
