@@ -1808,6 +1808,20 @@
       btn.parentNode.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
     });
   });
+  // inside the Claude artifact viewer plain download links do nothing: hand the file over through the downloads capability
+  if (window.claude && typeof window.claude.use === 'function') {
+    window.claude.use('downloads').then(function (dl) {
+      if (!dl) return;
+      document.querySelectorAll('a[download]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          fetch(a.getAttribute('href')).then(function (r) { return r.blob(); })
+            .then(function (blob) { return dl.save({ filename: a.getAttribute('download'), data: blob }); })
+            .catch(function () {});
+        });
+      });
+    }, function () {});
+  }
   var todayInTokyo = new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Tokyo' });
   document.querySelectorAll('details.day[data-date]').forEach(function (day) {
     day.open = day.dataset.date === todayInTokyo;
